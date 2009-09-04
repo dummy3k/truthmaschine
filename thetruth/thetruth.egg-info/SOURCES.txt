@@ -24,6 +24,7 @@ thetruth/lib/app_globals.py
 thetruth/lib/base.py
 thetruth/lib/helpers.py
 thetruth/model/__init__.py
+thetruth/model/meta.py
 thetruth/public/bg.png
 thetruth/public/favicon.ico
 thetruth/public/index.html

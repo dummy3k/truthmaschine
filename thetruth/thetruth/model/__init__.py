@@ -1,14 +1,17 @@
 """The application's model objects"""
-import sqlalchemy as sa
-from sqlalchemy import orm
+from sqlalchemy import *
+from sqlalchemy.ext.declarative import declarative_base
 
 from thetruth.model import meta
+
+Base = declarative_base()
+
 
 def init_model(engine):
     """Call me before using any of the tables or classes in the model"""
     ## Reflected tables must be defined and mapped here
     #global reflected_table
-    #reflected_table = sa.Table("Reflected", meta.metadata, autoload=True,
+    #reflected_table = Table("Reflected", meta.metadata, autoload=True,
     #                           autoload_with=engine)
     #orm.mapper(Reflected, reflected_table)
     #
@@ -16,21 +19,24 @@ def init_model(engine):
     meta.engine = engine
 
 
-## Non-reflected tables may be defined and mapped at module level
-#foo_table = sa.Table("Foo", meta.metadata,
-#    sa.Column("id", sa.types.Integer, primary_key=True),
-#    sa.Column("bar", sa.types.String(255), nullable=False),
-#    )
-#
-#class Foo(object):
-#    pass
-#
-#orm.mapper(Foo, foo_table)
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100))
+    email = Column(String(100))
+    openid = Column(String(255))
+
+    
+class Statement(Base):
+    __tablename__ = "statements"
+
+    id = Column(Integer, primary_key=True)
+    message = Column(String(140))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    votes = Column(Integer)
+
+    pros = Column(Integer, ForeignKey('statements.id'))
+    contras = Column(Integer, ForeignKey('statements.id'))
 
 
-## Classes for reflected tables may be defined here, but the table and
-## mapping itself must be done in the init_model function
-#reflected_table = None
-#
-#class Reflected(object):
-#    pass

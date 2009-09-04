@@ -1,11 +1,8 @@
 """The application's model objects"""
 from sqlalchemy import *
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import orm
 
 from thetruth.model import meta
-
-Base = declarative_base()
-
 
 def init_model(engine):
     """Call me before using any of the tables or classes in the model"""
@@ -19,24 +16,41 @@ def init_model(engine):
     meta.engine = engine
 
 
-class User(Base):
-    __tablename__ = "users"
+users_table = Table('users', meta.metadata,
+    Column('id', Integer, primary_key=True),
+    Column('name', String(100)),
+    Column('email', String(100)),
+    Column('openid', String(255))
+)
+	
+statements_table = Table('statements', meta.metadata,
+    Column('id', Integer, primary_key=True),
+    Column('message', String(140)),
+    Column('userid', Integer, ForeignKey('users.id')),
+    Column('votes', Integer),
+    Column('pros', Integer, ForeignKey('statements.id')),
+    Column('contras', Integer, ForeignKey('statements.id'))
+)
+	
+class User(object):
+    def __unicode__(self):
+        return self.name
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String(100))
-    email = Column(String(100))
-    openid = Column(String(255))
+    __str__ = __unicode__
 
+    def __repr__(self):
+        return "<User('%s', '%s')>" % (self.name, self.openid)
+	
     
-class Statement(Base):
-    __tablename__ = "statements"
+class Statement(object):
+    def __unicode__(self):
+        return self.message
 
-    id = Column(Integer, primary_key=True)
-    message = Column(String(140))
-    user_id = Column(Integer, ForeignKey('users.id'))
-    votes = Column(Integer)
+    __str__ = __unicode__
 
-    pros = Column(Integer, ForeignKey('statements.id'))
-    contras = Column(Integer, ForeignKey('statements.id'))
+    def __repr__(self):
+        return "<Statement('%s')>" % (self.message)
 
 
+orm.mapper(User, users_table)
+orm.mapper(Statement, statements_table)

@@ -1,0 +1,15 @@
+Pylon installieren:
+http://pylonshq.com/docs/en/0.9.7/gettingstarted/#installing
+
+
+Git Server installieren
+http://www.urbanpuddle.com/articles/2008/07/11/installing-git-on-a-server-ubuntu-or-debian
+
+git config core.autocrlf false
+easy_install SQLAlchemy
+
+core.sharedRepository 
+
+http://pylonshq.com/docs/en/0.9.7/models/#working-with-sqlalchemy
+
+

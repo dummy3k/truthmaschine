@@ -20,7 +20,6 @@ def make_map():
 
     # CUSTOM ROUTES HERE
 
-    map.connect('/{controller}/{action}')
-    map.connect('/{controller}/{action}/{id}')
+    map.connect('home', '/home', controller='pages', action='home')
 
     return map

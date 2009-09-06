@@ -1,3 +1,4 @@
 /pylons
 *.pyc
 /thetruth/development.db
+/data

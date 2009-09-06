@@ -22,5 +22,7 @@ def make_map():
     map.connect('/', controller='hello', action='index')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
+    map.connect('/myHello/{name}', controller='hello', action='sayHello')
+    map.connect('/addUser/{name}', controller='hello', action='addUser')
 
     return map

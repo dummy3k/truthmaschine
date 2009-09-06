@@ -7,5 +7,6 @@ from webhelpers.html import literal
 from webhelpers.html.tags import *
 from webhelpers.html.secure_form import secure_form
 from webhelpers.pylonslib import Flash as _Flash
+from routes import url_for
 
 flash = _Flash()

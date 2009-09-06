@@ -2,3 +2,4 @@
 *.pyc
 /thetruth/development.db
 /data
+/thetruth/public/Thumbs.db

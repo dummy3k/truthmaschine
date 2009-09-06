@@ -1,3 +1,4 @@
 /pylons
 *.pyc
 /thetruth/development.db
+/thetruth/public/Thumbs.db

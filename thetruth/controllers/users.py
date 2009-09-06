@@ -32,3 +32,10 @@ class UsersController(BaseController):
         
         return render('/user_list.mako')
         
+    def add(self):
+        aUser = model.User()
+        aUser.name=request.params.get('name')
+        meta.Session.add(aUser)
+        meta.Session.commit()
+        return redirect_to(action="showUsersList")
+        

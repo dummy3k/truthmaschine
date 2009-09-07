@@ -39,3 +39,8 @@ class UsersController(BaseController):
         meta.Session.commit()
         return redirect_to(action="showUsersList")
         
+    def showDetails(self, id):
+        users_q = meta.Session.query(model.User)
+        c.user = users_q.filter(model.User.id==id).one()
+        return render('/users/detail.mako')
+        

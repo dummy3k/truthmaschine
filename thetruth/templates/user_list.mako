@@ -21,9 +21,9 @@
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>${user.openid}</td>
-                <td><a
-                        href = '${h.url_for(action='Delete')}'
-                        >Delete</a>
+                <td>
+                    <a href = '${h.url_for(action='showDetails', id=user.id)}'>Show</a>&nbsp;
+                    <a href = '${h.url_for(action='Delete')}'>Delete</a>
                </td>
             </tr>
             %endfor

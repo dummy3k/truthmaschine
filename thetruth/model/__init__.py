@@ -20,7 +20,8 @@ users_table = Table('users', meta.metadata,
     Column('id', Integer, primary_key=True),
     Column('name', String(100)),
     Column('email', String(100)),
-    Column('openid', String(255))
+    Column('openid', String(255)),
+    Column('banned', Boolean)
 )
 	
 statements_table = Table('statements', meta.metadata,
@@ -41,6 +42,8 @@ class User(object):
     def __repr__(self):
         return "<User('%s', '%s')>" % (self.name, self.openid)
 	
+    def updatelastlogin(self):
+        pass
     
 class Statement(object):
     def __unicode__(self):

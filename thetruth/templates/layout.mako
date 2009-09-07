@@ -15,7 +15,7 @@
 	<div class="navigation">
 			<a href="index.html">New Thesis</a>
 			<a href="index.html">What's going on?</a>
-			<a href="index.html">Login</a>
+			<a href="${h.url_for(controller='login', action='signin')}">Login</a>
 			<div class="clearer"><span></span></div>
 		</div>
 

@@ -126,21 +126,21 @@ class LoginController(BaseController):
             user.email = sreg_response.get('email', u'')
 #            user.tzinfo = sreg_response.get('timezone', u'')
 #            user.tzinfo = sreg_response.get('language', u'')
-            meta.Session.save(user)
+#            meta.Session.save(user)
             meta.Session.commit()
             #session.clear()
             session['openid'] = info.identity_url
             session['message'] = "Signed in"
             session.save()
             log.debug('on verified before session check')
-            if 'redirected_from' in session:
-                url = session['redirected_from']
-                del(session['redirected_from'])
-                session.save()
-                return redirect_to(url)
+#            if 'redirected_from' in session:
+#                url = session['redirected_from']
+#                del(session['redirected_from'])
+#                session.save()
+#                return redirect_to(url)
 
-            log.debug('go to index')
-            return redirect_to(action='index')
+#            log.debug('go to index')
+            return redirect_to(controller='pages', action='home')
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)

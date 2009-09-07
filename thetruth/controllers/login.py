@@ -26,6 +26,9 @@ class LoginController(BaseController):
         self.store = SQLiteStore(con);
         #store.createTables()
         
+        c.message = session['message']
+
+        
     @rest.dispatch_on(POST="update_account")
     def index(self):
         if not c.user:
@@ -60,7 +63,6 @@ class LoginController(BaseController):
             
 
         #session.clear()
-        c.message = session['message']
         return render('login/account.signin')
 
     def signin_POST(self):
@@ -148,13 +150,13 @@ class LoginController(BaseController):
 
     def signout(self):
         if not c.user:
-            session['message'] = _("You are not signed in.")
+            session['message'] = "You are not signed in."
             session.save()
-            redirect_to(controller='logs', action='index', id=None)
+            redirect_to(action='showMessage')
         session.clear()
-        session['message'] = _("You've been signed out.")
+        session['message'] = "You've been signed out."
         session.save()
-        redirect_to(controller='logs', action='index', id=None)
+        redirect_to(action='showMessage')
 
     def banned(self):
         if not c.user:
@@ -166,3 +168,7 @@ class LoginController(BaseController):
             session.save()
             redirect_to(action='index')
         return render('login/account.banned')
+
+    def showMessage(self):
+        return render('login/message.mako')
+        

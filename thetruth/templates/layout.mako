@@ -15,7 +15,14 @@
 	<div class="navigation">
 			<a href="index.html">New Thesis</a>
 			<a href="index.html">What's going on?</a>
+            
+            % if c.user:
+            Signed in as ${c.user.openid}
+			<a href="${h.url_for(controller='login', action='signout')}">Logout</a>
+            % else:
 			<a href="${h.url_for(controller='login', action='signin')}">Login</a>
+            % endif
+            
 			<div class="clearer"><span></span></div>
 		</div>
 

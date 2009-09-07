@@ -131,6 +131,7 @@ class LoginController(BaseController):
             #session.clear()
             session['openid'] = info.identity_url
             session['message'] = "Signed in"
+            session['user'] = user
             session.save()
             log.debug('on verified before session check')
 #            if 'redirected_from' in session:
@@ -156,7 +157,7 @@ class LoginController(BaseController):
         session.clear()
         session['message'] = "You've been signed out."
         session.save()
-        redirect_to(action='showMessage')
+        redirect_to(controller='pages', action='home')
 
     def banned(self):
         if not c.user:
@@ -171,4 +172,7 @@ class LoginController(BaseController):
 
     def showMessage(self):
         return render('login/message.mako')
+        
+    def signedin(self):
+        return session['signedin']
         

@@ -4,6 +4,7 @@ Provides the BaseController class for subclassing.
 """
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
+from pylons import session, tmpl_context as c
 
 from thetruth.model import meta
 
@@ -14,7 +15,15 @@ class BaseController(WSGIController):
         # WSGIController.__call__ dispatches to the Controller method
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
+        
+        try:
+            c.user = session['user']
+        except:
+            pass
+            
         try:
             return WSGIController.__call__(self, environ, start_response)
         finally:
             meta.Session.remove()
+            
+        

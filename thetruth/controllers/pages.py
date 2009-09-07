@@ -15,4 +15,4 @@ log = logging.getLogger(__name__)
 
 class PagesController(BaseController):
 	def home(self):
-		return render('/pages/new.mako')
+		return render('/pages/list-arguments.mako')

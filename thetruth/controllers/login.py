@@ -59,7 +59,7 @@ class LoginController(BaseController):
     def signin(self):
         log.debug("enter signin()")
         if c.user:
-            session['message'] = _('Already signed in.')
+            session['message'] = 'Already signed in.'
             session.save()
             redirect_to(action='index')
             

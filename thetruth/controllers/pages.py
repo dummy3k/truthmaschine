@@ -42,6 +42,33 @@ class PagesController(BaseController):
         c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
 
         return render('/pages/list-arguments.mako')
+
+    def upvote(self, id):
+        if not c.user:
+            redirect_to(controller='login', action='signin')
+
+        query = meta.Session.query(model.Statement)
+        thesis = query.filter_by(id=id).first()
+        
+        thesis.votes += 1
+        meta.Session.update(thesis)
+        meta.Session.commit()
+
+        redirect_to(action='show', id=id)
+        
+    def downvote(self, id):
+        if not c.user:
+            redirect_to(controller='login', action='signin')
+
+        query = meta.Session.query(model.Statement)
+        thesis = query.filter_by(id=id).first()
+        
+        thesis.votes -= 1
+        meta.Session.update(thesis)
+        meta.Session.commit()
+
+        redirect_to(action='show', id=id)
+
     
     def createNew(self):
         if not c.user:
@@ -50,6 +77,7 @@ class PagesController(BaseController):
         rant = model.Statement()
         rant.message = request.params.get('msg', None)
         rant.userid = c.user.id
+        rant.votes = 0
         
         parentId = request.params.get('parentid', None)
         isTrue = request.params.get('istrue', None)

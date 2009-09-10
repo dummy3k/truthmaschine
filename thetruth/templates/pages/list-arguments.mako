@@ -24,6 +24,21 @@
 % endfor
 </%def>
 
+<%def name="thesis()">
+	<div class="header">
+		<div class="title">
+			<div class="vote vote-true">
+				<a href="${h.url_for(action='upvote', id=c.thesis.id)}"><img src="/img/vote-arrow-up.png" /></a>
+				<span class="vote-count">${c.thesis.votes}</span>
+				<a href="${h.url_for(action='downvote', id=c.thesis.id)}"><img src="/img/vote-arrow-down.png" /></a>
+			</div>
+			<h1>${c.thesis.message}</h1>
+			${self.argumentmeta(c.thesis.user)}		
+		</div>
+
+	</div>
+</%def>
+
 <%def name="leftpanel()">
 ${self.argumentInput('true')}
 ${self.argumentOutput(c.trueArguments)}

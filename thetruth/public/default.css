@@ -17,6 +17,9 @@ input {
 	color: #555;
 	font: normal 1.1em "Lucida Sans Unicode",sans-serif;
 }
+img {
+    border: 0;
+}
 p,cite,code,ul {
 	font-size: 1.2em;
 	padding-bottom: 1.2em;

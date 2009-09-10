@@ -24,11 +24,6 @@ def make_map():
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 
-    map.connect('/', controller='pages', action='home')
-
-    #map.connect('/login', controller='hello', action='index')
-    #map.connect('/myHello/{name}', controller='hello', action='sayHello')
-    #map.connect('/addUser/{name}', controller='hello', action='addUser')
-    #map.connect('/users/add/{name}', controller='hello', action='addUser')
-
+    map.connect('/', controller='pages', action='index')
+    
     return map

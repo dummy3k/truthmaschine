@@ -18,9 +18,8 @@
 			${it.message}
 		</a>
 	</div>
-	<div class="argument-meta">
-		<a href="index.html" class="argument-author">${it.user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
-	</div>
+        
+	${self.argumentmeta(it.user)}
 </div>
 % endfor
 </%def>

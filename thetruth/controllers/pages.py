@@ -37,6 +37,7 @@ class PagesController(BaseController):
         
         if not c.thesis:
             abort(404)
+            
         c.trueArguments = query.filter_by(parentid=id,istrue=1).all()
         c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
 

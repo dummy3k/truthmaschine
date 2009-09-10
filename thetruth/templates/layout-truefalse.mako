@@ -2,7 +2,6 @@
 
 <%def name="thesis()">
 	<div class="header">
-				
 		<div class="title">
 			<div class="vote vote-true">
 				<img src="img/vote-arrow-up.png" />
@@ -15,12 +14,15 @@
 				<img src="img/vote-arrow-down.png" />
 			</div>
 			<h1>${c.thesis.message}</h1>
-			<div class="argument-meta">
-				<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
-			</div>			
+			${self.argumentmeta(c.thesis.user)}		
 		</div>
 
 	</div>
+</%def>
+<%def name="argumentmeta(user)">
+<div class="argument-meta">
+	<a href="index.html" class="argument-author">${user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
+</div>	
 </%def>
 	
 <div class="left-panel">

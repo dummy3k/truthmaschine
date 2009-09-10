@@ -13,8 +13,8 @@
 <body>
 <div class="container">
 	<div class="navigation">
-			<a href="index.html">New Thesis</a>
-			<a href="index.html">What's going on?</a>
+	<a href="${h.url_for(controller='pages', action='new')}">New Thesis</a>
+	<a href="${h.url_for(controller='pages', action='about')}">What's going on?</a>
             
             % if c.user:
             Signed in as ${c.user.openid}

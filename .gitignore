@@ -3,3 +3,5 @@
 /thetruth/development.db
 /data
 /thetruth/public/Thumbs.db
+
+*.db

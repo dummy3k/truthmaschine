@@ -39,7 +39,7 @@
 				<span class="vote-count">99</span>
 				<img src="img/vote-arrow-down.png" />
 			</div>
-			<h1>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed</h1>
+			<h1>${c.statementText}</h1>
 			<div class="argument-meta">
 				<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
 			</div>			

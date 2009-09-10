@@ -14,8 +14,15 @@ log = logging.getLogger(__name__)
 
 class PagesController(BaseController):
     def home(self):
+        c.statementText = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed'
         return render('/pages/list-arguments.mako')
 
+    def show(self, id):
+        query = meta.Session.query(model.Statement)
+        st = query.filter_by(id=id).first()
+        c.statementText = st.message
+        return render('/pages/list-arguments.mako')
+    
 
     def createNew(self):
         if not c.user:
@@ -26,6 +33,8 @@ class PagesController(BaseController):
         rant.userid = c.user.id
         meta.Session.add(rant)
         meta.Session.commit()
+        redirect_to(action='show', id=rant.id)
+        
 
     def appendSubStatment(self, child, isContra):
         #        query = meta.Session.query(model.User)

@@ -143,7 +143,7 @@ class LoginController(BaseController):
 #                return redirect_to(url)
 
 #            log.debug('go to index')
-            return redirect_to(controller='pages', action='home')
+            return redirect_to(controller='pages', action='index')
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)
@@ -159,7 +159,7 @@ class LoginController(BaseController):
         session.clear()
         session['message'] = "You've been signed out."
         session.save()
-        redirect_to(controller='pages', action='home')
+        redirect_to(controller='pages', action='index')
 
     def banned(self):
         if not c.user:

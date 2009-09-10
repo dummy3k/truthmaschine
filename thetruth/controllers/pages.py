@@ -17,16 +17,11 @@ class PagesController(BaseController):
         pass    
     
     def index(self):
-        c.statementText = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed'
-        return render('/pages/list-arguments.mako')
-        
-    def show(self, argumentId):
         query = meta.Session.query(model.Statement)
-        user = query.filter_by(openid=info.identity_url).first()
-        user = model.User()
-        user.openid=info.identity_url
-        
-        
+        #rs = query.filter_by(parentid=None).select()
+        rs = query.filter_by(parentid=None).all()
+        c.thesis = rs
+        return render('/pages/list-thesis.mako')
         
     def new(self):
         return render('/pages/new-argument.mako')
@@ -40,7 +35,6 @@ class PagesController(BaseController):
         c.statementText = st.message
         return render('/pages/list-arguments.mako')
     
-
     def createNew(self):
         if not c.user:
             redirect_to(controller='login', action='signin')

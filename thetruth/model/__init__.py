@@ -28,6 +28,7 @@ statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
     Column('message', String(140)),
     Column('userid', Integer, ForeignKey('users.id')),
+    Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
     Column('pros', Integer, ForeignKey('statements.id')),
     Column('contras', Integer, ForeignKey('statements.id'))

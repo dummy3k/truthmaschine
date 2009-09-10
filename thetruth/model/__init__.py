@@ -38,6 +38,12 @@ class User(object):
     def __unicode__(self):
         return self.name
 
+    def getDisplayName(self):
+        if self.name:
+            return self.name
+        else:
+            return self.openid    
+
     __str__ = __unicode__
 
     def __repr__(self):
@@ -57,4 +63,7 @@ class Statement(object):
 
 
 orm.mapper(User, users_table)
-orm.mapper(Statement, statements_table)
+orm.mapper(Statement, statements_table, properties = {
+    'user' : orm.relation(User),
+    })
+orm.mapper(Statement, users_table, non_primary=True)

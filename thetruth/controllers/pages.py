@@ -34,6 +34,9 @@ class PagesController(BaseController):
     def show(self, id):
         query = meta.Session.query(model.Statement)
         c.thesis = query.filter_by(id=id).first()
+        
+        if not c.thesis:
+            abort(404)
         c.trueArguments = query.filter_by(parentid=id,istrue=1).all()
         c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
 

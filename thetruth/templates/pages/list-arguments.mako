@@ -12,19 +12,14 @@
 
 <%def name="argumentOutput(arguments)">
 % for it in arguments:
-<div class="argument">        
-	<div class="thesis">	
-		<a href="${h.url_for(action='show', id=it.id)}" class="argument-link">
-			message: ${it.message}
-		</a>
-	</div>
+<div class="argument">
 	<div class="argument-text">	
 		<a href="${h.url_for(action='show', id=it.id)}" class="argument-link">
 			${it.message}
 		</a>
 	</div>
 	<div class="argument-meta">
-		<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
+		<a href="index.html" class="argument-author">${it.user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
 	</div>
 </div>
 % endfor

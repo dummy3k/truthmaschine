@@ -112,6 +112,9 @@ class LoginController(BaseController):
         if info.status == SUCCESS:
             query = meta.Session.query(model.User)
             user = query.filter_by(openid=info.identity_url).first()
+            
+            newUser = user is None
+            
             if user is None:
                 user = model.User()
                 user.openid=info.identity_url
@@ -128,7 +131,10 @@ class LoginController(BaseController):
             user.email = sreg_response.get('email', u'')
 #            user.tzinfo = sreg_response.get('timezone', u'')
 #            user.tzinfo = sreg_response.get('language', u'')
-#            meta.Session.save(user)
+            if newUser:
+                meta.Session.save(user)
+            else:
+                meta.Session.update(user)
             meta.Session.commit()
             #session.clear()
             session['openid'] = info.identity_url

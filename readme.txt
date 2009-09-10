@@ -35,8 +35,9 @@ Then run
 The following dependencies need to be installed
 
 	easy_install sqlalchemy
+	easy_install python-openid
 	
 The Test-Webserver can be started with the following command in the ``thetruth`` directory
 
-    paster serve development.ini
+    paster serve --reload development.ini
 	

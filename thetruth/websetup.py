@@ -4,6 +4,9 @@ import logging
 from thetruth.config.environment import load_environment
 from thetruth.model import meta
 
+from openid.consumer.consumer import Consumer, SUCCESS, FAILURE, DiscoveryFailure
+from openid.store.sqlstore import SQLiteStore 
+
 log = logging.getLogger(__name__)
 
 def setup_app(command, conf, vars):
@@ -15,7 +18,11 @@ def setup_app(command, conf, vars):
     meta.metadata.create_all(bind=meta.engine)
     log.info("Successfully set up.")
 
-	
+    con = meta.engine.raw_connection()
+    #store = SQLiteStore(con, 'openid_ settings', 'openid_ associations', 'openid_ nonces');
+    store = SQLiteStore(con);
+    store.createTables()
+        
 #    log.info("Adding front page data...")
 #    page = model.Page(title=u'FrontPage',
 #                      content=u'**Welcome** to the QuickWiki front page!')

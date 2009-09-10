@@ -1,5 +1,7 @@
-<html>
-	<body>
+<%inherit file="/layout-default.mako"/>\
+
+<%def name="content()">
     <p>${c.message}</p>
-    </body>
-</html>
+<%def name="sidenav()">
+Contact us!
+</%def>

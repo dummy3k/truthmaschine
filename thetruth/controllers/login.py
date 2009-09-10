@@ -22,11 +22,13 @@ class LoginController(BaseController):
         log.debug("__before__.openid_session %s" % self.openid_session)
         
         con = meta.engine.raw_connection()
-        #store = SQLiteStore(con, 'openid_ settings', 'openid_ associations', 'openid_ nonces');
         self.store = SQLiteStore(con);
-        #store.createTables()
         
-        c.message = session['message']
+        try:
+            c.message = session['message']
+        except:
+            c.message = ''
+            pass
 
         
     @rest.dispatch_on(POST="update_account")
@@ -63,7 +65,7 @@ class LoginController(BaseController):
             
 
         #session.clear()
-        return render('login/account.signin')
+        return render('login/signin.moko')
 
     def signin_POST(self):
         log.debug("enter signin_POST()")

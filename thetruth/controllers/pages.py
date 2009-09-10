@@ -24,6 +24,8 @@ class PagesController(BaseController):
         return render('/pages/list-thesis.mako')
         
     def new(self):
+        if not c.user:
+            redirect_to(controller='login', action='signin')
         return render('/pages/new-argument.mako')
         
     def about(self):
@@ -31,8 +33,10 @@ class PagesController(BaseController):
 
     def show(self, id):
         query = meta.Session.query(model.Statement)
-        st = query.filter_by(id=id).first()
-        c.statementText = st.message
+        c.thesis = query.filter_by(id=id).first()
+        c.trueArguments = query.filter_by(parentid=id,istrue=1).all()
+        c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
+
         return render('/pages/list-arguments.mako')
     
     def createNew(self):
@@ -42,9 +46,25 @@ class PagesController(BaseController):
         rant = model.Statement()
         rant.message = request.params.get('msg', None)
         rant.userid = c.user.id
+        
+        parentId = request.params.get('parentid', None)
+        isTrue = request.params.get('istrue', None)
+        
+        if parentId and isTrue :
+            rant.parentid=parentId
+    
+            if isTrue == 'true':
+                rant.istrue = 1
+            elif isTrue == 'false':
+                rant.istrue = 0
+        
         meta.Session.add(rant)
         meta.Session.commit()
-        redirect_to(action='show', id=rant.id)
+
+        if request.params.get('parentid', None):
+            redirect_to(action='show', id=rant.parentid)
+        else:
+            redirect_to(action='show', id=rant.id)
         
 
     def appendSubStatment(self, child, isContra):

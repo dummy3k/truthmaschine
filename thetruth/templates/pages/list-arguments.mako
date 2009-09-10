@@ -1,26 +1,40 @@
 <%inherit file="/layout-truefalse.mako"/>\
 
-<%def name="leftpanel()">
-<div class="argument">
+<%def name="argumentInput(istrue)">
+  <form method="post" action="${h.url_for(action='createNew')}">
+    <textarea name="msg"></textarea>
+    <input type="hidden" name="parentid" value="${c.thesis.id}" />
+    <input type="hidden" name="istrue" value="${istrue}" />
+    <input type="submit" value="Submit" />
+  </form>
+</%def>
+
+
+<%def name="argumentOutput(arguments)">
+% for it in arguments:
+<div class="argument">        
+	<div class="thesis">	
+		<a href="${h.url_for(action='show', id=it.id)}" class="argument-link">
+			message: ${it.message}
+		</a>
+	</div>
 	<div class="argument-text">	
-		<a href="argument.html" class="argument-link">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+		<a href="${h.url_for(action='show', id=it.id)}" class="argument-link">
+			${it.message}
 		</a>
 	</div>
 	<div class="argument-meta">
 		<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
 	</div>
 </div>
+% endfor
+</%def>
+
+<%def name="leftpanel()">
+${self.argumentInput('true')}
+${self.argumentOutput(c.trueArguments)}
 </%def>
 <%def name="rightpanel()">
-<div class="argument">
-	<div class="argument-text">	
-		<a href="argument.html" class="argument-link">
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-		</a>
-	</div>
-	<div class="argument-meta">
-		<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
-	</div>
-</div>
+${self.argumentInput('false')}
+${self.argumentOutput(c.falseArguments)}
 </%def>

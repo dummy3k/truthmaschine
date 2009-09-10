@@ -26,26 +26,8 @@
 			<div class="clearer"><span></span></div>
 		</div>
 
-	<div class="header">
-				
-		<div class="title">
-			<div class="vote vote-true">
-				<img src="img/vote-arrow-up.png" />
-				<span class="vote-count">2</span>
-				<img src="img/vote-arrow-down.png" />
-			</div>
-			<div class="vote vote-false">
-				<img src="img/vote-arrow-up.png" />
-				<span class="vote-count">99</span>
-				<img src="img/vote-arrow-down.png" />
-			</div>
-			<h1>${c.statementText}</h1>
-			<div class="argument-meta">
-				<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
-			</div>			
-		</div>
-
-	</div>
+	${self.thesis()}
+		
 <% flashes = h.flash.pop_messages() %>
 % if flashes:
 % for flash in flashes:
@@ -66,3 +48,6 @@ ${next.body()}\
 </div>
 </body>
 </html>
+
+<%def name="thesis()">
+</%def>

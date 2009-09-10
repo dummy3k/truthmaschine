@@ -30,8 +30,8 @@ statements_table = Table('statements', meta.metadata,
     Column('userid', Integer, ForeignKey('users.id')),
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
-    Column('pros', Integer, ForeignKey('statements.id')),
-    Column('contras', Integer, ForeignKey('statements.id'))
+    Column('istrue', Boolean)
+
 )
 	
 class User(object):

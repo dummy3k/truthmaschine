@@ -1,0 +1,17 @@
+<%inherit file="/layout-default.mako"/>\
+
+<%def name="content()">
+  <p>
+    ${c.message}
+  </p>
+
+  <h1>Sign in with OpenID</h1>
+
+  <form method="post" action="${h.url_for(action='signin_POST')}">
+    <input type="text" size="40" name="openid" />
+    <input type="submit" value="Login" />
+  </form>
+</%def>
+<%def name="sidenav()">
+What is OpenID?
+</%def>

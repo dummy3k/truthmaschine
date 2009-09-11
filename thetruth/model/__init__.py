@@ -28,14 +28,21 @@ statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
     Column('message', String(140)),
     Column('userid', Integer, ForeignKey('users.id')),
+    Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
-    Column('pros', Integer, ForeignKey('statements.id')),
-    Column('contras', Integer, ForeignKey('statements.id'))
+    Column('istrue', Boolean)
+
 )
 	
 class User(object):
     def __unicode__(self):
         return self.name
+
+    def getDisplayName(self):
+        if self.name:
+            return self.name
+        else:
+            return self.openid    
 
     __str__ = __unicode__
 
@@ -56,4 +63,7 @@ class Statement(object):
 
 
 orm.mapper(User, users_table)
-orm.mapper(Statement, statements_table)
+orm.mapper(Statement, statements_table, properties = {
+    'user' : orm.relation(User),
+    })
+orm.mapper(Statement, users_table, non_primary=True)

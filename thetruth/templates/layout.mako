@@ -13,32 +13,21 @@
 <body>
 <div class="container">
 	<div class="navigation">
-			<a href="index.html">New Thesis</a>
-			<a href="index.html">What's going on?</a>
-			<a href="index.html">Login</a>
+	<a href="${h.url_for(controller='pages', action='new')}">New Thesis</a>
+	<a href="${h.url_for(controller='pages', action='about')}">What's going on?</a>
+            
+            % if c.user:
+            Signed in as ${c.user.openid}
+			<a href="${h.url_for(controller='login', action='signout')}">Logout</a>
+            % else:
+			<a href="${h.url_for(controller='login', action='signin')}">Login</a>
+            % endif
+            
 			<div class="clearer"><span></span></div>
 		</div>
 
-	<div class="header">
-				
-		<div class="title">
-			<div class="vote vote-true">
-				<img src="img/vote-arrow-up.png" />
-				<span class="vote-count">2</span>
-				<img src="img/vote-arrow-down.png" />
-			</div>
-			<div class="vote vote-false">
-				<img src="img/vote-arrow-up.png" />
-				<span class="vote-count">99</span>
-				<img src="img/vote-arrow-down.png" />
-			</div>
-			<h1>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed</h1>
-			<div class="argument-meta">
-				<a href="index.html" class="argument-author">Jonny A.</a> <span class="argument-timestamp">2009/09/05 12:12</span>
-			</div>			
-		</div>
-
-	</div>
+	${self.thesis()}
+		
 <% flashes = h.flash.pop_messages() %>
 % if flashes:
 % for flash in flashes:
@@ -59,3 +48,6 @@ ${next.body()}\
 </div>
 </body>
 </html>
+
+<%def name="thesis()">
+</%def>

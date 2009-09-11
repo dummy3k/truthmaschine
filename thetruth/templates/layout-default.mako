@@ -4,6 +4,6 @@
 	${self.content()}
 </div>
 
-<div class="sidenav">y
+<div class="sidenav">
 	${self.sidenav()}
 </div>

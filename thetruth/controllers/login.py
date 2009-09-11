@@ -22,9 +22,14 @@ class LoginController(BaseController):
         log.debug("__before__.openid_session %s" % self.openid_session)
         
         con = meta.engine.raw_connection()
-        #store = SQLiteStore(con, 'openid_ settings', 'openid_ associations', 'openid_ nonces');
         self.store = SQLiteStore(con);
-        #store.createTables()
+        
+        try:
+            c.message = session['message']
+        except:
+            c.message = ''
+            pass
+
         
     @rest.dispatch_on(POST="update_account")
     def index(self):
@@ -60,8 +65,7 @@ class LoginController(BaseController):
             
 
         #session.clear()
-        c.message = session['message']
-        return render('login/account.signin')
+        return render('login/signin.moko')
 
     def signin_POST(self):
         log.debug("enter signin_POST()")
@@ -108,6 +112,9 @@ class LoginController(BaseController):
         if info.status == SUCCESS:
             query = meta.Session.query(model.User)
             user = query.filter_by(openid=info.identity_url).first()
+            
+            newUser = user is None
+            
             if user is None:
                 user = model.User()
                 user.openid=info.identity_url
@@ -124,21 +131,25 @@ class LoginController(BaseController):
             user.email = sreg_response.get('email', u'')
 #            user.tzinfo = sreg_response.get('timezone', u'')
 #            user.tzinfo = sreg_response.get('language', u'')
-            meta.Session.save(user)
+            if newUser:
+                meta.Session.save(user)
+            else:
+                meta.Session.update(user)
             meta.Session.commit()
             #session.clear()
             session['openid'] = info.identity_url
             session['message'] = "Signed in"
+            session['user'] = user
             session.save()
             log.debug('on verified before session check')
-            if 'redirected_from' in session:
-                url = session['redirected_from']
-                del(session['redirected_from'])
-                session.save()
-                return redirect_to(url)
+#            if 'redirected_from' in session:
+#                url = session['redirected_from']
+#                del(session['redirected_from'])
+#                session.save()
+#                return redirect_to(url)
 
-            log.debug('go to index')
-            return redirect_to(action='index')
+#            log.debug('go to index')
+            return redirect_to(controller='pages', action='index')
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)
@@ -148,13 +159,13 @@ class LoginController(BaseController):
 
     def signout(self):
         if not c.user:
-            session['message'] = _("You are not signed in.")
+            session['message'] = "You are not signed in."
             session.save()
-            redirect_to(controller='logs', action='index', id=None)
+            redirect_to(action='showMessage')
         session.clear()
-        session['message'] = _("You've been signed out.")
+        session['message'] = "You've been signed out."
         session.save()
-        redirect_to(controller='logs', action='index', id=None)
+        redirect_to(controller='pages', action='index')
 
     def banned(self):
         if not c.user:
@@ -166,3 +177,10 @@ class LoginController(BaseController):
             session.save()
             redirect_to(action='index')
         return render('login/account.banned')
+
+    def showMessage(self):
+        return render('login/message.mako')
+        
+    def signedin(self):
+        return session['signedin']
+        

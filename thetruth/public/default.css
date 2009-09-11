@@ -17,6 +17,9 @@ input {
 	color: #555;
 	font: normal 1.1em "Lucida Sans Unicode",sans-serif;
 }
+img {
+    border: 0;
+}
 p,cite,code,ul {
 	font-size: 1.2em;
 	padding-bottom: 1.2em;
@@ -185,6 +188,22 @@ div.argument {
 }
 
 .right-panel h1 {
+	margin-left: 20px;
+}	
+
+.content {
+	padding-top: 12px;
+	float: left;
+	width: 50%;
+}
+
+.sidenav {
+	float: right;
+	width: 50%;
+	padding-top: 12px;
+}
+
+.sidenav h1 {
 	margin-left: 20px;
 }	
 

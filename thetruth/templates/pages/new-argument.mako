@@ -9,13 +9,10 @@
   </p>
   % endif
   
-    <div class="hint">
-        please phrase your text nicely ...
-    </div>
-
   <form method="post" action="${h.url_for(action='createNew')}">
-    <textarea name="msg"></textarea>
+    <textarea name="msg" class="new-thesis"></textarea>
     <input type="submit" value="Submit" />
+    <p>(140 chars)</p>
   </form>
 </%def>
 <%def name="sidenav()">

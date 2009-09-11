@@ -49,6 +49,15 @@
 </body>
 </html>
 
+<%def name="argumentInput(parent_id, istrue)">
+  <form method="post" action="${h.url_for(action='createNew')}">
+    <textarea name="msg"></textarea>
+    <input type="hidden" name="parentid" value="${parent_id}" />
+    <input type="hidden" name="istrue" value="${istrue}" />
+    <input type="submit" value="Submit" />
+  </form>
+</%def>
+
 <%def name="thesis()">
 </%def>
 <%def name="main()">

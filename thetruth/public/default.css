@@ -25,6 +25,10 @@ p,cite,code,ul {
 	padding-bottom: 1.2em;
     padding-right: 40px;
 }
+ul {
+    margin-left: 20px;
+
+}   
 code {
 	background: #FFE;
 	border: 1px solid #EED;
@@ -81,7 +85,10 @@ h1 {
 	font: normal 2.3em "Lucida Sans Unicode","Trebuchet MS",sans-serif;
 	margin-top: 1px;
 	display: block;
+    height: 130px;
+    vertical-align: middle;
 	float: none;
+    line-height: 130px;
 }
 
 .title .argument-meta {
@@ -91,7 +98,7 @@ h1 {
 
 .vote {
 	font-size: 2em;
-	padding: 20px;
+	padding: 32px 20px;
 	
 	text-align:center;
 	vertical-align:middle;
@@ -195,7 +202,12 @@ div.argument {
 .content {
 	padding-top: 12px;
 	float: left;
-	width: 50%;
+	width: 40%;
+}
+
+.content input {
+    float: right;
+    margin: 0;
 }
 
 .sidenav {
@@ -205,6 +217,10 @@ div.argument {
     
 }
 
+.new-thesis {
+    width: 205px;
+    height: 100px;
+}  
 
 .argument-meta {
 	margin-top: 10px;

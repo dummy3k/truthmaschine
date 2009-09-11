@@ -36,7 +36,8 @@ The following dependencies need to be installed
 
 	easy_install sqlalchemy
 	easy_install python-openid
-	
+    easy_install sqlalchemy-migrate	
+    
 The Test-Webserver can be started with the following command in the ``thetruth`` directory
 
     paster serve --reload development.ini

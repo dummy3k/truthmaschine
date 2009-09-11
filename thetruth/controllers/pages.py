@@ -26,7 +26,7 @@ class PagesController(BaseController):
     def new(self):
         if not c.user:
             redirect_to(controller='login', action='signin')
-        return render('/pages/new-argument.mako')
+        return render('/pages/new-thesis.mako')
         
     def about(self):
         return render('/pages/about.mako')

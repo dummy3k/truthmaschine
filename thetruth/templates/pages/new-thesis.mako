@@ -9,11 +9,7 @@
   </p>
   % endif
   
-  <form method="post" action="${h.url_for(action='createNew')}">
-    <textarea name="msg" class="new-thesis"></textarea>
-    <input type="submit" value="Submit" />
-    <p>(140 chars)</p>
-  </form>
+  ${self.argumentInput(None, None)}
 </%def>
 <%def name="sidenav()">
     <h1>Rules</h1>

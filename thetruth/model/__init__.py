@@ -1,6 +1,8 @@
 """The application's model objects"""
 from sqlalchemy import *
 from sqlalchemy import orm
+import md5
+
 
 from thetruth.model import meta
 
@@ -38,6 +40,12 @@ class User(object):
     def __unicode__(self):
         return self.name
 
+    def getHashedEmailAddress(self):
+        if self.email:
+            return md5.new(self.email.strip().lower()).hexdigest()
+        else:
+            return md5.new(self.openid.strip().lower()).hexdigest()
+        
     def getDisplayName(self):
         if self.name:
             return self.name

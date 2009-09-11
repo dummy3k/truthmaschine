@@ -13,6 +13,7 @@
 <body>
 <div class="container">
 	<div class="navigation">
+	<a href="${h.url_for(controller='pages', action='index')}">All Thesis</a>
 	<a href="${h.url_for(controller='pages', action='new')}">New Thesis</a>
 	<a href="${h.url_for(controller='pages', action='about')}">What's going on?</a>
             
@@ -51,10 +52,17 @@
 
 <%def name="argumentInput(parent_id, istrue)">
   <form method="post" action="${h.url_for(action='createNew')}">
-    <textarea name="msg"></textarea>
+    <textarea name="msg" class="new-argument"></textarea>
+    
+    % if parent_id:
     <input type="hidden" name="parentid" value="${parent_id}" />
+    % endif
+    
+    % if istrue:
     <input type="hidden" name="istrue" value="${istrue}" />
+    % endif
     <input type="submit" value="Submit" />
+    <p>(140 chars)</p>
   </form>
 </%def>
 
@@ -72,7 +80,7 @@
 
 <%def name="argumentmeta(user)">
 <div class="argument-meta">
-	<a href="index.html" class="argument-author">${user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
+	<a href="index.html" class="argument-author"><img class="gravatar" src="http://www.gravatar.com/avatar/${user.getHashedEmailAddress()}.jpg" />${user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
 </div>	
 </%def>
     

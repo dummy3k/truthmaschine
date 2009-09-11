@@ -39,7 +39,7 @@
 
 
 	<div class="main">		
-${next.body()}\
+        ${self.main()}
 
 		<div class="clearer"><span></span></div>
 	</div>
@@ -50,4 +50,6 @@ ${next.body()}\
 </html>
 
 <%def name="thesis()">
+</%def>
+<%def name="main()">
 </%def>

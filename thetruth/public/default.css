@@ -23,6 +23,7 @@ img {
 p,cite,code,ul {
 	font-size: 1.2em;
 	padding-bottom: 1.2em;
+    padding-right: 40px;
 }
 code {
 	background: #FFE;
@@ -201,11 +202,9 @@ div.argument {
 	float: right;
 	width: 50%;
 	padding-top: 12px;
+    
 }
 
-.sidenav h1 {
-	margin-left: 20px;
-}	
 
 .argument-meta {
 	margin-top: 10px;
@@ -218,4 +217,34 @@ div.argument {
 	padding: 0px 0px 16px 40px;
 	
 	margin-top: 10px;
+}
+
+.error {
+    border: 2px dashed red;
+    padding: 5px;
+    color: red;
+    margin: 15px 0px;
+    width: 250px;
+}
+
+.openid-identifier {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url('img/openid-large.png') no-repeat scroll left center;
+    height:22px;
+    line-height:22px;
+    padding-left:32px;
+}
+
+input {
+    margin:5px 0;
+    padding:3px;
+    
+}
+
+input, select, button {
+    border:1px solid #999999;
+    font-family:Trebuchet MS,Helvetica,sans-serif;
+    font-size:20px;
 }

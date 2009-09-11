@@ -13,6 +13,7 @@
 <body>
 <div class="container">
 	<div class="navigation">
+	<a href="${h.url_for(controller='pages', action='index')}">All Thesis</a>
 	<a href="${h.url_for(controller='pages', action='new')}">New Thesis</a>
 	<a href="${h.url_for(controller='pages', action='about')}">What's going on?</a>
             

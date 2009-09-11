@@ -15,5 +15,5 @@
 
 </%def>
 <%def name="sidenav()">
-    haha
+    
 </%def>

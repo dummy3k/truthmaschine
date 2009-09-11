@@ -1,20 +1,13 @@
 <%inherit file="/layout-default.mako"/>\
 
 <%def name="content()">
-	% for it in c.thesis:
-        ${self.argumentOutput(c.trueArguments)}
-	% endfor
-
     <div class="thesis">
         <h1>List of all Thesis</h1>
 
         % for it in c.thesis:
-        <div class="thesis">	
-            <a href="${h.url_for(action='show', id=it.id)}" class="argument-link">
-                message: ${it.message}
-            </a>
-        </div>
+            ${self.argumentOutput(it)}
         % endfor
+
         
         % if len(c.thesis) == 0: 
         <p class="error">

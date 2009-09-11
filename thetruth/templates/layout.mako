@@ -58,6 +58,24 @@
   </form>
 </%def>
 
+<%def name="argumentOutput(argument)">
+<div class="argument">
+	<div class="argument-text">	
+		<a href="${h.url_for(action='show', id=argument.id)}" class="argument-link">
+			${argument.message}
+		</a>
+	</div>
+        
+	${self.argumentmeta(argument.user)}
+</div>
+</%def>
+
+<%def name="argumentmeta(user)">
+<div class="argument-meta">
+	<a href="index.html" class="argument-author">${user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
+</div>	
+</%def>
+    
 <%def name="thesis()">
 </%def>
 <%def name="main()">

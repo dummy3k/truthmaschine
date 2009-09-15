@@ -100,8 +100,6 @@ class Vote(object):
     def __unicode__(self):
         return self.message
 
-    def renderMessage(self):
-        return renderMarkup(self.message)
     
     __str__ = __unicode__
 

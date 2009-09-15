@@ -1,7 +1,7 @@
 from thetruth.tests import *
 from thetruth.lib.markup import *
 
-class TestHelloController(TestController):
+class TestMarkup(TestController):
 
     def test_no_markup(self):
         self.assertEqual('Hello World!', renderMarkup('Hello World!'))

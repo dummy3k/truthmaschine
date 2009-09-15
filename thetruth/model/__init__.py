@@ -3,7 +3,7 @@ from sqlalchemy import *
 from sqlalchemy import orm
 import md5
 
-
+from thetruth.lib.markup import renderMarkup
 from thetruth.model import meta
 
 def init_model(engine):
@@ -70,6 +70,9 @@ class Statement(object):
         return "<Statement('%s')>" % (self.message)
 
 
+    def renderMessage(self):
+        return renderMarkup(self.message)
+    
 orm.mapper(User, users_table)
 orm.mapper(Statement, statements_table, properties = {
     'user' : orm.relation(User),

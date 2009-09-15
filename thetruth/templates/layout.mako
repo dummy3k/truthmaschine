@@ -1,3 +1,6 @@
+<%!
+    from thetruth.lib.markup import renderMarkup
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
@@ -69,7 +72,7 @@
 <%def name="argumentOutput(argument)">
 <div class="argument">
 	<div class="argument-text">	
-        ${argument.renderMessage() | n}
+        ${argument.message | n,h,renderMarkup}
 		<a href="${h.url_for(action='show', id=argument.id)}" class="argument-link">
 			more?
 		</a>

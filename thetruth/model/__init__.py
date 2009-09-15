@@ -70,8 +70,6 @@ class Statement(object):
         return "<Statement('%s')>" % (self.message)
 
 
-    def renderMessage(self):
-        return renderMarkup(self.message)
     
 orm.mapper(User, users_table)
 orm.mapper(Statement, statements_table, properties = {

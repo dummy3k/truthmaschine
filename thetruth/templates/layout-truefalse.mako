@@ -1,4 +1,7 @@
 <%inherit file="/layout.mako"/>\
+<%!
+    from thetruth.lib.markup import renderMarkup
+%>
 
 <%def name="thesis()">
 	<div class="header">
@@ -9,7 +12,7 @@
 				<span class="vote-count">${c.thesis.votes}</span>
 				<a href="${h.url_for(action='downvote', id=c.thesis.id)}"><img src="/img/vote-arrow-down.png" /></a>
 			</div>
-			<h1>${c.thesis.renderMessage() | n}</h1>
+			<h1>${c.thesis.message | n,h,renderMarkup}</h1>
 		</div>
 
 	</div>

@@ -3,6 +3,7 @@ from sqlalchemy import *
 from sqlalchemy import orm
 import hashlib
 
+from thetruth.lib.markup import renderMarkup
 from thetruth.model import meta
 
 def init_model(engine):
@@ -84,6 +85,9 @@ class Vote(object):
     def __unicode__(self):
         return self.message
 
+    def renderMessage(self):
+        return renderMarkup(self.message)
+    
     __str__ = __unicode__
 
     def __repr__(self):

@@ -20,8 +20,8 @@ def setup_app(command, conf, vars):
 
     con = meta.engine.raw_connection()
     #store = SQLiteStore(con, 'openid_ settings', 'openid_ associations', 'openid_ nonces');
-    store = SQLiteStore(con);
-    store.createTables()
+    #store = SQLiteStore(con);
+    #store.createTables()
         
 #    log.info("Adding front page data...")
 #    page = model.Page(title=u'FrontPage',

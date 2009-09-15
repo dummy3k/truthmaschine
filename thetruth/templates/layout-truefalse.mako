@@ -9,7 +9,7 @@
 				<span class="vote-count">${c.thesis.votes}</span>
 				<a href="${h.url_for(action='downvote', id=c.thesis.id)}"><img src="/img/vote-arrow-down.png" /></a>
 			</div>
-			<h1>${c.thesis.message}</h1>
+			<h1>${c.thesis.renderMessage() | n}</h1>
 		</div>
 
 	</div>

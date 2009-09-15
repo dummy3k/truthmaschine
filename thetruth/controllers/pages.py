@@ -43,12 +43,25 @@ class PagesController(BaseController):
 
         return render('/pages/list-arguments.mako')
 
+    def is_already_voted(self, userid, statementid):
+        query = meta.Session.query(model.Vote)
+        return query.filter_by(userid=userid, statementid=statementid).first() != None
+
     def upvote(self, id):
         if not c.user:
             redirect_to(controller='login', action='signin')
 
+        if self.is_already_voted(c.user.id, id):
+            redirect_to(action='show', id=id)
+
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
+
+        vote = model.Vote()
+        vote.isupvote = True
+        vote.userid = c.user.id
+        vote.statementid = id
+        meta.Session.add(vote)
         
         thesis.votes += 1
         meta.Session.update(thesis)
@@ -60,9 +73,18 @@ class PagesController(BaseController):
         if not c.user:
             redirect_to(controller='login', action='signin')
 
+        if self.is_already_voted(c.user.id, id):
+            redirect_to(action='show', id=id)
+
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
         
+        vote = model.Vote()
+        vote.isupvote = True
+        vote.userid = c.user.id
+        vote.statementid = id
+        meta.Session.add(vote)
+
         thesis.votes -= 1
         meta.Session.update(thesis)
         meta.Session.commit()

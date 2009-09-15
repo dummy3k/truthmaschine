@@ -30,8 +30,8 @@ users_table = Table('users', meta.metadata,
 
 votes_table = Table('votes', meta.metadata,
     Column('id', Integer, primary_key=True),
-    Column('user_id', Integer, ForeignKey('users.id')),
-    Column('statement_id', Integer, ForeignKey('statements.id')),
+    Column('userid', Integer, ForeignKey('users.id')),
+    Column('statementid', Integer, ForeignKey('statements.id')),
     Column('isupvote', Boolean),
     Column('created', Date),
 )

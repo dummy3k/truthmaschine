@@ -68,7 +68,7 @@ class User(object):
 
     def __repr__(self):
         return "<User('%s', '%s')>" % (self.name, self.openid)
-	
+
     def updatelastlogin(self):
         pass
     
@@ -81,6 +81,21 @@ class Statement(object):
     def __repr__(self):
         return "<Statement('%s')>" % (self.message)
 
+    def renderMessage(self):
+        return renderMarkup(self.message)
+
+    def is_voted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id).first() != None
+    
+    def is_upvoted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id, isupvote=True).first() != None
+
+    def is_downvoted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id, isupvote=False).first() != None
+    
 class Vote(object):
     def __unicode__(self):
         return self.message

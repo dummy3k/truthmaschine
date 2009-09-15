@@ -22,8 +22,15 @@ def make_map():
     map.connect('/{controller}', action='index')
     map.connect('/{controller}/', action='index')
     map.connect('/{controller}/{action}')
+    map.connect('/{controller}/{action}/')
     map.connect('/{controller}/{action}/{id}')
-
+    
+    # Default Controller
+    map.connect('/{action}', controller="pages")
+    map.connect('/{action}/', controller="pages")
+    map.connect('/{action}/{id}', controller="pages")
+    map.connect('/{action}/{id}/', controller="pages")
+    
     map.connect('/', controller='pages', action='index')
     
     return map

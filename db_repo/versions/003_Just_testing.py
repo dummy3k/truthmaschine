@@ -2,6 +2,8 @@ from sqlalchemy import *
 from migrate import *
 import migrate.changeset
 
+__test__ = False
+
 meta = MetaData(migrate_engine)
 
 users_table = Table('users', meta.metadata,

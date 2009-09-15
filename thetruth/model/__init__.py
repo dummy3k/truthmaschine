@@ -1,7 +1,7 @@
 """The application's model objects"""
 from sqlalchemy import *
 from sqlalchemy import orm
-import md5
+import hashlib
 
 from thetruth.lib.markup import renderMarkup
 from thetruth.model import meta
@@ -23,7 +23,18 @@ users_table = Table('users', meta.metadata,
     Column('name', String(100)),
     Column('email', String(100)),
     Column('openid', String(255)),
-    Column('banned', Boolean)
+    Column('banned', Boolean),
+    Column('reputation', Integer),
+    Column('signup', Date),
+    Column('last_login', Date),
+)
+
+votes_table = Table('votes', meta.metadata,
+    Column('id', Integer, primary_key=True),
+    Column('userid', Integer, ForeignKey('users.id')),
+    Column('statementid', Integer, ForeignKey('statements.id')),
+    Column('isupvote', Boolean),
+    Column('created', Date),
 )
 	
 statements_table = Table('statements', meta.metadata,
@@ -32,8 +43,9 @@ statements_table = Table('statements', meta.metadata,
     Column('userid', Integer, ForeignKey('users.id')),
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
-    Column('istrue', Boolean)
-
+    Column('istrue', Boolean),
+    Column('created', Date),
+    Column('updated', Date),
 )
 	
 class User(object):
@@ -42,9 +54,9 @@ class User(object):
 
     def getHashedEmailAddress(self):
         if self.email:
-            return md5.new(self.email.strip().lower()).hexdigest()
+            return hashlib.md5(self.email.strip().lower()).hexdigest()
         else:
-            return md5.new(self.openid.strip().lower()).hexdigest()
+            return hashlib.md5(self.openid.strip().lower()).hexdigest()
         
     def getDisplayName(self):
         if self.name:
@@ -56,7 +68,7 @@ class User(object):
 
     def __repr__(self):
         return "<User('%s', '%s')>" % (self.name, self.openid)
-	
+
     def updatelastlogin(self):
         pass
     
@@ -69,9 +81,37 @@ class Statement(object):
     def __repr__(self):
         return "<Statement('%s')>" % (self.message)
 
+    def renderMessage(self):
+        return renderMarkup(self.message)
+
+    def is_voted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id).first() != None
+    
+    def is_upvoted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id, isupvote=True).first() != None
+
+    def is_downvoted_by_user(self, userid):
+        query = meta.Session.query(Vote)
+        return query.filter_by(userid=userid, statementid=self.id, isupvote=False).first() != None
+    
+class Vote(object):
+    def __unicode__(self):
+        return self.message
 
     
+    __str__ = __unicode__
+
+    def __repr__(self):
+        return "<Vote>"
+
 orm.mapper(User, users_table)
+orm.mapper(Vote, votes_table, properties = {
+    'user' : orm.relation(User),
+    'statement' : orm.relation(Statement),
+    })
+
 orm.mapper(Statement, statements_table, properties = {
     'user' : orm.relation(User),
     })

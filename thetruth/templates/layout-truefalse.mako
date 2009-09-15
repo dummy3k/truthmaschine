@@ -8,9 +8,22 @@
 		<div class="title">
 			${self.argumentmeta(c.thesis.user)}		
 			<div class="vote vote-true">
-				<a href="${h.url_for(action='upvote', id=c.thesis.id)}"><img src="/img/vote-arrow-up.png" /></a>
+			
+				<a href="${h.url_for(action='upvote', id=c.thesis.id)}">
+			% if c.thesis.is_upvoted_by_user(c.user.id):
+				<img src="/img/vote-arrow-up-on.png" />
+			% else:
+				<img src="/img/vote-arrow-up.png" />
+			% endif
+				</a>
 				<span class="vote-count">${c.thesis.votes}</span>
-				<a href="${h.url_for(action='downvote', id=c.thesis.id)}"><img src="/img/vote-arrow-down.png" /></a>
+				<a href="${h.url_for(action='downvote', id=c.thesis.id)}">
+			% if c.thesis.is_downvoted_by_user(c.user.id):
+				<img src="/img/vote-arrow-down-on.png" />
+			% else:
+				<img src="/img/vote-arrow-down.png" />
+			% endif
+				</a>
 			</div>
 			<h1>${c.thesis.message | n,h,renderMarkup}</h1>
 		</div>

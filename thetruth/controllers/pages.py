@@ -49,6 +49,15 @@ class PagesController(BaseController):
 
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
+
+        if thesis.is_voted_by_user(c.user.id):
+            redirect_to(action='show', id=id)
+
+        vote = model.Vote()
+        vote.isupvote = True
+        vote.userid = c.user.id
+        vote.statementid = id
+        meta.Session.add(vote)
         
         thesis.votes += 1
         meta.Session.update(thesis)
@@ -63,6 +72,15 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
         
+        if thesis.is_voted_by_user(c.user.id):
+            redirect_to(action='show', id=id)
+
+        vote = model.Vote()
+        vote.isupvote = False
+        vote.userid = c.user.id
+        vote.statementid = id
+        meta.Session.add(vote)
+
         thesis.votes -= 1
         meta.Session.update(thesis)
         meta.Session.commit()

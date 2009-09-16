@@ -25,4 +25,7 @@ class TestMarkup(TestController):
         self.assertEqual('Hello World!', 
             stripMarkup('Hello [http://www.foo.org/dir/file.txt|World!]'))
 
+    def test_fq_url(self):
+        self.assertEqual('Hello <b>World!</b>', 
+            renderMarkup('Hello <b>World!</b>'))
     

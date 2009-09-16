@@ -1,4 +1,7 @@
 <%inherit file="/layout.mako"/>\
+<%!
+    from thetruth.lib.markup import renderMarkup
+%>
 
 <%def name="thesis()">
 	<div class="header">
@@ -22,7 +25,7 @@
 			% endif
 				</a>
 			</div>
-			<h1>${c.thesis.renderMessage() | n}</h1>
+			<h1>${c.thesis.message | n,h,renderMarkup}</h1>
 		</div>
 
 	</div>

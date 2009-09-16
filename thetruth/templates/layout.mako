@@ -69,8 +69,9 @@
 <%def name="argumentOutput(argument)">
 <div class="argument">
 	<div class="argument-text">	
+        ${argument.renderMessage() | n}
 		<a href="${h.url_for(action='show', id=argument.id)}" class="argument-link">
-			${argument.message}
+			more?
 		</a>
 	</div>
         

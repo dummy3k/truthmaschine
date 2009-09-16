@@ -50,7 +50,7 @@ class User(object):
         if self.name:
             return self.name
         else:
-            return self.openid    
+            return "Unnamed User"
 
     __str__ = __unicode__
 

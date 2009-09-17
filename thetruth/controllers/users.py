@@ -44,3 +44,51 @@ class UsersController(BaseController):
         c.user = users_q.filter(model.User.id==id).one()
         return render('/users/detail.mako')
         
+    def showPublicProfile(self, id):
+        users_q = meta.Session.query(model.User)
+        c.user = users_q.filter(model.User.id==id).one()
+        return render('/users/detail.mako')
+        
+    def showPrivateProfile(self, id):
+        if not c.user:
+            redirect_to(action='showPublicProfile', id=id)
+
+        if int(c.user.id) != int(id):
+            redirect_to(action='showPublicProfile', id=id)
+
+        users_q = meta.Session.query(model.User)
+        c.user = users_q.filter(model.User.id==id).one()
+        return render('/users/edit.mako')
+        
+    def showProfile(self, id):
+        if not c.user:
+            redirect_to(action='showPublicProfile', id=id)
+
+        log.debug("c.user.id = %s, id = %s" % (c.user.id, id))
+        if int(c.user.id) == int(id):
+            redirect_to(action='showPrivateProfile', id=id)
+        else:
+            redirect_to(action='showPublicProfile', id=id)
+                                
+        return "That should not happen."
+
+    def saveProfile(self):
+        if not c.user:
+            log.debug('redirecting to signin, becuase user is not logged in')
+            redirect_to(controller='login', action='signin')
+
+        userId = request.params.get('id', None)
+        userId = int(userId)            
+        if int(c.user.id) != userId:
+            log.debug('redirecting to signin, becuase user wants to change other users data')
+            redirect_to(controller='login', action='signin')
+
+        users_q = meta.Session.query(model.User)
+        aUser = users_q.filter(model.User.id==userId).one()
+        aUser.name = request.params.get('name', None)
+        meta.Session.update(aUser)
+        meta.Session.commit()
+        
+        #return render('/users/edit.mako')
+        redirect_to(action='showProfile', id=userId)
+        

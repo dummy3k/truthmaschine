@@ -84,7 +84,11 @@
 
 <%def name="argumentmeta(user)">
 <div class="argument-meta">
-	<a href="index.html" class="argument-author"><img class="gravatar" src="http://www.gravatar.com/avatar/${user.getHashedEmailAddress()}.jpg" />${user.getDisplayName()}</a> <span class="argument-timestamp">2009/09/05 12:12</span>
+	<a href="${h.url_for(controller='users', action='showProfile', id=user.id)}" class="argument-author">
+	    <img class="gravatar" src="http://www.gravatar.com/avatar/${user.getHashedEmailAddress()}.jpg" />
+	    ${user.getDisplayName()}
+    </a>
+    <span class="argument-timestamp">2009/09/05 12:12</span>
 </div>	
 </%def>
     

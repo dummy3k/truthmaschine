@@ -9,22 +9,24 @@ Install ``thetruth`` using easy_install::
 
 Make a config file as follows::
 
-    paster make-config thetruth config.ini
+    paster make-config thetruth production.ini
 
 Tweak the config file as appropriate and then setup the application::
 
     paster setup-app config.ini
 
-Then you are ready to go.
+The Test-Webserver can be started with the following command in the ``thetruth`` directory
+
+    paster serve --reload config.ini
 
 Setting up the Development Environment
 ======================================
 
-To set up the Pylons Virtual Enviroment run
+To set up the Virtual Enviroment run:
 
-    python go-pylons.py pylons
+    python go-pylons.py virtualenv
 	
-(Windows only) Add the pylons\Scripts folder to your %PATH%
+(Windows only) Add the virtualenv\Scripts folder to your %PATH%
 
 Then run
 
@@ -32,13 +34,22 @@ Then run
 	cd Scripts
 	./activate
 	
+Installing Dependencies
+=======================
+        
 The following dependencies need to be installed
 
 	easy_install sqlalchemy
 	easy_install python-openid
     easy_install sqlalchemy-migrate	
     
-The Test-Webserver can be started with the following command in the ``thetruth`` directory
+Migrating the Database
+======================
 
-    paster serve --reload development.ini
-	
+To create the initial Version Controlled Database which can be migrated use:
+
+    python dbmanage.py version_control
+    
+To upgrade to the latest version use:
+
+    python dbmanage.py version_control

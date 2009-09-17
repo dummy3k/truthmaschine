@@ -1,7 +1,7 @@
 """The application's model objects"""
 from sqlalchemy import *
 from sqlalchemy import orm
-import md5
+import hashlib
 
 from thetruth.lib.markup import renderMarkup
 from thetruth.model import meta
@@ -42,9 +42,9 @@ class User(object):
 
     def getHashedEmailAddress(self):
         if self.email:
-            return md5.new(self.email.strip().lower()).hexdigest()
+            return hashlib.md5(self.email.strip().lower()).hexdigest()
         else:
-            return md5.new(self.openid.strip().lower()).hexdigest()
+            return hashlib.md5(self.openid.strip().lower()).hexdigest()
         
     def getDisplayName(self):
         if self.name:

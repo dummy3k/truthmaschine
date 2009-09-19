@@ -2,7 +2,7 @@
 
 <%def name="content()">
     <div class="thesis">
-        <h1>List of all Thesis</h1>
+        <h1>Top Thesis: </h1>
 
         % for it in c.thesis:
             ${self.argumentOutput(it)}
@@ -18,8 +18,14 @@
 </%def>
 
 <%def name="sidenav()">
-<h1>Create a new Thesis</h1>
+<h1>What is this all about?</h1>
 
-<p>Please contribute by creating your own <a href="${h.url_for(controller='pages', action='new')}">Thesis</a></p>
+<p>the truth (tm) is a collaborate web application for finding the truth. </p>
+<p>We do so, by <strong>collecting Pro and Contra Arguments, voting them, and digging deeper</strong>.</p> 
+<p>Every Argument can be viewed as a Thesis with it's own arguments. Try it!</p>
+
+<h3>And remeber: Be nice! We are all in this together.</h3>
+
+<p>Contribute by creating <a href="${h.url_for(controller='pages', action='new')}">your own Thesis</a>.</p>
 
 </%def>

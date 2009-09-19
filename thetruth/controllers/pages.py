@@ -23,10 +23,27 @@ class PagesController(BaseController):
         c.thesis = rs
         return render('/pages/list-thesis.mako')
         
-    def new(self):
+    def newThesis(self):
         if not c.user:
             redirect_to(controller='login', action='signin')
+            
         return render('/pages/new-thesis.mako')
+
+    def newArgument(self, id, istrue):
+        if not c.user:
+            redirect_to(controller='login', action='signin')
+            
+        query = meta.Session.query(model.Statement)
+        c.thesis = query.filter_by(id=id).first()
+        
+        if istrue == "pro":
+            c.istrue = True
+        elif istrue == "contra":
+            c.istrue = False
+        else:
+            abort(404)
+             
+        return render('/pages/new-argument.mako')
         
     def about(self):
         return render('/pages/about.mako')

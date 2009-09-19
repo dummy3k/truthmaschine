@@ -18,18 +18,20 @@ def make_map():
     map.connect('/error/{action}', controller='error')
     map.connect('/error/{action}/{id}', controller='error')
 
+    map.connect('/newArgument/{istrue}/{id}', controller="pages", action='newArgument')
+
+    # Default Controller
+    map.connect('/{action}', controller="pages")
+    map.connect('/{action}/', controller="pages")
+    map.connect('/{action}/{id}', controller="pages")
+    map.connect('/{action}/{id}/', controller="pages")
+    
     # CUSTOM ROUTES HERE
     map.connect('/{controller}', action='index')
     map.connect('/{controller}/', action='index')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/')
     map.connect('/{controller}/{action}/{id}')
-    
-    # Default Controller
-    map.connect('/{action}', controller="pages")
-    map.connect('/{action}/', controller="pages")
-    map.connect('/{action}/{id}', controller="pages")
-    map.connect('/{action}/{id}/', controller="pages")
     
     map.connect('/', controller='pages', action='index')
     

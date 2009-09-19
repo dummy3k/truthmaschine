@@ -2,7 +2,7 @@
 
 <%def name="leftpanel()">
 % if c.user:
-${self.argumentInput(c.thesis.id,'true')}
+    <a href="${h.url_for(controller='pages', action='newArgument', id=c.thesis.id, istrue='pro')}">Post a Pro Argument</a>
 % else:
     <a href="${h.url_for(controller='login', action='signin')}">Login</a> to post an Argument
 % endif
@@ -14,7 +14,7 @@ ${self.argumentOutput(argument)}
 
 <%def name="rightpanel()">
 % if c.user:
-${self.argumentInput(c.thesis.id,'false')}
+    <a href="${h.url_for(controller='pages', action='newArgument', id=c.thesis.id, istrue='contra')}">Post a Konra Argument</a>
 % else:
     <a href="${h.url_for(controller='login', action='signin')}">Login</a> to post an Argument
 % endif
@@ -22,4 +22,9 @@ ${self.argumentInput(c.thesis.id,'false')}
 % for argument in c.falseArguments:
 ${self.argumentOutput(argument)}
 % endfor
+</%def>
+
+
+<%def name="thesisarea()">
+    ${self.thesis()}
 </%def>

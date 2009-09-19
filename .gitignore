@@ -13,3 +13,5 @@
 /theTruth.kpf
 *.bak
 *~
+/.project
+/.pydevproject

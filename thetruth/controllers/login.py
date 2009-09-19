@@ -127,10 +127,12 @@ class LoginController(BaseController):
                 
             user.updatelastlogin()
             sreg_response = sreg.SRegResponse.fromSuccessResponse(info)
-            user.name = sreg_response.get('fullname', u'')
-            user.email = sreg_response.get('email', u'')
-#            user.tzinfo = sreg_response.get('timezone', u'')
-#            user.tzinfo = sreg_response.get('language', u'')
+            if sreg_response:
+                user.name = sreg_response.get('fullname', u'')
+                user.email = sreg_response.get('email', u'')
+    #            user.tzinfo = sreg_response.get('timezone', u'')
+    #            user.tzinfo = sreg_response.get('language', u'')
+    
             if newUser:
                 meta.Session.save(user)
             else:

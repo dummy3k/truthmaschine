@@ -41,12 +41,12 @@ Installing Dependencies
         
 The following dependencies need to be installed
 
-	easy_install sqlalchemy
-	easy_install python-openid
-    easy_install sqlalchemy-migrate	
+    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate
     
 Migrating the Database
 ======================
+    
+The Test-Webserver can be started with the following command in the ``thetruth`` directory
 
 To create the initial Version Controlled Database which can be migrated use:
 
@@ -55,3 +55,5 @@ To create the initial Version Controlled Database which can be migrated use:
 To upgrade to the latest version use:
 
     python dbmanage.py version_control
+    paster serve --reload development.ini
+	

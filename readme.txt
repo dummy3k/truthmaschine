@@ -1,11 +1,27 @@
 The Truth (tm)
 
+Setting up the Development Environment
+======================================
+
+To set up the Virtual Enviroment run:
+
+    python go-pylons.py virtualenv
+	
+(Windows only) Add the virtualenv\Scripts folder to your %PATH%
+(Linux only) Also run virtualenv/bin/easy_install -f http://pylonshq.com/download/ "Pylons==0.8" to get the paster executable
+
+Then run
+
+	cd pylons
+	cd Scripts
+	./activate
+    
 Installation and Setup
 ======================
 
 Install ``thetruth`` using easy_install::
 
-    easy_install thetruth
+    easy_install thetruth-*.egg
 
 Make a config file as follows::
 
@@ -19,20 +35,6 @@ The Test-Webserver can be started with the following command in the ``thetruth``
 
     paster serve --reload config.ini
 
-Setting up the Development Environment
-======================================
-
-To set up the Virtual Enviroment run:
-
-    python go-pylons.py virtualenv
-	
-(Windows only) Add the virtualenv\Scripts folder to your %PATH%
-
-Then run
-
-	cd pylons
-	cd Scripts
-	./activate
 	
 Installing Dependencies
 =======================

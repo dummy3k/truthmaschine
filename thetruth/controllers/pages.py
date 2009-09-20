@@ -15,6 +15,9 @@ import thetruth.model as model
 
 from datetime import datetime
 
+import PyRSS2Gen
+
+
 log = logging.getLogger(__name__)
 
 class PagesController(BaseController):
@@ -200,3 +203,33 @@ class PagesController(BaseController):
         #meta.Session.commit()
 
         pass
+
+        
+    def showLastStatementsAsRss(self):
+        query = meta.Session.query(model.Statement)
+        thesen = query.all()
+        
+        myItems = []
+        for theArgument in thesen:
+            newItem = PyRSS2Gen.RSSItem(
+                title = theArgument.message,
+                link = config['base_url'],
+                description = theArgument.message,
+                #guid = PyRSS2Gen.Guid(entry['summary']),
+                #guid = entry['uid'],
+                guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
+                pubDate = theArgument.created)
+            
+            myItems.append(newItem)
+        
+
+        rss = PyRSS2Gen.RSS2(
+            title = "Latest Statements",
+            link = config['base_url'],
+            description = "Description of showLastStatementsAsRss",
+            lastBuildDate = datetime.now(),
+            items = myItems)
+
+        return rss.to_xml()
+
+        

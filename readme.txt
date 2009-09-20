@@ -41,7 +41,7 @@ Installing Dependencies
         
 The following dependencies need to be installed
 
-    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate
+    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate PyRSS2Gen
     
 Migrating the Database
 ======================

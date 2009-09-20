@@ -70,6 +70,8 @@
     
     <input type="submit" value="Submit" />
     <span id="characters-left">(140 characters left)</span>
+    <br/>
+    <p class="hint">Hint: You can link you text using the following syntax: [http://www.google.de|Google]</p>
   </form>
 </%def>
 

@@ -15,9 +15,9 @@
     <input type="submit" value="Login" />
   </form>
   
-  <span class="hint">
+  <p class="hint">
     Don't forget to enable OpenID support with your preferred provider first!
-  </span>
+  </p>
   
 </%def>
 <%def name="sidenav()">

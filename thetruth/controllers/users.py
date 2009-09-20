@@ -8,6 +8,10 @@ import thetruth.lib.helpers as h
 import thetruth.model as model
 from thetruth.model import meta
 
+from datetime import datetime
+from pylons import config
+import PyRSS2Gen
+
 log = logging.getLogger(__name__)
     
 class UsersController(BaseController):
@@ -80,3 +84,27 @@ class UsersController(BaseController):
         meta.Session.commit()
         redirect_to(action='showProfile', id=userId)
         
+        
+    def newUsersRss(self):
+        query = meta.Session.query(model.User).order_by(model.User.signup.desc())
+        myItems = []
+        for it in query.all():
+            newItem = PyRSS2Gen.RSSItem(
+                title = it.getDisplayName(),
+                link = config['base_url'] + h.url_for(action='showProfile', id=str(it.id)),
+                description = it.getDisplayName(),
+                guid = PyRSS2Gen.Guid(str(it.id), False), #entry['guidislink']
+                pubDate = it.signup)
+            
+            myItems.append(newItem)
+
+        rss = PyRSS2Gen.RSS2(
+            title = "the Truth: Latest Users",
+            link = config['base_url'],
+            description = "Latest users joining Truth (tm)",
+            lastBuildDate = datetime.now(),
+            items = myItems)
+
+        return rss.to_xml()
+
+                

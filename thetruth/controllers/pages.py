@@ -15,7 +15,6 @@ import thetruth.model as model
 import thetruth.lib.helpers as h
 
 from datetime import datetime
-
 import PyRSS2Gen
 
 

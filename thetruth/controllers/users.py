@@ -47,6 +47,7 @@ class UsersController(BaseController):
     def showPublicProfile(self, id):
         users_q = meta.Session.query(model.User)
         c.user = users_q.filter(model.User.id==id).one()
+        c.title = c.user.name
         return render('/users/detail.mako')
         
     def showPrivateProfile(self, id):
@@ -58,6 +59,7 @@ class UsersController(BaseController):
 
         users_q = meta.Session.query(model.User)
         c.user = users_q.filter(model.User.id==id).one()
+        c.title = c.user.name
         return render('/users/edit.mako')
         
     def showProfile(self, id):
@@ -88,7 +90,5 @@ class UsersController(BaseController):
         aUser.name = request.params.get('name', None)
         meta.Session.update(aUser)
         meta.Session.commit()
-        
-        #return render('/users/edit.mako')
         redirect_to(action='showProfile', id=userId)
         

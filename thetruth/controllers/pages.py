@@ -45,6 +45,7 @@ class PagesController(BaseController):
         if not c.user:
             redirect_to(controller='login', action='signin')
             
+        c.title = "New Thesis"
         return render('/pages/new-thesis.mako')
 
     def newArgument(self, id, istrue):
@@ -68,11 +69,13 @@ class PagesController(BaseController):
         return render('/pages/new-argument.mako')
         
     def about(self):
+        c.title = "What's going on?"
         return render('/pages/about.mako')
 
     def show(self, id):
         query = meta.Session.query(model.Statement)
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+        c.title = c.thesis
         
         if not c.thesis:
             abort(404)

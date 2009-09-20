@@ -26,6 +26,6 @@
 
 <h3>And remeber: Be nice! We are all in this together.</h3>
 
-<p>Contribute by creating <a href="${h.url_for(controller='pages', action='newnewThesis')}">your own Thesis</a>.</p>
+<p>Contribute by creating <a href="${h.url_for(controller='pages', action='newThesis')}">your own Thesis</a>.</p>
 
 </%def>

@@ -14,6 +14,11 @@
     <input type="text" size="20" name="openid" class="openid-identifier" style="height: 28px" />
     <input type="submit" value="Login" />
   </form>
+  
+  <span class="hint">
+    Don't forget to enable OpenID support with your preferred provider first!
+  </span>
+  
 </%def>
 <%def name="sidenav()">
 <h1>What is OpenID?</h1>
@@ -23,4 +28,9 @@
 <p>It works on thousands of websites.</p>
 
 <p>It's an open standard.</p>
+
+<ul>
+    <li><a href="http://openid.net/what/">learn more</a></li>
+    <li><a href="http://openid.net/get/">get one</a></li>
+</ul>
 </%def>

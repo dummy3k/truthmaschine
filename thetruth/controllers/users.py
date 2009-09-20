@@ -30,19 +30,7 @@ class UsersController(BaseController):
             ('Philip',''),
         ]
         
-        return render('/user_list.mako')
-        
-    def add(self):
-        aUser = model.User()
-        aUser.name=request.params.get('name')
-        meta.Session.add(aUser)
-        meta.Session.commit()
-        return redirect_to(action="showUsersList")
-        
-    def showDetails(self, id):
-        users_q = meta.Session.query(model.User)
-        c.user = users_q.filter(model.User.id==id).one()
-        return render('/users/detail.mako')
+        return render('/users/list.mako')
         
     def showPublicProfile(self, id):
         users_q = meta.Session.query(model.User)

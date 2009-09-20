@@ -10,7 +10,7 @@
         <table border=1>
             <tr>
                 <td><a href="http://gravatar.com">Gravatar</a></td>
-                <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${user.getHashedEmailAddress()}.jpg" /></td>
+                <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.jpg" /></td>
             </tr>
             <tr>
                 <td>Id</td>

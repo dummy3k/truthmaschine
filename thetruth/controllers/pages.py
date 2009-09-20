@@ -5,6 +5,9 @@ from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 from pylons.decorators.secure import authenticate_form
 
+from pylons import config
+from paste.deploy.converters import asbool
+
 from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
 from thetruth.model import meta
@@ -18,11 +21,21 @@ class PagesController(BaseController):
     def __before__(self):
         pass    
     
+    def attachTrueFalseCount(self, statement):
+        query = meta.Session.query(model.Statement)
+        statement.true_count = query.filter_by(parentid=statement.id,istrue=1).count()
+        statement.false_count = query.filter_by(parentid=statement.id,istrue=0).count()
+        
+        return statement
+    
     def index(self):
         query = meta.Session.query(model.Statement)
         #rs = query.filter_by(parentid=None).select()
-        rs = query.filter_by(parentid=None).all()
-        c.thesis = rs
+        c.thesis = query.filter_by(parentid=None).all()
+        if c.thesis:
+            for aThesis in c.thesis:
+                self.attachTrueFalseCount(aThesis)
+           
         return render('/pages/list-thesis.mako')
         
     def newThesis(self):
@@ -53,15 +66,22 @@ class PagesController(BaseController):
 
     def show(self, id):
         query = meta.Session.query(model.Statement)
-        c.thesis = query.filter_by(id=id).first()
+        c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
         
         if not c.thesis:
             abort(404)
             
         c.trueArguments = query.filter_by(parentid=id,istrue=1).all()
+        
+        for trueArgument in c.trueArguments:
+            self.attachTrueFalseCount(trueArgument)
+        
         c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
+        for falseArgument in c.falseArguments:
+            self.attachTrueFalseCount(falseArgument)
 
         return render('/pages/list-arguments.mako')
+    
 
     def upvote(self, id):
         if not c.user:
@@ -70,10 +90,24 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
 
-        if c.user.id == thesis.userid:
+        # ignore if author tries to vote 
+        if asbool(config['debug']) == False and c.user.id == thesis.userid:
             redirect_to(action='show', id=id)
+
+        # reset vote if already voted 
         if thesis.is_voted_by_user(c.user.id):
+            query = meta.Session.query(model.Vote)
+            vote = query.filter_by(userid=c.user.id, statementid=id).first()
+            if vote.isupvote:
+                thesis.votes -= 1
+            else:
+                thesis.votes += 1
+            meta.Session.delete(vote)
+            meta.Session.update(thesis)
+            meta.Session.commit()
+            
             redirect_to(action='show', id=id)
+
 
         vote = model.Vote()
         vote.isupvote = True
@@ -94,9 +128,21 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
         
-        if c.user.id == thesis.userid:
+        # ignore if author tries to vote 
+        if asbool(config['debug']) == False and c.user.id == thesis.userid:
             redirect_to(action='show', id=id)
+
+        # reset vote if already voted 
         if thesis.is_voted_by_user(c.user.id):
+            query = meta.Session.query(model.Vote)
+            vote = query.filter_by(userid=c.user.id, statementid=id).first()
+            if vote.isupvote:
+                thesis.votes -= 1
+            else:
+                thesis.votes += 1
+            meta.Session.update(thesis)
+            meta.Session.delete(vote)
+            meta.Session.commit()
             redirect_to(action='show', id=id)
 
         vote = model.Vote()
@@ -116,8 +162,10 @@ class PagesController(BaseController):
         if not c.user:
             redirect_to(controller='login', action='signin')
                 
+        message = request.params.get('msg', None)
+        
         rant = model.Statement()
-        rant.message = request.params.get('msg', None)
+        rant.message = message[:140]
         rant.userid = c.user.id
         rant.votes = 0
         rant.created = datetime.now()

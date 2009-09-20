@@ -76,8 +76,9 @@
 	<div class="argument-text">	
         ${argument.message | n,h,renderMarkup}
 		<a href="${h.url_for(action='show', id=argument.id)}" class="argument-link">
-			more?
+            ${argument.true_count} pro / ${argument.false_count} contra
 		</a>
+        
 	</div>
         
 	${self.argumentmeta(argument.user, argument)}

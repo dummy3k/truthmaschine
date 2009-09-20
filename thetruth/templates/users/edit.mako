@@ -8,17 +8,25 @@
 		<h1>User details for ${c.user.name}</h1>
 
         <form action = '${h.url_for(action='saveProfile')}'>
-        <table border=1>
+        <table border="0" cellpadding="4">
             <tr>
-                <td>Name</td>
+                <th>Gravatar</th>
+                <td><a href="http://gravatar.com"><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.png" width="80" height="80" /></a></td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>${c.user.id}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
                 <td><input type='text' name='name' value='${c.user.name}' /></td>
             </tr>
             <tr>
-                <td>eMail</td>
+                <th>eMail</th>
                 <td><input type='text' name='email' value='${c.user.email}' /></td>
             </tr>
             <tr>
-                <td>OpenId</td>
+                <th>OpenId</th>
                 <td>${c.user.openid}</td>
             </tr>
         </table>

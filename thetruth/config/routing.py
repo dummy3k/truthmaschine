@@ -19,6 +19,7 @@ def make_map():
     map.connect('/error/{action}/{id}', controller='error')
 
     map.connect('/', controller="pages", action='index')
+    map.connect('/show/{id}', controller="pages", action="show")
     map.connect('/newArgument/{istrue}/{id}', controller="pages", action='newArgument')
 
     map.connect('/newThesis', controller="pages", action="newThesis")

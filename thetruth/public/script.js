@@ -1,7 +1,7 @@
  $(document).ready(function(){
   	$("#upvote-link").click(function(event){
-  		alert("nooooooo!!!");
+  		//alert("nooooooo!!!");
   		
-  		return false;
+  		//return false;
   	});  		
  });

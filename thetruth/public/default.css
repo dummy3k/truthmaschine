@@ -111,16 +111,15 @@ h1 {
 	
 	text-align:center;
 	vertical-align:middle;
-}
-
-.vote-true {
-
 	float: left;
 }
 
-.vote-false {
-	float: right;
+#upvote-link {
+	display: block;
+}
 
+#downvote-link {
+	display: block;
 }
 
 .vote-count {
@@ -182,8 +181,6 @@ div.argument {
 	
 	padding: 10px;
 	margin-bottom: 20px;
-    
-    height: 100px;
 }
 
 .left-panel {
@@ -232,8 +229,8 @@ div.argument {
 
 .argument-meta {
 	position: relative;
-    left: 0px;
-    top: 20px;
+    right: 10px;
+    top: 10px;
     
     text-align: right;
 }
@@ -249,6 +246,12 @@ a.argument-author  {
 img.gravatar {
     width: 32px;
     height: 32px;
+    margin-right: 5px;
+}
+
+img.gravatar-big {
+    width: 80px;
+    height: 80px;
     margin-right: 5px;
 }
 

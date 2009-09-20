@@ -208,7 +208,7 @@ class PagesController(BaseController):
         pass
     
     def showLastStatementsAsRss(self):
-        query = meta.Session.query(model.Statement)
+        query = meta.Session.query(model.Statement).order_by(model.Statement.updated.desc())
         thesen = query.all()
         
         myItems = []

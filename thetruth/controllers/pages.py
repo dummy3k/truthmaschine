@@ -12,6 +12,7 @@ from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
 from thetruth.model import meta
 import thetruth.model as model
+import thetruth.lib.helpers as h
 
 from datetime import datetime
 
@@ -218,10 +219,8 @@ class PagesController(BaseController):
         for theArgument in thesen:
             newItem = PyRSS2Gen.RSSItem(
                 title = theArgument.message,
-                link = config['base_url'] + "/show/" + str(theArgument.id),
+                link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),
                 description = theArgument.message,
-                #guid = PyRSS2Gen.Guid(entry['summary']),
-                #guid = entry['uid'],
                 guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
                 pubDate = theArgument.created)
             

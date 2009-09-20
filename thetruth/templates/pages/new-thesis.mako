@@ -15,8 +15,8 @@
     <h1>Rules</h1>
     
     <ul>
-        <li>Rule 1: You do not talk about THE TRUTH (tm)</li>
-        <li>Rule 2: You DO NOT talk about THE TRUTH (tm)</li>
-        <li>Rule 3: ... todo ...</h1>
+        <li>You've got only 140 characters</li>
+        <li>Try to back up your Arguments with links</li>
+        <li></h1>
     </ul>
 </%def>

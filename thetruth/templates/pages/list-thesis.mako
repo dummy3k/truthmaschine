@@ -11,7 +11,7 @@
         
         % if len(c.thesis) == 0: 
         <p class="error">
-            Sorry, no thesis found. Please <a href="${h.url_for(controller='pages', action='new')}">create one</a>.
+            Sorry, no thesis found. Please <a href="${h.url_for(controller='pages', action='newThesis')}">create one</a>.
         </p>
         % endif
     </div>
@@ -26,6 +26,6 @@
 
 <h3>And remeber: Be nice! We are all in this together.</h3>
 
-<p>Contribute by creating <a href="${h.url_for(controller='pages', action='new')}">your own Thesis</a>.</p>
+<p>Contribute by creating <a href="${h.url_for(controller='pages', action='newnewThesis')}">your own Thesis</a>.</p>
 
 </%def>

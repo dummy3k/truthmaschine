@@ -207,16 +207,18 @@ class PagesController(BaseController):
 
         pass
 
-        
+    def showLastStatementsAsRssByStatement(self):
+        pass
+    
     def showLastStatementsAsRss(self):
-        query = meta.Session.query(model.Statement)
+        query = meta.Session.query(model.Statement).order_by(model.Statement.updated.desc())
         thesen = query.all()
         
         myItems = []
         for theArgument in thesen:
             newItem = PyRSS2Gen.RSSItem(
                 title = theArgument.message,
-                link = config['base_url'],
+                link = config['base_url'] + "/show/" + str(theArgument.id),
                 description = theArgument.message,
                 #guid = PyRSS2Gen.Guid(entry['summary']),
                 #guid = entry['uid'],
@@ -224,12 +226,11 @@ class PagesController(BaseController):
                 pubDate = theArgument.created)
             
             myItems.append(newItem)
-        
 
         rss = PyRSS2Gen.RSS2(
-            title = "Latest Statements",
+            title = "the Truth: Latest Statements",
             link = config['base_url'],
-            description = "Description of showLastStatementsAsRss",
+            description = "The latest statements from the Truth (tm)",
             lastBuildDate = datetime.now(),
             items = myItems)
 

@@ -18,6 +18,9 @@ def make_map():
     map.connect('/error/{action}', controller='error')
     map.connect('/error/{action}/{id}', controller='error')
 
+    map.connect('/latest-rss.xml', controller='pages', action='showLastStatementsAsRss')
+    map.connect('/statement-{id}-rss.xml', controller='pages', action='showLastStatementsAsRssByStatement', id=id)
+
     map.connect('/', controller="pages", action='index')
     map.connect('/show/{id}', controller="pages", action="show")
     map.connect('/newArgument/{istrue}/{id}', controller="pages", action='newArgument')

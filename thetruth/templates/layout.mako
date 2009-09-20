@@ -20,6 +20,7 @@
     ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
     ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}
     ${h.javascript_link( '/script.js')}
+    <link rel="alternate" type="application/rss+xml" title="Latest Statements RSS-Feed" href="${config['base_url']}/latest-rss.xml" />
 </head>
 <body>
 <div class="container">
@@ -73,6 +74,8 @@
     
     <input type="submit" value="Submit" />
     <span id="characters-left">(140 characters left)</span>
+    <br/>
+    <p class="hint">Hint: You can link you text using the following syntax: [http://www.google.de|Google]</p>
   </form>
 </%def>
 

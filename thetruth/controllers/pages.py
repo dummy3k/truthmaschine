@@ -37,6 +37,7 @@ class PagesController(BaseController):
             
         query = meta.Session.query(model.Statement)
         c.thesis = query.filter_by(id=id).first()
+        c.thesisid=id
         
         if istrue == "pro":
             c.istrue = True
@@ -115,6 +116,9 @@ class PagesController(BaseController):
         if not c.user:
             redirect_to(controller='login', action='signin')
         
+        log.error('createNew called() with request.params=' + request.params.get('parentid'))
+        log.error('createNew called() with request.params=' + request.params.get('argistrue'))
+        
         rant = model.Statement()
         rant.message = request.params.get('msg', None)
         rant.userid = c.user.id
@@ -123,15 +127,17 @@ class PagesController(BaseController):
         rant.updated = datetime.now()
         
         parentId = request.params.get('parentid', None)
-        isTrue = request.params.get('istrue', None)
+        isTrue = request.params.get('argistrue', None)
         
         if parentId and isTrue :
             rant.parentid=parentId
     
-            if isTrue == 'true':
+            if isTrue == 'True':
                 rant.istrue = 1
-            elif isTrue == 'false':
+            elif isTrue == 'False':
                 rant.istrue = 0
+            else: 
+                log.error("unknown value for isTrue: " + isTrue)
         
         meta.Session.add(rant)
         meta.Session.commit()

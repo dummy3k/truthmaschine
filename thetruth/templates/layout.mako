@@ -56,16 +56,16 @@
 </body>
 </html>
 
-<%def name="argumentInput(parent_id, istrue)">
-  <form method="post" action="${h.url_for(controller='pages', action='createNew')}">
+<%def name="argumentInput(parentid, istrue)">
+  <form method="post" action="${h.url_for(controller='pages', action='createNew', istrue=None, id=None)}">
     <textarea name="msg" class="new-argument"></textarea>
     
-    % if parent_id:
-    <input type="hidden" name="parentid" value="${parent_id}" />
+    % if parentid:
+    <input type="hidden" name="parentid" value="${parentid}" />
     % endif
     
     % if istrue:
-    <input type="hidden" name="istrue" value="${istrue}" />
+    <input type="hidden" name="argistrue" value="${istrue}" />
     % endif
     <input type="submit" value="Submit" />
     <span class="characters-left">(140 chars)</span>

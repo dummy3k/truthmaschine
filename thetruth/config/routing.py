@@ -18,10 +18,9 @@ def make_map():
     map.connect('/error/{action}', controller='error')
     map.connect('/error/{action}/{id}', controller='error')
 
+    map.connect('/', controller="pages", action='index')
     map.connect('/newArgument/{istrue}/{id}', controller="pages", action='newArgument')
 
-    map.connect('/', controller="pages", action='index')
-    
     map.connect('/newThesis', controller="pages", action="newThesis")
     map.connect('/newArgument/{istrue}/{id}', controller="pages", action="newArgument")
     map.connect('/newArgument/{istrue}/{id}/', controller="pages", action="newArgument")

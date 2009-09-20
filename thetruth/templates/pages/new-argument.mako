@@ -12,7 +12,7 @@
   <h1>Create a new Contra Argument</h1>
   % endif
   
-  ${self.argumentInput(c.thesis.id, c.istrue)}
+  ${self.argumentInput(c.thesisid, c.istrue)}
 </%def>
 <%def name="sidenav()">
     <h1>Read this</h1>

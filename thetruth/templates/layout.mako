@@ -64,9 +64,8 @@
     <input type="hidden" name="parentid" value="${parentid}" />
     % endif
     
-    % if istrue:
     <input type="hidden" name="argistrue" value="${istrue}" />
-    % endif
+    
     <input type="submit" value="Submit" />
     <span class="characters-left">(140 chars)</span>
   </form>

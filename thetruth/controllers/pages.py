@@ -115,10 +115,7 @@ class PagesController(BaseController):
     def createNew(self):
         if not c.user:
             redirect_to(controller='login', action='signin')
-        
-        log.error('createNew called() with request.params=' + request.params.get('parentid'))
-        log.error('createNew called() with request.params=' + request.params.get('argistrue'))
-        
+                
         rant = model.Statement()
         rant.message = request.params.get('msg', None)
         rant.userid = c.user.id
@@ -138,6 +135,7 @@ class PagesController(BaseController):
                 rant.istrue = 0
             else: 
                 log.error("unknown value for isTrue: " + isTrue)
+                abort(500)
         
         meta.Session.add(rant)
         meta.Session.commit()

@@ -168,7 +168,7 @@ h1 {
 }
 .footer a {
 	color: #FFD;
-	text-decoration: none;
+	text-decoration: underline;
 }
 .footer a:hover {
 	color: #FFF;

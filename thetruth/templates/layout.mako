@@ -17,14 +17,14 @@
 <div class="container">
 	<div class="navigation">
 	<a href="${h.url_for(controller='pages', action='index', id=None)}">All Thesis</a>
-	<a href="${h.url_for(controller='pages', action='newThesis')}">New Thesis</a>
-	<a href="${h.url_for(controller='pages', action='about')}">What's going on?</a>
+	<a href="${h.url_for(controller='pages', action='newThesis', id=None)}">New Thesis</a>
+	<a href="${h.url_for(controller='pages', action='about', id=None)}">What's going on?</a>
             
             % if c.user:
-            Signed in as ${c.user.openid}
-			<a href="${h.url_for(controller='login', action='signout')}">Logout</a>
+            Signed in as <a href="${h.url_for(controller='users', action='showProfile', id=None)}">${c.user.getDisplayName()}</a>
+			         <a href="${h.url_for(controller='login', action='signout', id=None)}">Logout</a>
             % else:
-			<a href="${h.url_for(controller='login', action='signin')}">Login</a>
+			         <a href="${h.url_for(controller='login', action='signin', id=None)}">Login</a>
             % endif
             
 			<div class="clearer"><span></span></div>
@@ -48,7 +48,7 @@
 		<div class="clearer"><span></span></div>
 	</div>
 
-	<div class="footer">&copy; 2009 <a href="/">thetruth.gov</a>. Nothing but The Truth  (tm).</div>
+	<div class="footer"><a href="${h.url_for(controller='pages', action='index', id=None)}">thetruth</a> (tm) 2009. user contributed content licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a> with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/">attribution required</a> like <a href="http://www.stackoverflow.com">stackoverflow</a></div>
 </div>
 </body>
 </html>

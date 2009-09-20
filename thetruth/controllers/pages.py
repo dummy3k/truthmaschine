@@ -67,6 +67,8 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
 
+        if c.user.id == thesis.userid:
+            redirect_to(action='show', id=id)
         if thesis.is_voted_by_user(c.user.id):
             redirect_to(action='show', id=id)
 
@@ -89,6 +91,8 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
         
+        if c.user.id == thesis.userid:
+            redirect_to(action='show', id=id)
         if thesis.is_voted_by_user(c.user.id):
             redirect_to(action='show', id=id)
 

@@ -11,12 +11,6 @@
   % else:
   <h1>Create a new Contra Argument</h1>
   % endif
-
-  % if c.message:
-  <p class="error">
-    ${c.message}
-  </p>
-  % endif
   
   ${self.argumentInput(c.thesis.id, c.istrue)}
 </%def>

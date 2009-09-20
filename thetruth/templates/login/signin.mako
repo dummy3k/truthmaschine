@@ -10,7 +10,7 @@
   % endif
 
   
-  <form method="post" action="${h.url_for(action='signin_POST')}">
+  <form method="post" action="${h.url_for(controller='login', action='signin_POST')}">
     <input type="text" size="20" name="openid" class="openid-identifier" style="height: 28px" />
     <input type="submit" value="Login" />
   </form>

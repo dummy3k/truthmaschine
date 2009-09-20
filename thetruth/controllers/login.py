@@ -65,7 +65,7 @@ class LoginController(BaseController):
             
 
         #session.clear()
-        return render('login/signin.moko')
+        return render('login/signin.mako')
 
     def signin_POST(self):
         log.debug("enter signin_POST()")
@@ -91,7 +91,7 @@ class LoginController(BaseController):
         )
 
         authrequest.addExtension(sreg_request)
-        redirecturl = authrequest.redirectURL(h.url_for('/', qualified=True),
+        redirecturl = authrequest.redirectURL(h.url_for(controller='pages', action='index', qualified=True),
             #h.url_for(controller='main', action='index', qualified=True),
             return_to=h.url_for(action='verified', qualified=True),
             immediate=False

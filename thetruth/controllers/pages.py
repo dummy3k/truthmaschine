@@ -96,10 +96,6 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
 
-        # ignore if author tries to vote 
-        if asbool(config['debug']) == False and c.user.id == thesis.userid:
-            redirect_to(action='show', id=id)
-
         # reset vote if already voted 
         if thesis.is_voted_by_user(c.user.id):
             query = meta.Session.query(model.Vote)
@@ -113,7 +109,6 @@ class PagesController(BaseController):
             meta.Session.commit()
             
             redirect_to(action='show', id=id)
-
 
         vote = model.Vote()
         vote.isupvote = True
@@ -133,10 +128,6 @@ class PagesController(BaseController):
 
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
-        
-        # ignore if author tries to vote 
-        if asbool(config['debug']) == False and c.user.id == thesis.userid:
-            redirect_to(action='show', id=id)
 
         # reset vote if already voted 
         if thesis.is_voted_by_user(c.user.id):

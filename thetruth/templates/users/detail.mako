@@ -1,5 +1,10 @@
-<html>
-	<body>
+<%inherit file="/layout-default.mako"/>\
+
+<%def name="content()">
+  <p>
+    ${c.message}
+  </p>
+
 		<h1>User details for ${c.user.name}</h1>
 
         <table border=1>
@@ -20,5 +25,8 @@
                 <td>${c.user.openid}</td>
             </tr>
         </table>
-    </body>
-</html>
+
+</%def>
+<%def name="sidenav()">
+    
+</%def>

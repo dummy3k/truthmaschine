@@ -12,6 +12,9 @@
 	<meta name="author" content="author"/> 
 	<title>the Truth (tm)</title>
 	${h.stylesheet_link('/default.css')}
+    ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
+    ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}
+    ${h.javascript_link( '/script.js')}
 </head>
 <body>
 <div class="container">
@@ -21,7 +24,7 @@
 	<a href="${h.url_for(controller='pages', action='about', id=None)}">What's going on?</a>
             
             % if c.user:
-            Signed in as <a href="${h.url_for(controller='users', action='showProfile', id=None)}">${c.user.getDisplayName()}</a>
+            <a href="${h.url_for(controller='users', action='showProfile', id=c.user.id)}">Signed in as ${c.user.getDisplayName()}</a>
 			         <a href="${h.url_for(controller='login', action='signout', id=None)}">Logout</a>
             % else:
 			         <a href="${h.url_for(controller='login', action='signin', id=None)}">Login</a>
@@ -54,7 +57,7 @@
 </html>
 
 <%def name="argumentInput(parent_id, istrue)">
-  <form method="post" action="${h.url_for(action='createNew')}">
+  <form method="post" action="${h.url_for(controller='pages', action='createNew')}">
     <textarea name="msg" class="new-argument"></textarea>
     
     % if parent_id:
@@ -65,7 +68,7 @@
     <input type="hidden" name="istrue" value="${istrue}" />
     % endif
     <input type="submit" value="Submit" />
-    <p>(140 chars)</p>
+    <span class="characters-left">(140 chars)</span>
   </form>
 </%def>
 
@@ -98,15 +101,15 @@
             ${self.argumentmeta(c.thesis.user)}        
             <div class="vote vote-true">
             
-                <a href="${h.url_for(action='upvote', id=c.thesis.id)}">
+                <a id="upvote-link" href="${h.url_for(action='upvote', id=c.thesis.id)}">
             % if c.thesis.is_upvoted_by_user(c.user.id):
                 <img src="/img/vote-arrow-up-on.png" />
             % else:
                 <img src="/img/vote-arrow-up.png" />
             % endif
                 </a>
-                <span class="vote-count">${c.thesis.votes}</span>
-                <a href="${h.url_for(action='downvote', id=c.thesis.id)}">
+                <span id="vote-count">${c.thesis.votes}</span>
+                <a id="downvote-link" href="${h.url_for(action='downvote', id=c.thesis.id)}">
             % if c.thesis.is_downvoted_by_user(c.user.id):
                 <img src="/img/vote-arrow-down-on.png" />
             % else:

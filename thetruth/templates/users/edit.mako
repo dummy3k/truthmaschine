@@ -1,5 +1,10 @@
-<html>
-	<body>
+<%inherit file="/layout-default.mako"/>\
+
+<%def name="content()">
+  <p>
+    ${c.message}
+  </p>
+
 		<h1>User details for ${c.user.name}</h1>
 
         <form action = '${h.url_for(action='saveProfile')}'>
@@ -19,6 +24,8 @@
         </table>
         <input type='hidden' name='id' value='${c.user.id}' />
         <input type='submit' value='Save' />
-        <form>
-    </body>
-</html>
+        </form>
+</%def>
+<%def name="sidenav()">
+    
+</%def>

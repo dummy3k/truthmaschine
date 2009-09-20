@@ -10,6 +10,8 @@ from thetruth.lib.helpers import flash
 from thetruth.model import meta
 import thetruth.model as model
 
+from datetime import datetime
+
 log = logging.getLogger(__name__)
 
 class PagesController(BaseController):
@@ -117,6 +119,8 @@ class PagesController(BaseController):
         rant.message = request.params.get('msg', None)
         rant.userid = c.user.id
         rant.votes = 0
+        rant.created = datetime.now()
+        rant.updated = datetime.now()
         
         parentId = request.params.get('parentid', None)
         isTrue = request.params.get('istrue', None)

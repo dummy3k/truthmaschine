@@ -81,24 +81,26 @@
 		</a>
 	</div>
         
-	${self.argumentmeta(argument.user)}
+	${self.argumentmeta(argument.user, argument)}
 </div>
 </%def>
 
-<%def name="argumentmeta(user)">
+<%def name="argumentmeta(user, argument = None)">
 <div class="argument-meta">
 	<a href="${h.url_for(controller='users', action='showProfile', id=user.id)}" class="argument-author">
 	    <img class="gravatar" src="http://www.gravatar.com/avatar/${user.getHashedEmailAddress()}.jpg" />
 	    ${user.getDisplayName()}
     </a>
-    <span class="argument-timestamp">2009/09/05 12:12</span>
+    % if argument:
+    <span class="argument-timestamp">${argument.created.strftime("%A,&nbsp;%d/%m/%Y&nbsp;%H:%M") | n}</span>
+    % endif
 </div>	
 </%def>
     
 <%def name="thesis()">
 <div class="header">
         <div class="title">
-            ${self.argumentmeta(c.thesis.user)}        
+            ${self.argumentmeta(c.thesis.user, c.thesis)}        
             <div class="vote vote-true">
             
                 <a id="upvote-link" href="${h.url_for(action='upvote', id=c.thesis.id)}">

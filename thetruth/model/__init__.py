@@ -25,8 +25,8 @@ users_table = Table('users', meta.metadata,
     Column('openid', String(255)),
     Column('banned', Boolean),
     Column('reputation', Integer),
-    Column('signup', Date),
-    Column('last_login', Date),
+    Column('signup', DateTime),
+    Column('last_login', DateTime),
 )
 
 votes_table = Table('votes', meta.metadata,
@@ -34,7 +34,7 @@ votes_table = Table('votes', meta.metadata,
     Column('userid', Integer, ForeignKey('users.id')),
     Column('statementid', Integer, ForeignKey('statements.id')),
     Column('isupvote', Boolean),
-    Column('created', Date),
+    Column('created', DateTime),
 )
 	
 statements_table = Table('statements', meta.metadata,
@@ -44,8 +44,8 @@ statements_table = Table('statements', meta.metadata,
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
     Column('istrue', Boolean),
-    Column('created', Date),
-    Column('updated', Date),
+    Column('created', DateTime),
+    Column('updated', DateTime),
 )
 	
 class User(object):

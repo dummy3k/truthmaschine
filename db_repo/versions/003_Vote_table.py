@@ -14,8 +14,8 @@ users_table = Table('users', meta.metadata,
 
 # new user columns
 user_reputation = Column('reputation', Integer)
-user_signup = Column('signup', Date)
-user_last_login = Column('last_login', Date)
+user_signup = Column('signup', DateTime)
+user_last_login = Column('last_login', DateTime)
 
 statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
@@ -26,15 +26,15 @@ statements_table = Table('statements', meta.metadata,
     Column('istrue', Boolean),
 )
 
-statement_created = Column('created', Date)
-statement_updated = Column('updated', Date)
+statement_created = Column('created', DateTime)
+statement_updated = Column('updated', DateTime)
 
 votes_table = Table('votes', meta.metadata,
     Column('id', Integer, primary_key=True),
     Column('userid', Integer, ForeignKey('users.id')),
     Column('statementid', Integer, ForeignKey('statements.id')),
     Column('isupvote', Boolean),
-    Column('created', Date),
+    Column('created', DateTime),
 )
 
 # be considered sqlite can't drop columns

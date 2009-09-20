@@ -22,9 +22,6 @@ class UsersController(BaseController):
         # or, return a response
         return redirect_to(controller='users', action="showUsersList")
 
-    def signIn(self, openIdUrl):
-        pass
-        
     def showUsersList(self):
         users_q = meta.Session.query(model.User)
         c.users = users_q.all()

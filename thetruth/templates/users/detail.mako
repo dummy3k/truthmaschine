@@ -13,20 +13,8 @@
                 <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.jpg" /></td>
             </tr>
             <tr>
-                <td>Id</td>
-                <td>${c.user.id}</td>
-            </tr>
-            <tr>
                 <td>Name</td>
                 <td>${c.user.name}</td>
-            </tr>
-            <tr>
-                <td>eMail</td>
-                <td>${c.user.email}</td>
-            </tr>
-            <tr>
-                <td>OpenId</td>
-                <td>${c.user.openid}</td>
             </tr>
         </table>
 

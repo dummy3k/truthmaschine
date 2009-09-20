@@ -2,7 +2,10 @@
 
 
 <%def name="thesisarea()">
-    ${self.thesis()}
+    % if c.parentthesis:
+        ${self.parentthesis(c.parentthesis)}
+    % endif
+    ${self.thesis(c.thesis)}
 </%def>
 
 <%def name="content()">

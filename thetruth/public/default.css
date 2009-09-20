@@ -70,10 +70,21 @@ h1 {
 
 /* header */
 .header {
-	background: url(img/bgheader.gif) repeat-x;
-	height: 140px;
+	background: url(img/bgheader.gif) repeat;
+	/*height: 140px;*/
 	margin: 0 auto;
 	width: 761px;
+}
+
+/* header */
+.parent-thesis{
+	height: 20px;
+	margin: 0 auto;
+	width: 761px;
+}
+
+#parent-thesis-text {
+	padding: 4px;
 }
 
 /* title */
@@ -84,11 +95,10 @@ h1 {
 	color: #E4DBCF;
 	font: normal 2.3em "Lucida Sans Unicode","Trebuchet MS",sans-serif;
 	margin-top: 1px;
-    height: 130px;
+    min-height: 130px;
     vertical-align: middle;
-    display: inline-block;
-	float: none;
-    width: 470px;
+    display: block;
+	
 }
 
 .title .argument-meta {
@@ -214,18 +224,10 @@ div.argument {
     
 }
 
-.new-argument {
+#new-argument {
     width: 205px;
     height: 100px;
 }  
-
-.left-panel .new-argument {
-    width: 260px;
-}
-
-.right-panel .new-argument {
-    width: 260px;
-}
 
 .argument-meta {
 	position: relative;

@@ -52,6 +52,9 @@ class PagesController(BaseController):
         c.thesis = query.filter_by(id=id).first()
         c.thesisid=id
         
+        if c.thesis.parentid != 0:
+            c.parentthesis = query.filter_by(id=c.thesis.parentid).first()
+        
         if istrue == "pro":
             c.istrue = True
         elif istrue == "contra":
@@ -70,6 +73,9 @@ class PagesController(BaseController):
         
         if not c.thesis:
             abort(404)
+            
+        if c.thesis.parentid != 0:
+            c.parentthesis = query.filter_by(id=c.thesis.parentid).first()
             
         c.trueArguments = query.filter_by(parentid=id,istrue=1).order_by(model.Statement.votes.desc()).all()
         

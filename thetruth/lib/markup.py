@@ -8,3 +8,7 @@ def stripMarkup(s):
     s = re.sub('\[(.*?)\|(.*?)\]', '\\2', s)
     return s
     
+def stripMarkupAndTruncate(s):
+    s = re.sub('\[(.*?)\|(.*?)\]', '\\2', s)
+    return s[:100]
+    

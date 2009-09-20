@@ -27,7 +27,9 @@ ${self.argumentOutput(argument)}
 % endfor
 </%def>
 
-
 <%def name="thesisarea()">
-    ${self.thesis()}
+    % if c.parentthesis:
+        ${self.parentthesis(c.parentthesis)}
+    % endif
+    ${self.thesis(c.thesis)}
 </%def>

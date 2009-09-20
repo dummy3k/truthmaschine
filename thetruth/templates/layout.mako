@@ -1,5 +1,6 @@
 <%!
     from thetruth.lib.markup import renderMarkup
+    from thetruth.lib.markup import stripMarkupAndTruncate
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -58,7 +59,7 @@
 
 <%def name="argumentInput(parentid, istrue)">
   <form method="post" action="${h.url_for(controller='pages', action='createNew', istrue=None, id=None)}">
-    <textarea name="msg" class="new-argument"></textarea>
+    <textarea name="msg" id="new-argument"></textarea>
     
     % if parentid:
     <input type="hidden" name="parentid" value="${parentid}" />
@@ -67,7 +68,7 @@
     <input type="hidden" name="argistrue" value="${istrue}" />
     
     <input type="submit" value="Submit" />
-    <span class="characters-left">(140 chars)</span>
+    <span id="characters-left">(140 characters left)</span>
   </form>
 </%def>
 
@@ -97,29 +98,39 @@
 </div>	
 </%def>
     
-<%def name="thesis()">
+<%def name="parentthesis(argument)">
+<div class="parent-thesis">
+        <div class="title">
+            <span id="parent-thesis-text">
+                Parent Thesis: <a href="${h.url_for(action='show', id=argument.id)}">${argument.message | n,h,stripMarkupAndTruncate}</a>
+            </span>
+        </div>
+
+    </div>
+</%def>
+<%def name="thesis(argument)">
 <div class="header">
         <div class="title">
-            ${self.argumentmeta(c.thesis.user, c.thesis)}        
+            ${self.argumentmeta(argument.user, argument)}        
             <div class="vote vote-true">
             
                 <a id="upvote-link" href="${h.url_for(action='upvote', id=c.thesis.id)}">
-            % if c.thesis.is_upvoted_by_user(c.user.id):
+            % if argument.is_upvoted_by_user(c.user.id):
                 <img src="/img/vote-arrow-up-on.png" />
             % else:
                 <img src="/img/vote-arrow-up.png" />
             % endif
                 </a>
-                <span id="vote-count">${c.thesis.votes}</span>
+                <span id="vote-count">${argument.votes}</span>
                 <a id="downvote-link" href="${h.url_for(action='downvote', id=c.thesis.id)}">
-            % if c.thesis.is_downvoted_by_user(c.user.id):
+            % if argument.is_downvoted_by_user(c.user.id):
                 <img src="/img/vote-arrow-down-on.png" />
             % else:
                 <img src="/img/vote-arrow-down.png" />
             % endif
                 </a>
             </div>
-            <h1>${c.thesis.message | n,h,renderMarkup}</h1>
+            <h1>${argument.message | n,h,renderMarkup}</h1>
         </div>
 
     </div>

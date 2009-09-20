@@ -114,21 +114,26 @@
             ${self.argumentmeta(argument.user, argument)}        
             <div class="vote vote-true">
             
+            % if c.user:
                 <a id="upvote-link" href="${h.url_for(action='upvote', id=c.thesis.id)}">
-            % if argument.is_upvoted_by_user(c.user.id):
-                <img src="/img/vote-arrow-up-on.png" />
-            % else:
-                <img src="/img/vote-arrow-up.png" />
-            % endif
+                % if argument.is_upvoted_by_user(c.user.id):
+                    <img src="/img/vote-arrow-up-on.png" />
+                % else:
+                    <img src="/img/vote-arrow-up.png" />
+                % endif
                 </a>
+            % endif
                 <span id="vote-count">${argument.votes}</span>
+            % if c.user:
                 <a id="downvote-link" href="${h.url_for(action='downvote', id=c.thesis.id)}">
-            % if argument.is_downvoted_by_user(c.user.id):
-                <img src="/img/vote-arrow-down-on.png" />
-            % else:
-                <img src="/img/vote-arrow-down.png" />
-            % endif
+                % if argument.is_downvoted_by_user(c.user.id):
+                    <img src="/img/vote-arrow-down-on.png" />
+                % else:
+                    <a id="downvote-link" href="${h.url_for(action='downvote', id=c.thesis.id)}">
+                    <img src="/img/vote-arrow-down.png" />
+                % endif
                 </a>
+            % endif
             </div>
             <h1>${argument.message | n,h,renderMarkup}</h1>
         </div>

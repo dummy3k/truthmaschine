@@ -216,7 +216,7 @@ class PagesController(BaseController):
         for theArgument in thesen:
             newItem = PyRSS2Gen.RSSItem(
                 title = theArgument.message,
-                link = 'http://exmaple.com/',
+                link = config['base_url'],
                 description = theArgument.message,
                 #guid = PyRSS2Gen.Guid(entry['summary']),
                 #guid = entry['uid'],
@@ -228,7 +228,7 @@ class PagesController(BaseController):
 
         rss = PyRSS2Gen.RSS2(
             title = "Latest Statements",
-            link = "http://example.com/",
+            link = config['base_url'],
             description = "Description of showLastStatementsAsRss",
             lastBuildDate = datetime.now(),
             items = myItems)

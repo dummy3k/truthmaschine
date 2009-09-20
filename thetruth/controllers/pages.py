@@ -213,10 +213,8 @@ class PagesController(BaseController):
     
     def showLastStatementsAsRss(self):
         query = meta.Session.query(model.Statement).order_by(model.Statement.updated.desc())
-        thesen = query.all()
-        
         myItems = []
-        for theArgument in thesen:
+        for theArgument in query.all():
             newItem = PyRSS2Gen.RSSItem(
                 title = theArgument.message,
                 link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),

@@ -31,7 +31,7 @@ class PagesController(BaseController):
     def index(self):
         query = meta.Session.query(model.Statement)
         #rs = query.filter_by(parentid=None).select()
-        c.thesis = query.filter_by(parentid=None).all()
+        c.thesis = query.filter_by(parentid=None).order_by(model.Statement.votes.desc()).all()
         if c.thesis:
             for aThesis in c.thesis:
                 self.attachTrueFalseCount(aThesis)
@@ -71,12 +71,12 @@ class PagesController(BaseController):
         if not c.thesis:
             abort(404)
             
-        c.trueArguments = query.filter_by(parentid=id,istrue=1).all()
+        c.trueArguments = query.filter_by(parentid=id,istrue=1).order_by(model.Statement.votes.desc()).all()
         
         for trueArgument in c.trueArguments:
             self.attachTrueFalseCount(trueArgument)
         
-        c.falseArguments = query.filter_by(parentid=id,istrue=0).all()
+        c.falseArguments = query.filter_by(parentid=id,istrue=0).order_by(model.Statement.votes.desc()).all()
         for falseArgument in c.falseArguments:
             self.attachTrueFalseCount(falseArgument)
 

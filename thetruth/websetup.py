@@ -8,6 +8,7 @@ from openid.consumer.consumer import Consumer, SUCCESS, FAILURE, DiscoveryFailur
 from openid.store.sqlstore import SQLiteStore 
 
 import migrate.versioning.api
+from migrate.versioning.exceptions import DatabaseAlreadyControlledError
 from pylons import config
 
 log = logging.getLogger(__name__)
@@ -36,7 +37,12 @@ def setup_app(command, conf, vars):
     # setup db with sqlalchemy migrate
     dbUrl = config['sqlalchemy.url']
     log.debug('dbUrl: %s' % dbUrl)
-    migrate.versioning.api.version_control(url=dbUrl,repository='db_repo')
+    
+    try:
+        migrate.versioning.api.version_control(url=dbUrl,repository='db_repo')
+    except DatabaseAlreadyControlledError:
+        pass
+        
     migrate.versioning.api.upgrade(url=dbUrl,repository='db_repo')
 
 

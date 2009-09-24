@@ -3,6 +3,15 @@
 /thetruth/development.db
 /data
 /thetruth/public/Thumbs.db
-
+/build
+/dist
+/paste-*.egg
+/pastedeploy-*.egg
+/pastescript-*.egg
+/setuptools-*.egg
 /database-dev.db
 /theTruth.kpf
+*.bak
+*~
+/.project
+/.pydevproject

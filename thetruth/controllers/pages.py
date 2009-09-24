@@ -20,6 +20,28 @@ import PyRSS2Gen
 
 log = logging.getLogger(__name__)
 
+def __get_rss__(query):
+    myItems = []
+    for theArgument in query[:11]:
+        newItem = PyRSS2Gen.RSSItem(
+            title = theArgument.message,
+            link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),
+            description = theArgument.message,
+            guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
+            pubDate = theArgument.created)
+        
+        myItems.append(newItem)
+
+    rss = PyRSS2Gen.RSS2(
+        title = "the Truth: Latest Statements",
+        link = config['base_url'],
+        description = "The latest statements from the Truth (tm)",
+        lastBuildDate = datetime.now(),
+        items = myItems)
+
+    return rss.to_xml()
+
+
 class PagesController(BaseController):
     def __before__(self):
         pass    
@@ -76,6 +98,8 @@ class PagesController(BaseController):
         query = meta.Session.query(model.Statement)
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
         c.title = c.thesis
+        c.feeds = [{'title':'Arguments for this thesis',
+                    'link':config['base_url'] + h.url_for(controller='pages', action='showLastStatementsAsRssByStatement')}]
         
         if not c.thesis:
             abort(404)
@@ -198,6 +222,7 @@ class PagesController(BaseController):
         
 
     def appendSubStatment(self, child, isContra):
+    
         #        query = meta.Session.query(model.User)
         #        user = query.filter_by(openid=info.identity_url).first()
         #        user = model.User()
@@ -207,31 +232,14 @@ class PagesController(BaseController):
 
         pass
 
-    def showLastStatementsAsRssByStatement(self):
-        pass
+    def showLastStatementsAsRssByStatement(self, id):
+        query = meta.Session.query(model.Statement).filter_by(parentid=id).order_by(model.Statement.updated.desc())
+        return __get_rss__(query)
     
     def showLastStatementsAsRss(self):
         query = meta.Session.query(model.Statement).order_by(model.Statement.updated.desc())
-        myItems = []
-        for theArgument in query.all():
-            newItem = PyRSS2Gen.RSSItem(
-                title = theArgument.message,
-                link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),
-                description = theArgument.message,
-                guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
-                pubDate = theArgument.created)
-            
-            myItems.append(newItem)
-
-        rss = PyRSS2Gen.RSS2(
-            title = "the Truth: Latest Statements",
-            link = config['base_url'],
-            description = "The latest statements from the Truth (tm)",
-            lastBuildDate = datetime.now(),
-            items = myItems)
-
-        return rss.to_xml()
-
+        return __get_rss__(query)
+        
     def edit_statement(self, id):
         query = meta.Session.query(model.Statement)
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())

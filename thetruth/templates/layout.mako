@@ -18,8 +18,12 @@
     ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
     ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}
     ${h.javascript_link( '/js/script.js')}
-    <link rel="alternate" type="application/rss+xml" title="Latest Statements RSS-Feed" href="${config['base_url']}/latest-rss.xml" />
+    ${h.javascript_link( '/script.js')}
     <link rel="shortcut icon" href="ico/logo.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="All latest Statements" href="${config['base_url']}/latest-rss.xml" />
+    % for x in c.feeds:
+    <link rel="alternate" type="application/rss+xml" title="${x['title']}" href="${x['link']}" />
+    % endfor
 </head>
 <body>
 

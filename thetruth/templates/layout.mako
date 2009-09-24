@@ -143,6 +143,9 @@
             % endif
             </div>
             <h1>${argument.message | n,h,renderMarkup}</h1>
+            % if c.user and c.user.allow_edit(argument):
+            <a href="${h.url_for(action='edit_statement', id=argument.id)}" style="background-color:white">edit</a>
+            % endif
         </div>
 
     </div>

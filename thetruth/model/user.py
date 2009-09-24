@@ -1,5 +1,6 @@
 from sqlalchemy import *
 from thetruth.model import meta
+from statement import Statement
 import hashlib
 
 users_table = Table('users', meta.metadata,
@@ -37,3 +38,14 @@ class User(object):
     def updatelastlogin(self):
         pass
     
+    def allow_edit(self, some_thing):
+    
+        if not some_thing:
+            raise Exception('something isnt anything')
+            
+        if type(some_thing) is Statement:
+            return (some_thing.userid == self.id)
+        
+        raise Exception('unknown type "%s"' % some_thing)
+        
+        

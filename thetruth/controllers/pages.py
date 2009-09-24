@@ -232,4 +232,26 @@ class PagesController(BaseController):
 
         return rss.to_xml()
 
+    def edit_statement(self, id):
+        query = meta.Session.query(model.Statement)
+        c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+
+        #c.argument = 
+        return render('/pages/edit_statement.mako')
+    
+    def post_edit_statement(self, id):
+        if not c.user:
+            redirect_to(controller='login', action='signin', id=id)
+
+        query = meta.Session.query(model.Statement)
+        thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+
+        if not c.user.allow_edit(thesis):
+            raise Exception('no you dont')
+            
+
+        thesis.message = request.params.get('msg')
+        meta.Session.commit()
+
+        redirect_to(action='show', id=id)
         

@@ -10,6 +10,7 @@ from paste.deploy.converters import asbool
 
 from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
+from thetruth.lib.markup import stripMarkup
 from thetruth.model import meta
 import thetruth.model as model
 import thetruth.lib.helpers as h
@@ -191,8 +192,12 @@ class PagesController(BaseController):
                 
         message = request.params.get('msg', None)
         
+        if len(stripMarkup(message)) > 140:
+            c.message = "No many characters"
+            return render('/pages/user_feedback.mako')
+        
         rant = model.Statement()
-        rant.message = message[:140]
+        rant.message = message
         rant.userid = c.user.id
         rant.votes = 0
         rant.created = datetime.now()
@@ -257,8 +262,12 @@ class PagesController(BaseController):
         if not c.user.allow_edit(thesis):
             raise Exception('no you dont')
             
-
-        thesis.message = request.params.get('msg')
+        newMsg = request.params.get('msg')
+        if len(stripMarkup(newMsg)) > 140:
+            c.message = "No many characters"
+            return render('/pages/user_feedback.mako')
+        
+        thesis.message = newMsg
         meta.Session.commit()
 
         redirect_to(action='show', id=id)

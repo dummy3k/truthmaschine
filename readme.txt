@@ -1,5 +1,6 @@
 The Truth (tm)
 
+
 Installation and Setup
 ======================
 
@@ -41,3 +42,11 @@ The Test-Webserver can be started with the following command in the ``thetruth``
 
     paster serve --reload development.ini
 	
+Packaging
+=========
+
+You create an egg from this project by going into the project root directory and running the command:
+
+    python setup.py bdist_egg
+	
+

@@ -122,7 +122,7 @@ class PagesController(BaseController):
 
     def upvote(self, id):
         if not c.user:
-            redirect_to(controller='login', action='signin')
+            redirect_to(controller='login', action='signin', id=None)
 
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
@@ -155,7 +155,7 @@ class PagesController(BaseController):
         
     def downvote(self, id):
         if not c.user:
-            redirect_to(controller='login', action='signin')
+            redirect_to(controller='login', action='signin', id=None)
 
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first()
@@ -192,9 +192,24 @@ class PagesController(BaseController):
                 
         message = request.params.get('msg', None)
         
+        if not message:
+            abort(500)
+        
+        parentId = request.params.get('parentid', None)
+        isTrue = request.params.get('argistrue', None)
+        
         if len(stripMarkup(message)) > 140:
-            c.message = "No many characters"
-            return render('/pages/user_feedback.mako')
+            session['message'] = "Only 140 characters are allowed"
+            session.save()
+            
+            c.previousMessage = message
+            
+            if isTrue == True:
+                isTrueString = "pro"
+            else:
+                isTrueString = "contra"
+            
+            return self.newArgument(parentId, isTrueString)
         
         rant = model.Statement()
         rant.message = message
@@ -203,8 +218,6 @@ class PagesController(BaseController):
         rant.created = datetime.now()
         rant.updated = datetime.now()
         
-        parentId = request.params.get('parentid', None)
-        isTrue = request.params.get('argistrue', None)
         
         if parentId and isTrue :
             rant.parentid=parentId

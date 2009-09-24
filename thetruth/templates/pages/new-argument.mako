@@ -1,4 +1,4 @@
-<%inherit file="/layout-default.mako"/>\
+<%inherit file="/layout-default.mako"/>
 
 
 <%def name="thesisarea()">
@@ -17,6 +17,7 @@
   
   ${self.argumentInput(c.thesisid, c.istrue)}
 </%def>
+
 <%def name="sidenav()">
     <h1>Read this</h1>
     

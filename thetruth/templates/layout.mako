@@ -81,7 +81,7 @@
 
 <%def name="argumentInput(parentid, istrue)">
   <form method="post" action="${h.url_for(controller='pages', action='createNew', istrue=None, id=None)}">
-    <textarea name="msg" id="new-argument"></textarea>
+    <textarea name="msg" id="new-argument">${c.previousMessage}</textarea>
     
     % if parentid:
     <input type="hidden" name="parentid" value="${parentid}" />
@@ -91,7 +91,7 @@
     
     <input type="submit" value="Submit" />
     <span id="characters-left">(140 characters left)</span>
-    <br/>
+    <br/><br/>
     <p class="hint">Hint: You can link you text using the following syntax: [http://www.google.de|Google]</p>
   </form>
 </%def>

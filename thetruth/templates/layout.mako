@@ -108,7 +108,7 @@
     <tr>
       <td width="40" valign="top"><img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" /></td>
       <td valign="top"><strong><a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">${argument.user.getDisplayName()}</a></strong><br />
-        ${argument.created.strftime("%A,&nbsp;%d/%m/%Y&nbsp;%H:%M") | n}</td>
+        ${convertToHumanReadable(argument.created)}</td>
       <td width="150" align="right" valign="bottom"><a href="${h.url_for(action='show', id=argument.id)}">${argument.true_count} pro / ${argument.false_count} contra</a></td>
     </tr>
   </table>

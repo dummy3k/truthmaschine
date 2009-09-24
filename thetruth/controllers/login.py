@@ -126,14 +126,14 @@ class LoginController(BaseController):
                 redirect_to(action='banned')
                 
             user.updatelastlogin()
-            sreg_response = sreg.SRegResponse.fromSuccessResponse(info)
-            if sreg_response:
-                user.name = sreg_response.get('fullname', u'')
-                user.email = sreg_response.get('email', u'')
-    #            user.tzinfo = sreg_response.get('timezone', u'')
-    #            user.tzinfo = sreg_response.get('language', u'')
-    
             if newUser:
+                sreg_response = sreg.SRegResponse.fromSuccessResponse(info)
+                if sreg_response:
+                    user.name = sreg_response.get('fullname', u'')
+                    user.email = sreg_response.get('email', u'')
+        #            user.tzinfo = sreg_response.get('timezone', u'')
+        #            user.tzinfo = sreg_response.get('language', u'')
+        
                 meta.Session.save(user)
             else:
                 meta.Session.update(user)

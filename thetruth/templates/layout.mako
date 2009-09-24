@@ -1,6 +1,7 @@
 <%!
     from thetruth.lib.markup import renderMarkup
     from thetruth.lib.markup import stripMarkupAndTruncate
+    from thetruth.lib.parsedatetime import convertToHumanReadable
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -129,7 +130,7 @@
     <td valign="top">
     <p class="small"><strong>Parent Thesis:</strong></p>
        <ul class="parent">
-       <li><img src="/img/thesis.jpg" alt="thesis" /> <a href="${h.url_for(action='show', id=argument.id)}">${argument.message | n,h,stripMarkupAndTruncate}</a></li>
+       <li><img src="/img/thesis.jpg" alt="thesis" /> <a href="${h.url_for(action='show', id=argument.id)}">${argument.message | stripMarkupAndTruncate}</a></li>
        </ul></td>
     <td width="200" valign="top">&nbsp;</td>
   </tr>
@@ -171,7 +172,18 @@
 <div class="title">
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td valign="top">${argument.message | n,h,renderMarkup}</td>
+      <td valign="top">
+        ${argument.message | n,h,renderMarkup} 
+
+
+            % if c.user and c.user.allow_edit(argument):
+            <p>
+                <a href="${h.url_for(action='edit_statement', id=argument.id)}">
+                    edit
+                </a>
+            </p>
+            % endif      
+      </td>
       <td width="200" valign="bottom"><table width="200" border="0" cellspacing="0" cellpadding="0" class="avatar">
         <tr>
           <td width="40" valign="top"><img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" /></td>

@@ -1,6 +1,7 @@
 <%!
     from thetruth.lib.markup import renderMarkup
     from thetruth.lib.markup import stripMarkupAndTruncate
+    from thetruth.lib.parsedatetime import convertToHumanReadable
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -100,7 +101,7 @@
 	    ${user.getDisplayName()}
     </a>
     % if argument:
-    <span class="argument-timestamp">${argument.created.strftime("%A,&nbsp;%d/%m/%Y&nbsp;%H:%M") | n}</span>
+    <span class="argument-timestamp"><nobr>${convertToHumanReadable(argument.created)}</nobr></span>
     % endif
 </div>	
 </%def>
@@ -109,7 +110,7 @@
 <div class="parent-thesis">
         <div class="title">
             <span id="parent-thesis-text">
-                Parent Thesis: <a href="${h.url_for(action='show', id=argument.id)}">${argument.message | n,h,stripMarkupAndTruncate}</a>
+                Parent Thesis: <a href="${h.url_for(action='show', id=argument.id)}">${argument.message | stripMarkupAndTruncate}</a>
             </span>
         </div>
 

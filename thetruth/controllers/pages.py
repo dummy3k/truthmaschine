@@ -12,9 +12,9 @@ from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
 from thetruth.model import meta
 import thetruth.model as model
+import thetruth.lib.helpers as h
 
 from datetime import datetime
-
 import PyRSS2Gen
 
 
@@ -45,6 +45,7 @@ class PagesController(BaseController):
         if not c.user:
             redirect_to(controller='login', action='signin')
             
+        c.title = "New Thesis"
         return render('/pages/new-thesis.mako')
 
     def newArgument(self, id, istrue):
@@ -68,11 +69,13 @@ class PagesController(BaseController):
         return render('/pages/new-argument.mako')
         
     def about(self):
+        c.title = "What's going on?"
         return render('/pages/about.mako')
 
     def show(self, id):
         query = meta.Session.query(model.Statement)
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+        c.title = c.thesis
         
         if not c.thesis:
             abort(404)
@@ -209,16 +212,12 @@ class PagesController(BaseController):
     
     def showLastStatementsAsRss(self):
         query = meta.Session.query(model.Statement).order_by(model.Statement.updated.desc())
-        thesen = query.all()
-        
         myItems = []
-        for theArgument in thesen:
+        for theArgument in query.all():
             newItem = PyRSS2Gen.RSSItem(
                 title = theArgument.message,
-                link = config['base_url'] + "/show/" + str(theArgument.id),
+                link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),
                 description = theArgument.message,
-                #guid = PyRSS2Gen.Guid(entry['summary']),
-                #guid = entry['uid'],
                 guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
                 pubDate = theArgument.created)
             

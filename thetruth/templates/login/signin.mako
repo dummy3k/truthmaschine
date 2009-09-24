@@ -29,6 +29,8 @@
 
 <p>It's an open standard.</p>
 
+<p>And we are too lazy to implement our own login process. Which is good, because this way we can't mess it up.</p>
+
 <ul>
     <li><a href="http://openid.net/what/">learn more</a></li>
     <li><a href="http://openid.net/get/">get one</a></li>

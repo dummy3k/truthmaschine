@@ -8,6 +8,10 @@ import thetruth.lib.helpers as h
 import thetruth.model as model
 from thetruth.model import meta
 
+from datetime import datetime
+from pylons import config
+import PyRSS2Gen
+
 log = logging.getLogger(__name__)
     
 class UsersController(BaseController):
@@ -18,9 +22,6 @@ class UsersController(BaseController):
         # or, return a response
         return redirect_to(controller='users', action="showUsersList")
 
-    def signIn(self, openIdUrl):
-        pass
-        
     def showUsersList(self):
         users_q = meta.Session.query(model.User)
         c.users = users_q.all()
@@ -30,23 +31,12 @@ class UsersController(BaseController):
             ('Philip',''),
         ]
         
-        return render('/user_list.mako')
-        
-    def add(self):
-        aUser = model.User()
-        aUser.name=request.params.get('name')
-        meta.Session.add(aUser)
-        meta.Session.commit()
-        return redirect_to(action="showUsersList")
-        
-    def showDetails(self, id):
-        users_q = meta.Session.query(model.User)
-        c.user = users_q.filter(model.User.id==id).one()
-        return render('/users/detail.mako')
+        return render('/users/list.mako')
         
     def showPublicProfile(self, id):
         users_q = meta.Session.query(model.User)
         c.user = users_q.filter(model.User.id==id).one()
+        c.title = c.user.name
         return render('/users/detail.mako')
         
     def showPrivateProfile(self, id):
@@ -58,6 +48,7 @@ class UsersController(BaseController):
 
         users_q = meta.Session.query(model.User)
         c.user = users_q.filter(model.User.id==id).one()
+        c.title = c.user.name
         return render('/users/edit.mako')
         
     def showProfile(self, id):
@@ -88,7 +79,29 @@ class UsersController(BaseController):
         aUser.name = request.params.get('name', None)
         meta.Session.update(aUser)
         meta.Session.commit()
-        
-        #return render('/users/edit.mako')
         redirect_to(action='showProfile', id=userId)
         
+        
+    def newUsersRss(self):
+        query = meta.Session.query(model.User).order_by(model.User.signup.desc())
+        myItems = []
+        for it in query.all():
+            newItem = PyRSS2Gen.RSSItem(
+                title = it.getDisplayName(),
+                link = config['base_url'] + h.url_for(action='showProfile', id=str(it.id)),
+                description = it.getDisplayName(),
+                guid = PyRSS2Gen.Guid(str(it.id), False), #entry['guidislink']
+                pubDate = it.signup)
+            
+            myItems.append(newItem)
+
+        rss = PyRSS2Gen.RSS2(
+            title = "the Truth: Latest Users",
+            link = config['base_url'],
+            description = "Latest users joining Truth (tm)",
+            lastBuildDate = datetime.now(),
+            items = myItems)
+
+        return rss.to_xml()
+
+                

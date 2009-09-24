@@ -11,7 +11,11 @@
 	<meta name="description" content="description"/>
 	<meta name="keywords" content="keywords"/> 
 	<meta name="author" content="author"/> 
+	%if c.title:
+	<title>${c.title} - the Truth (tm)</title>
+	%else:
 	<title>the Truth (tm)</title>
+	%endif
 	${h.stylesheet_link('/default.css')}
     ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
     ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}

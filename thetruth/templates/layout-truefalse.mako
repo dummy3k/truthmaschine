@@ -4,13 +4,37 @@
 %>
 	
 <%def name="main()">
-<div class="left-panel">
-	<h1>Pro Arguments</h1>
-	${self.leftpanel()}
-</div>
+<div class="contraTitle">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="35"><img src="/img/contra.jpg" alt="contra" /></td>
+              <td><p>Contra Arguments (${len(c.falseArguments)})</p>
+                <p class="login">
+% if c.user:
+    <a class="small" href="${h.url_for(controller='pages', action='newArgument', id=c.thesis.id, istrue='contra')}">Post a Contra-Argument</a>
+% else:
+    <a class="small" href="${h.url_for(controller='login', action='signin', id=None)}">Login</a> to post an Contra-Argument
+% endif
+            	</p></td>
+            </tr>
+          </table>
+          </div>
+        <div class="proTitle">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="35"><img src="/img/pro.jpg" /></td>
+              <td><p>Pro Arguments (${len(c.trueArguments)})</p>
+                <p class="login">
+					% if c.user:
+					    <a class="small" href="${h.url_for(controller='pages', action='newArgument', id=c.thesis.id, istrue='pro')}">Post a Pro-Argument</a>
+					% else:
+					    <a class="small" href="${h.url_for(controller='login', action='signin', id=None)}">Login</a> to post an Pro-Argument
+					% endif
+                </td>
+            </tr>
+          </table>
+          </div>
 
-<div class="right-panel">
-	<h1>Contra Arguments</h1>
-	${self.rightpanel()}
-</div>
+${self.leftpanel()}
+${self.rightpanel()}
 </%def>

@@ -8,7 +8,7 @@ def __get_rss__(query):
     for theArgument in query[:11]:
         newItem = PyRSS2Gen.RSSItem(
             title = theArgument.message,
-            link = config['base_url'] + h.url_for(action='show', id=str(theArgument.id)),
+            link = config['base_url'] + h.url_for(controller='statements', action='show', id=str(theArgument.id)),
             description = theArgument.message,
             guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
             pubDate = theArgument.created)

@@ -192,7 +192,7 @@ a {
 	font-size: 14px;
 }
 #mainContent p {
-	margin: 5px 0px;
+	margin: 15px 0px;
 }
 #mainContent p.login {
 	font-size: 10px;
@@ -243,4 +243,52 @@ a {
 
 form {
     float: left;
+}
+
+div.main {
+    float: left;
+    width: 450px;
+}
+
+div.sidenav {
+    float: right;
+    width: 400px;
+}
+
+input.openid-identifier {
+    height: 28px;
+    width: 300px;line-height:22px;
+padding-left:32px;
+background:transparent url(../img/openid-large.png) no-repeat scroll left center;
+margin:5px 0;
+border:1px solid #999999;
+font-family:Trebuchet MS,Helvetica,sans-serif;
+font-size:100%;
+}
+
+input.openid-login-button {
+    height: 34px;
+}
+
+.openid_large_btn {
+	border:1px solid #DDDDDD;
+	float:left;
+	height:60px;
+	margin:3px;
+	width:100px;
+}
+
+.openid_small_btn {
+	border:1px solid #DDDDDD;
+	float:left;
+	height:24px;
+	margin:3px;
+	width:24px;
+}
+
+#openid-prompt {
+	width: 300px;
+    display: none;
+    float: left;
+    margin: 20px 0px;
 }

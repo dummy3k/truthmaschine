@@ -7,7 +7,7 @@
 
 		<h1>User details for ${c.user.name}</h1>
 
-        <form action = '${h.url_for(action='saveProfile')}'>
+        <form action='${h.url_for(action='saveProfile')}'>
         <table border="0" cellpadding="4">
             <tr>
                 <th>Gravatar</th>

@@ -1,3 +1,6 @@
+<%!
+    from pylons import config
+%>
 <%inherit file="/layout-default.mako"/>\
 
 <%def name="content()">
@@ -13,7 +16,7 @@
     <h1>Rules</h1>
     
     <ul>
-        <li>You've got only 140 characters</li>
+        <li>You've got only ${config['statement_length']} characters</li>
         <li>Try to back up your Arguments with links</li>
     </ul>
 </%def>

@@ -1,3 +1,7 @@
+<%!
+    from pylons import config
+%>
+
 <%inherit file="/layout-default.mako"/>
 
 
@@ -26,7 +30,7 @@
     <h1>Read this</h1>
     
     <ul>
-        <li>You've got only 140 characters</li>
+        <li>You've got only ${config['statement_length']} characters</li>
         <li>Please back up your Arguments with links</li>
         <li>Be polite</li>
     </ul>

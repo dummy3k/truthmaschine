@@ -19,6 +19,8 @@ from datetime import datetime
 
 log = logging.getLogger(__name__)
 
+statement_length = config['statement_length']
+
 class StatementsController(BaseController):
     def index(self):
         query = meta.Session.query(model.Statement)
@@ -107,8 +109,8 @@ class StatementsController(BaseController):
         parentId = request.params.get('parentid', None)
         isTrue = request.params.get('argistrue', None)
         
-        if len(stripMarkup(message)) > 140:
-            h.flash("Error: Only 140 characters are allowed!")
+        if len(stripMarkup(message)) > statement_length:
+            h.flash("Error: Only " + statement_length + " characters are allowed!")
 
             c.previousMessage = message
             
@@ -191,8 +193,8 @@ class StatementsController(BaseController):
             raise Exception('no you dont')
             
         newMsg = request.params.get('msg')
-        if len(stripMarkup(newMsg)) > 140:
-            h.flash("Error: Only 140 characters are allowed!")
+        if len(stripMarkup(newMsg)) > statement_length:
+            h.flash("Error: Only " + statement_length + " characters are allowed!")
             c.previousMessage = newMsg
             return self.edit_statement(id)        
         

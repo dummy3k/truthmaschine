@@ -1,6 +1,7 @@
 <%!
     from thetruth.lib.markup import renderMarkup, stripMarkupAndTruncate, stripMarkup
     from thetruth.lib.parsedatetime import convertToHumanReadable
+    from pylons import config
 %>
 <%inherit file="/layout.mako"/>\
 <%def name="argumentInput(parentid, istrue, defaultText)">
@@ -22,7 +23,7 @@
         <tr>
             <td colspan="2">
                 <span id="characters-left">
-                    (${140-len(defaultText)} characters left)
+                    (${int(config['statement_length'])-len(defaultText)} characters left)
                 </span>
             </td>
         </tr>
@@ -34,7 +35,7 @@
         <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google].
     </p>
     <p>
-        Links do not count into your 140 character limit.
+        Links do not count into your ${config['statement_length']} character limit.
     </p>
 </form>
 </%def>
@@ -54,7 +55,7 @@
         <tr>
             <td colspan="2">
                 <span id="characters-left">
-                    (${140-len(defaultText)} characters left)
+                    (${int(config['statement_length'])-len(defaultText)} characters left)
                 </span>
             </td>
         </tr>
@@ -63,10 +64,10 @@
     <br/>
 
     <p class="hint">
-        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google]. <br/>
+        <strong>Hint:</strong> You can link stuff with: [http://www.google.de|Google]. <br/>
     </p>
     <p>
-        Links do not count into your 140 character limit.
+        Links do not count into your ${config['statement_length']} character limit.
     </p>
 </form>
 </%def>

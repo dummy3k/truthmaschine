@@ -23,6 +23,7 @@ def make_map():
 
     map.connect('/latest-rss.xml', controller='rss', action='showLastStatementsAsRss')
     map.connect('/statement-{id}-rss.xml', controller='rss', action='showLastStatementsAsRssByStatement', id=id)
+    map.connect('/config.js', controller='js', action='config')
 
     map.connect('/show/{id}', controller="statements", action="show")
     map.connect('/show/{id}', controller="statements", action="show")

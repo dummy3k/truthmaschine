@@ -18,8 +18,8 @@
     ${h.stylesheet_link('/css/ui-lightness/jquery-ui-1.7.2.custom.css')}
     ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
     ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}
+    ${h.javascript_link( '/config.js')}
     ${h.javascript_link( '/js/script.js')}
-    ${h.javascript_link( '/script.js')}
     
     <link rel="shortcut icon" href="/ico/logo.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="All latest Statements" href="${config['base_url']}/latest-rss.xml" />

@@ -3,7 +3,7 @@
   		var stripMarkupRegex = /\[(.*?)\|(.*?)\]/;
   		
   		var len = $("#new-argument").val().replace(stripMarkupRegex, '\\2').length;
-  		$("#characters-left").html("(" + (140 - len) + " characters left)");
+  		$("#characters-left").html("(" + (statement_length - len) + " characters left)");
   	});  	
 
 	 $('#openid-login').click(function(){

@@ -75,7 +75,7 @@ class StatementsController(BaseController):
         c.title = c.thesis
 
         c.feeds = [{'title':'Arguments for this thesis',
-                    'link': config['base_url'] + h.url_for(controller='pages', action='showLastStatementsAsRssByStatement')}]
+                    'link': config['base_url'] + h.url_for(controller='rss', action='showLastStatementsAsRssByStatement')}]
         
         if not c.thesis:
             abort(404)
@@ -112,12 +112,15 @@ class StatementsController(BaseController):
 
             c.previousMessage = message
             
-            if isTrue == True:
-                isTrueString = "pro"
+            if isTrue: 
+                if isTrue == True:
+                    isTrueString = "pro"
+                else:
+                    isTrueString = "contra"
+                
+                return self.newArgument(parentId, isTrueString)
             else:
-                isTrueString = "contra"
-            
-            return self.newArgument(parentId, isTrueString)
+                return self.newThesis()
         
         rant = model.Statement()
         rant.message = message
@@ -165,9 +168,15 @@ class StatementsController(BaseController):
             redirect_to(controller='login', action='signin')
         
         query = meta.Session.query(model.Statement)
-        c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+        c.statement = query.filter_by(id=id).first()
+        
+        if c.statement.parentid and c.statement.parentid != 0:
+            c.thesis = query.filter_by(id=c.statement.parentid).first()
+            c.thesisid = c.statement.parentid
+            
+            if c.thesis.parentid and c.thesis.parentid != 0:
+                c.parentthesis = query.filter_by(id=c.thesis.parentid).first()
 
-        #c.argument = 
         return render('/statements/edit_statement.mako')
     
     def post_edit_statement(self, id):
@@ -183,8 +192,9 @@ class StatementsController(BaseController):
             
         newMsg = request.params.get('msg')
         if len(stripMarkup(newMsg)) > 140:
-            c.message = "No many characters"
-            return render('/pages/user_feedback.mako')
+            h.flash("Error: Only 140 characters are allowed!")
+            c.previousMessage = newMsg
+            return self.edit_statement(id)        
         
         thesis.message = newMsg
         meta.Session.commit()

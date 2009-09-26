@@ -1,4 +1,7 @@
 import PyRSS2Gen
+from pylons import config
+import thetruth.lib.helpers as h
+from datetime import datetime
 
 def __get_rss__(query):
     myItems = []

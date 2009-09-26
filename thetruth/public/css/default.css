@@ -192,7 +192,7 @@ a {
 	font-size: 14px;
 }
 #mainContent p {
-	margin: 0;
+	margin: 5px 0px;
 }
 #mainContent p.login {
 	font-size: 10px;
@@ -233,4 +233,14 @@ a {
 
 .ui-state-highlight {
     padding: 3px;
+    margin-bottom: 10px;
+}
+
+#new-argument {
+    width: 400px;
+    height: 200px;
+}
+
+form {
+    float: left;
 }

@@ -16,3 +16,5 @@
 /.project
 /.pydevproject
 *.db
+/.pmd
+/.settings/org.eclipse.ltk.core.refactoring.prefs

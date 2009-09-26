@@ -3,28 +3,73 @@
     from thetruth.lib.parsedatetime import convertToHumanReadable
 %>
 <%inherit file="/layout.mako"/>\
-<%def name="argumentInput(parentid, istrue)">
+<%def name="argumentInput(parentid, istrue, defaultText)">
 <form method="post" action="${h.url_for(controller='statements', action='createNew', istrue=None, id=None)}">
     <input type="hidden" name="argistrue" value="${istrue}" />
     % if parentid:
         <input type="hidden" name="parentid" value="${parentid}" />
     % endif
 
-    <textarea name="msg" id="new-argument">${c.previousMessage}</textarea>
-    <input type="submit" value="Submit" />
-    
-    <span id="characters-left">
-        (140 characters left)
-    </span>
+    <table border="0">
+        <tr>
+            <td>
+                <textarea name="msg" id="new-argument">${defaultText}</textarea>
+            </td>
+            <td valign="bottom">
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span id="characters-left">
+                    (${140-len(defaultText)} characters left)
+                </span>
+            </td>
+        </tr>
+    </table>
     
     <br/><br/>
     
-    <p class="hint">
-        Hint: You can link you text using the following syntax: [http://www.google.de|Google]
+    <p>
+        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google].
+    </p>
+    <p>
+        Links do not count into your 140 character limit.
     </p>
 </form>
 </%def>
+<%def name="argumentEdit(argumentId, defaultText)">
+<form method="post" action="${h.url_for(action='post_edit_statement', id=argumentId)}">
+    <input type="hidden" name="id" value="${argumentId}" />
+       
+    <table border="0">
+        <tr>
+            <td>
+                <textarea name="msg" id="new-argument">${defaultText}</textarea>
+            </td>
+            <td valign="bottom">
+                <input type="submit" value="Submit" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span id="characters-left">
+                    (${140-len(defaultText)} characters left)
+                </span>
+            </td>
+        </tr>
+    </table>
+    
+    <br/>
 
+    <p class="hint">
+        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google]. <br/>
+    </p>
+    <p>
+        Links do not count into your 140 character limit.
+    </p>
+</form>
+</%def>
 <%def name="argumentOutput(argument)">
 % if argument.istrue:
     <div class="pro">

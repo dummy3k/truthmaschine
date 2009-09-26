@@ -10,12 +10,16 @@
 
 <%def name="content()">
   % if c.istrue:
-  <h1>Create a new Pro Argument</h1>
+    <h1>Create a new Pro Argument</h1>
   % else:
-  <h1>Create a new Contra Argument</h1>
+    <h1>Create a new Contra Argument</h1>
   % endif
-  
-  ${self.argumentInput(c.thesisid, c.istrue)}
+
+  % if c.previousMessage:  
+    ${self.argumentInput(c.thesisid, c.istrue, previousMessage)}
+  % else:
+    ${self.argumentInput(c.thesisid, c.istrue, '')}
+  % endif
 </%def>
 
 <%def name="sidenav()">

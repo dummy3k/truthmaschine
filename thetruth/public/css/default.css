@@ -226,3 +226,11 @@ a {
 #main {
 	clear: left;
 }
+
+.ui-icon {
+    float: left;
+}
+
+.ui-state-highlight {
+    padding: 3px;
+}

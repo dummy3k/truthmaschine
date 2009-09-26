@@ -18,38 +18,38 @@ def make_map():
     map.connect('/error/{action}', controller='error')
     map.connect('/error/{action}/{id}', controller='error')
 
-    map.connect('/latest-rss.xml', controller='pages', action='showLastStatementsAsRss')
-    map.connect('/statement-{id}-rss.xml', controller='pages', action='showLastStatementsAsRssByStatement', id=id)
+    # CUSTOM ROUTES HERE
+    map.connect('/', controller="statements", action='index')
 
-    map.connect('/', controller="pages", action='index')
-    map.connect('/show/{id}', controller="pages", action="show")
-    map.connect('/newArgument/{istrue}/{id}', controller="pages", action='newArgument')
+    map.connect('/latest-rss.xml', controller='rss', action='showLastStatementsAsRss')
+    map.connect('/statement-{id}-rss.xml', controller='rss', action='showLastStatementsAsRssByStatement', id=id)
 
-    map.connect('/newThesis', controller="pages", action="newThesis")
-    map.connect('/newArgument/{istrue}/{id}', controller="pages", action="newArgument")
-    map.connect('/newArgument/{istrue}/{id}/', controller="pages", action="newArgument")
+    map.connect('/show/{id}', controller="statements", action="show")
+    map.connect('/show/{id}', controller="statements", action="show")
+    map.connect('/newThesis', controller="statements", action="newThesis")
+    map.connect('/newArgument/{istrue}/{id}', controller="statements", action="newArgument")
+    map.connect('/newArgument/{istrue}/{id}/', controller="statements", action="newArgument")
+    
+    map.connect('/upvote/{id}', controller="votes", action="upvote")
+    map.connect('/downvote/{id}', controller="votes", action="upvote")
+
+    
     map.connect('/about', controller="pages", action="about")
+    map.connect('/about/', controller="pages", action="about")
+    map.connect('/faq', controller="pages", action="faq")
+    map.connect('/faq/', controller="pages", action="faq")
     
     map.connect('/login', controller="login", action='signin')
     map.connect('/login/', controller="login", action='signin')
-#    map.connect('/login/signin_POST', controller="login", action='signin_POST')
+    map.connect('/login/signin_POST', controller="login", action='signin_POST')
     
     map.connect('/logout', controller="login", action='signout')
     map.connect('/logout/', controller="login", action='signout')
-
-    # Default Controller
-#    map.connect('/{action}', controller="pages")
-#    map.connect('/{action}/', controller="pages")
-#    map.connect('/{action}/{id}', controller="pages")
-#    map.connect('/{action}/{id}/', controller="pages")
     
-    # CUSTOM ROUTES HERE
     map.connect('/{controller}', action='index')
     map.connect('/{controller}/', action='index')
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/')
     map.connect('/{controller}/{action}/{id}')
-    
-    map.connect('/', controller='pages', action='index')
     
     return map

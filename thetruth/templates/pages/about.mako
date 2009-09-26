@@ -1,10 +1,6 @@
 <%inherit file="/layout-default.mako"/>\
 
 <%def name="content()">
-  <p>
-    ${c.message}
-  </p>
-
   <h1>About the Truth (tm)</h1>
 
   <p>

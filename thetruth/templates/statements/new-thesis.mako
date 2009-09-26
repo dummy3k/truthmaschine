@@ -3,12 +3,6 @@
 <%def name="content()">
   <h1>Create a new Thesis to discuss</h1>
 
-  % if c.message:
-  <p class="error">
-    ${c.message}
-  </p>
-  % endif
-  
   ${self.argumentInput(None, None)}
 </%def>
 <%def name="sidenav()">

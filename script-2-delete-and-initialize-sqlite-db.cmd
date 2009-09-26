@@ -4,6 +4,12 @@ SETLOCAL EnableDelayedExpansion
 SET DATABASE_FILE=database-dev.db
 SET CONFIG=development.ini
 SET DATA_FOLDER=data
+SET PASTER_EXE=pylons\Scripts\paster
+
+IF NOT EXIST "%PASTER_EXE%" (
+    SET PASTER_EXE=paster
+)
+
 
 IF EXIST "%DATABASE_FILE%" (
     ECHO ============================================
@@ -21,7 +27,7 @@ ECHO ============================================
 ECHO Running "setup-app" command to create the new database
 ECHO ============================================
 
-paster setup-app %CONFIG%
+%PASTER_EXE% setup-app %CONFIG%
 
 GOTO EXIT
 

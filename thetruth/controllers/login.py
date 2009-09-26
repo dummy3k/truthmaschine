@@ -5,6 +5,7 @@ from pylons.controllers.util import abort, redirect_to
 
 from thetruth.lib.base import BaseController, render
 from thetruth.model import meta
+
 import thetruth.model as model
 import thetruth.lib.helpers as h
 
@@ -13,6 +14,9 @@ from openid.store.sqlstore import SQLiteStore
 from openid import sreg
 from datetime import datetime
 from pylons.decorators import rest
+
+from webhelpers.pylonslib import Flash as _Flash
+flash = _Flash()
 
 log = logging.getLogger(__name__)
 
@@ -59,12 +63,9 @@ class LoginController(BaseController):
     def signin(self):
         log.debug("enter signin()")
         if c.user:
-            session['message'] = _('Already signed in.')
-            session.save()
-            redirect_to(action='index')
-            
+            h.flash("Already signed in.")
+            return redirect_to(controller='statements', action='index')
 
-        #session.clear()
         return render('login/signin.mako')
 
     def signin_POST(self):
@@ -75,23 +76,22 @@ class LoginController(BaseController):
         openid = request.params.get('openid', None)
         if openid is None:
             log.warn("openid is None")
-            session['message'] = problem_msg
-            session.save()
-            return render('login/account.signin')
+            h.flash(problem_msg)
+            return render('login/signin.mako')
         try:
             authrequest = self.consumer.begin(openid)
         except DiscoveryFailure, e:
             log.warn(e)
-            session['message'] = problem_msg
-            session.save()
+            h.flash(problem_msg)
             return redirect_to(action='signin')
+        
         sreg_request = sreg.SRegRequest(
             #required=['email'],
             optional=['fullname', 'timezone', 'language', 'email']
         )
 
         authrequest.addExtension(sreg_request)
-        redirecturl = authrequest.redirectURL(h.url_for(controller='pages', action='index', qualified=True),
+        redirecturl = authrequest.redirectURL(h.url_for(controller='statements', action='index', qualified=True),
             #h.url_for(controller='main', action='index', qualified=True),
             return_to=h.url_for(action='verified', qualified=True),
             immediate=False
@@ -100,6 +100,9 @@ class LoginController(BaseController):
         session['openid_session'] = self.openid_session
         session.save()
         return redirect_to(redirecturl)
+    
+    def success(self):
+        return redirect_to(controller='statements', action="index")
 
     def verified(self):
         log.debug("enter verified()")
@@ -140,7 +143,9 @@ class LoginController(BaseController):
             meta.Session.commit()
             #session.clear()
             session['openid'] = info.identity_url
-            session['message'] = "Signed in"
+            
+            h.flash("Signed in")
+            
             session['user'] = user
             session.save()
             log.debug('on verified before session check')
@@ -155,34 +160,30 @@ class LoginController(BaseController):
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)
-            session['message'] = problem_msg
-            session.save()
+            
+            h.flash(problem_msg)
             return redirect_to(action='signin')
 
     def signout(self):
         if not c.user:
-            session['message'] = "You are not signed in."
-            session.save()
-            redirect_to(action='showMessage')
+            h.flash("You are not signed in.")
+            redirect_to(controller='statements', action='index')
+            
         session.clear()
-        session['message'] = "You've been signed out."
-        session.save()
-        redirect_to(controller='pages', action='index')
+        h.flash("You've been signed out.")
+
+        redirect_to(controller='statements', action='index')
 
     def banned(self):
         if not c.user:
-            session['message'] = _("You are not signed in.")
-            session.save()
-            redirect_to(action='signin')
+            h.flash("You are not signed in.")
+            return redirect_to(action='signin')
         if not c.user.banned:
-            session['message'] = _("You are not banned.")
-            session.save()
-            redirect_to(action='index')
-        return render('login/account.banned')
+            h.flash("You are not banned.")
+            return redirect_to(controller='statements', action='index')
 
-    def showMessage(self):
-        return render('login/message.mako')
-        
+        return render('login/account-banned.mako')
+
     def signedin(self):
         return session['signedin']
         

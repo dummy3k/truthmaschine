@@ -7,11 +7,10 @@
         % for it in c.thesis:
             ${self.argumentOutput(it)}
         % endfor
-
         
         % if len(c.thesis) == 0: 
         <p class="error">
-            Sorry, no thesis found. Please <a href="${h.url_for(controller='pages', action='newThesis')}">create one</a>.
+            Sorry, no thesis found. Please <a href="${h.url_for(controller='statements', action='newThesis')}">create one</a>.
         </p>
         % endif
     </div>
@@ -26,6 +25,6 @@
 
 <h3>And remeber: Be nice! We are all in this together.</h3>
 
-<p>Contribute by creating <a href="${h.url_for(controller='pages', action='newThesis')}">your own Thesis</a>.</p>
+<p>Contribute by creating <a href="${h.url_for(controller='statements', action='newThesis')}">your own Thesis</a>.</p>
 
 </%def>

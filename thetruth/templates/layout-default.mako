@@ -1,16 +1,21 @@
-<%inherit file="/layout.mako"/>\
+<%inherit file="/statement-snippets.mako"/>\
 
 <%def name="main()">
-<table id="main" border="0" cellspacing="0" cellpadding="0">
-<tr><td valign="top">
-<div class="main">
-	${self.content()}
-</div>
-</td><td valign="top">
+           ${self.thesisarea()}
 
-<div class="sidenav">
-	${self.sidenav()}
-</div>
-</td></tr>
+	       <div class="main">
+	           ${self.content()}
+           </div>
+           
+	       <div class="sidenav">
+		      ${self.sidenav()}
+	  	   </div>
 </table>
+</%def>
+
+<%def name="thesisarea()">
+</%def>
+<%def name="content()">
+</%def>
+<%def name="sidenav()">
 </%def>

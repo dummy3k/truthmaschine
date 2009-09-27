@@ -18,36 +18,36 @@ msgstr ""
 "Generated-By: Babel 0.9.4\n"
 
 #: thetruth/controllers/login.py:118
-msgid "Ein Problem ist bei der Kommunikation mit dem OpenID server aufgetreten. Bitte versuchen Sie es erneut."
+msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 
 #: thetruth/controllers/login.py:155
-msgid "Angemeldet"
+msgid "Signed in"
 msgstr ""
 
 #: thetruth/controllers/login.py:189 thetruth/controllers/login.py:199
-msgid "Sie sind nicht angemeldet."
+msgid "You are not signed in."
 msgstr ""
 
 #: thetruth/controllers/login.py:193
-msgid "Sie wurden abgemeldet."
+msgid "You've been signed out."
 msgstr ""
 
 #: thetruth/controllers/login.py:202
-msgid "Sie sind nicht gebannt."
+msgid "You are not banned."
 msgstr ""
 
 #: thetruth/controllers/pages.py:37
-msgid "Was ist das hier?"
+msgid "What's going on?"
 msgstr ""
 
 #: thetruth/controllers/pages.py:41
-msgid "Häufige Fragen und Antworten"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 #: thetruth/controllers/statements.py:57 thetruth/templates/layout.mako:43
-msgid "Neue These"
-msgstr ""
+msgid "New Thesis"
+msgstr "Neue These"
 
 #: thetruth/controllers/statements.py:122
 #: thetruth/controllers/statements.py:207
@@ -55,11 +55,11 @@ msgid "Error: Only  characters are allowed!"
 msgstr ""
 
 #: thetruth/controllers/users.py:70
-msgid "Das sollte nicht passieren."
+msgid "That should not happen."
 msgstr ""
 
 #: thetruth/controllers/users.py:105
-msgid "Wahrheitsmaschine: Neuste Benutzer"
+msgid "the Truth: Latest Users"
 msgstr ""
 
 #: thetruth/controllers/users.py:107
@@ -67,16 +67,16 @@ msgid "Latest users joining Truth (tm)"
 msgstr ""
 
 #: thetruth/lib/rss.py:19
-msgid "Wahrheitsmaschine: Neuste Argumente"
+msgid "the Truth: Latest Statements"
 msgstr ""
 
 #: thetruth/lib/rss.py:21
-msgid "Neuste Argumente von der Wahrheitsmaschine"
+msgid "The latest statements from the Truth (tm)"
 msgstr ""
 
 #: thetruth/templates/layout.mako:42
-msgid "Alle Thesen"
-msgstr ""
+msgid "All Thesis"
+msgstr "Alle Thesen"
 
 #: thetruth/templates/layout.mako:44
 msgid "Whats going on?"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: thetruth/templates/login/signin.mako:4
 msgid "Sign in with OpenID"
-msgstr ""
+msgstr "Anmelden mit OpenID"
 
 #: thetruth/templates/login/signin.mako:21
 msgid "Dont forget to enable OpenID support with your preferred provider first!"

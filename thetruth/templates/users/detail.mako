@@ -9,7 +9,7 @@
 
         <table border=1>
             <tr>
-                <td><a href="http://gravatar.com">Gravatar</a></td>
+                <td><a href="http://en.gravatar.com/emails">Gravatar</a></td>
                 <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.jpg" /></td>
             </tr>
             <tr>

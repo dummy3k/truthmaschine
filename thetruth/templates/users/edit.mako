@@ -11,7 +11,7 @@
         <table border="0" cellpadding="4">
             <tr>
                 <th>Gravatar</th>
-                <td><a href="http://gravatar.com"><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.png" width="80" height="80" /></a></td>
+                <td><a href="http://en.gravatar.com/emails"><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.png" width="80" height="80" /></a></td>
             </tr>
             <tr>
                 <th>Id</th>

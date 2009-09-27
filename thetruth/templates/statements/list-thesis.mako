@@ -5,6 +5,13 @@
         <h1>${_('Top Thesis: ')}</h1>
 
         % for it in c.thesis:
+            <% 
+            if it.votes >= 0:
+                it.istrue = True
+            else:
+                it.istrue = False
+            %>
+        
             ${self.argumentOutput(it)}
         % endfor
         

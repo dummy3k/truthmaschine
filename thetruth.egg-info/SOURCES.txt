@@ -1,5 +1,4 @@
 MANIFEST.in
-README.txt
 setup.cfg
 setup.py
 db_repo/__init__.py

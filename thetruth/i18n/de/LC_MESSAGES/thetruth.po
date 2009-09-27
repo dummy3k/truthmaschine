@@ -19,31 +19,31 @@ msgstr ""
 
 #: thetruth/controllers/login.py:118
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
-msgstr ""
+msgstr "Ein Problem ist bei der Kommunikation zum OpenID Server aufgetreten. Bitte versuchen Sie es erneut."
 
 #: thetruth/controllers/login.py:155
 msgid "Signed in"
-msgstr ""
+msgstr "Angemeldet"
 
 #: thetruth/controllers/login.py:189 thetruth/controllers/login.py:199
 msgid "You are not signed in."
-msgstr ""
+msgstr "Sie sind nicht angemeldet."
 
 #: thetruth/controllers/login.py:193
 msgid "You've been signed out."
-msgstr ""
+msgstr "Sie wurde abgemeldet."
 
 #: thetruth/controllers/login.py:202
 msgid "You are not banned."
-msgstr ""
+msgstr "Sie sind nicht gebannt."
 
 #: thetruth/controllers/pages.py:37
 msgid "What's going on?"
-msgstr ""
+msgstr "Was ist hier los?"
 
 #: thetruth/controllers/pages.py:41
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Häufige Fragen und Antworten"
 
 #: thetruth/controllers/statements.py:57 thetruth/templates/layout.mako:43
 msgid "New Thesis"
@@ -52,27 +52,27 @@ msgstr "Neue These"
 #: thetruth/controllers/statements.py:122
 #: thetruth/controllers/statements.py:207
 msgid "Error: Only  characters are allowed!"
-msgstr ""
+msgstr "Fehler: Nur  Zeichen sind erlaubt!"
 
 #: thetruth/controllers/users.py:70
 msgid "That should not happen."
-msgstr ""
+msgstr "Das sollte nicht passieren."
 
 #: thetruth/controllers/users.py:105
 msgid "the Truth: Latest Users"
-msgstr ""
+msgstr "Wahrheitsmaschine: Neuste Benutzer"
 
 #: thetruth/controllers/users.py:107
 msgid "Latest users joining Truth (tm)"
-msgstr ""
+msgstr "Neuste Benutzer bei der Wahrheitsmaschine"
 
 #: thetruth/lib/rss.py:19
 msgid "the Truth: Latest Statements"
-msgstr ""
+msgstr "Wahrheitsmaschine: Neuste Thesen und Argumente"
 
 #: thetruth/lib/rss.py:21
 msgid "The latest statements from the Truth (tm)"
-msgstr ""
+msgstr "Neuste Thesen und Argumente der Wahrheitsmaschine"
 
 #: thetruth/templates/layout.mako:42
 msgid "All Thesis"
@@ -80,23 +80,23 @@ msgstr "Alle Thesen"
 
 #: thetruth/templates/layout.mako:44
 msgid "Whats going on?"
-msgstr ""
+msgstr "Was ist hier los?"
 
 #: thetruth/templates/layout.mako:48
 msgid "Signed in as"
-msgstr ""
+msgstr "Angemeldet als"
 
 #: thetruth/templates/layout.mako:51
 msgid "Logout"
-msgstr ""
+msgstr "Abmelden"
 
 #: thetruth/templates/layout.mako:53
 msgid "Login"
-msgstr ""
+msgstr "Anmelden"
 
 #: thetruth/templates/login/account-banned.mako:4
 msgid "You are banned"
-msgstr ""
+msgstr "Sie sind gebannt"
 
 #: thetruth/templates/login/signin.mako:4
 msgid "Sign in with OpenID"
@@ -104,47 +104,49 @@ msgstr "Anmelden mit OpenID"
 
 #: thetruth/templates/login/signin.mako:21
 msgid "Dont forget to enable OpenID support with your preferred provider first!"
-msgstr ""
+msgstr "Vergessen Sie nicht bei Ihrem bevorzugtem Provider zuerst den OpenID Support zu aktivieren!"
 
 #: thetruth/templates/login/signin.mako:41
 msgid "Your Account:"
-msgstr ""
+msgstr "Ihr Benutzername:"
 
 #: thetruth/templates/login/signin.mako:48
 msgid "What is OpenID?"
-msgstr ""
+msgstr "Was ist OpenID?"
 
 #: thetruth/templates/login/signin.mako:50
 msgid ""
 "Its a single username and password that allows you to log in to any "
 "OpenID-enabled site."
-msgstr ""
+msgstr "Mit OpenID kann man sich mit nur einem Benutzernamen und Passwort "
+"an allen Webseiten anmelden die OpenID unterstützen"
 
 #: thetruth/templates/login/signin.mako:52
 msgid "It works on thousands of websites."
-msgstr ""
+msgstr "Es funktioniert auf tausenden Webseiten."
 
 #: thetruth/templates/login/signin.mako:54
 msgid "Its an open standard."
-msgstr ""
+msgstr "Es ist ein offener Standart."
 
 #: thetruth/templates/login/signin.mako:56
 msgid ""
 "And we are too lazy to implement our own login process. Which is good, "
 "because this way we cant mess it up."
-msgstr ""
+msgstr "Und außerdem sind wir zu faul selbst einen Login Prozess zu entwickeln. "
+"Was gut für euch ist, denn so können wir daran nichts falsch machen."
 
 #: thetruth/templates/login/signin.mako:59
 msgid "learn more"
-msgstr ""
+msgstr "mehr lernen"
 
 #: thetruth/templates/login/signin.mako:60
 msgid "get one"
-msgstr ""
+msgstr "OpenID Account bekommen"
 
 #: thetruth/templates/pages/about.mako:4
 msgid "About the truthmachine"
-msgstr ""
+msgstr "Über die Wahrheitsmaschine"
 
 #: thetruth/templates/pages/about.mako:8
 msgid ""
@@ -157,92 +159,92 @@ msgid ""
 "true or false; how to define and identify truth; the roles that revealed "
 "and acquired knowledge play; and whether truth is subjective, relative, "
 "objective, or absolute."
-msgstr ""
+msgstr "(todo)"
 
 #: thetruth/templates/statements/list-thesis.mako:5
 msgid "Top Thesis: "
-msgstr ""
+msgstr "Top Thesen: "
 
 #: thetruth/templates/statements/list-thesis.mako:20
 msgid "What is this all about?"
-msgstr ""
+msgstr "Worum geht es hier?"
 
 #: thetruth/templates/statements/list-thesis.mako:22
 msgid "the truth (tm) is a collaborate web application for finding the truth. "
-msgstr ""
+msgstr "Die Wahrheitsmaschine ist eine Kolloberative Web Anwendung die dabei helfen soll die Wahrheit zu finden."
 
 #: thetruth/templates/statements/list-thesis.mako:23
 msgid ""
 "We do so, by <strong>collecting Pro and Contra Arguments, voting them, "
 "and digging deeper</strong>."
-msgstr ""
+msgstr "Wir machen das indem wir gemeinschaftlich Pro- und Kontra-Argumente sammeln, diese Bewerten, und tiefer graben."
 
 #: thetruth/templates/statements/list-thesis.mako:24
 msgid "Every Argument can be viewed as a Thesis with its own arguments. Try it!"
-msgstr ""
+msgstr "Jeder Argument kann wieder als These mit Unter-Argumenten gesehen werden. Versuch es!"
 
 #: thetruth/templates/statements/list-thesis.mako:26
 msgid "And remeber: Be nice! We are all in this together."
-msgstr ""
+msgstr "Und bitte: Seit nett zueinander! "
 
 #: thetruth/templates/statements/new-argument.mako:17
 msgid "Create a new Pro Argument"
-msgstr ""
+msgstr "Ein neues Pro-Argument erstellen"
 
 #: thetruth/templates/statements/new-argument.mako:19
 msgid "Create a new Contra Argument"
-msgstr ""
+msgstr "Ein neues Kontar-Argument erstellen"
 
 #: thetruth/templates/statements/new-argument.mako:30
 msgid "Read this"
-msgstr ""
+msgstr "Bitte lesen"
 
 #: thetruth/templates/statements/new-argument.mako:34
 msgid "Please back up your Arguments with links"
-msgstr ""
+msgstr "Bitte untermauert eure Argumente mit Links"
 
 #: thetruth/templates/statements/new-argument.mako:35
 msgid "Be polite"
-msgstr ""
+msgstr "Höflich bleiben"
 
 #: thetruth/templates/statements/new-thesis.mako:7
 msgid "Create a new Thesis to discuss"
-msgstr ""
+msgstr "Eine neue These erstellen"
 
 #: thetruth/templates/statements/new-thesis.mako:16
 msgid "Rules"
-msgstr ""
+msgstr "Regeln"
 
 #: thetruth/templates/statements/new-thesis.mako:20
 msgid "Try to back up your Arguments with links"
-msgstr ""
+msgstr "Bitte untermauert eure Argumente mit Links"
 
 #: thetruth/templates/users/detail.mako:16
 #: thetruth/templates/users/edit.mako:21 thetruth/templates/users/list.mako:11
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: thetruth/templates/users/edit.mako:25 thetruth/templates/users/list.mako:12
 msgid "eMail"
-msgstr ""
+msgstr "eMail"
 
 #: thetruth/templates/users/edit.mako:29 thetruth/templates/users/list.mako:13
 msgid "OpenId"
-msgstr ""
+msgstr "OpenID"
 
 #: thetruth/templates/users/list.mako:6
 msgid "User list"
-msgstr ""
+msgstr "Benutzer Liste"
 
 #: thetruth/templates/users/list.mako:14
 msgid "<i>Operations</i>"
-msgstr ""
+msgstr "Aktionen"
 
 #: thetruth/templates/users/list.mako:24
 msgid "Show"
-msgstr ""
+msgstr "Anzeigen"
 
 #: thetruth/templates/users/list.mako:25
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 

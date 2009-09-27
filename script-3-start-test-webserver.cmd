@@ -9,7 +9,7 @@ ECHO ============================================
 ECHO Running "paster serve --reload %CONFIG%"
 ECHO ============================================
 
-paster serve --reload %CONFIG%"
+paster serve --reload %CONFIG%
 GOTO EXIT
 
 :exit

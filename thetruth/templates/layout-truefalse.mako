@@ -16,10 +16,11 @@ ${self.thesisarea()}
                     Contra Arguments (${len(c.falseArguments)})
                 </p>
                 <p class="login">
+                    <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='contra')}">
                     % if c.user:
-                        <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='contra')}">Post a Contra-Argument</a>
+                        Post a Contra-Argument</a>
                     % else:
-                        <a class="small" href="${h.url_for(controller='login', action='signin', id=None)}">Login</a> to post an Contra-Argument
+                        Login</a> to post an Contra-Argument
                     % endif
             	</p>
             </td>
@@ -37,16 +38,11 @@ ${self.thesisarea()}
                     Pro Arguments (${len(c.trueArguments)})
                 </p>
                 <p class="login">
+                    <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='pro')}">
                     % if c.user:
-                        <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='pro')}">
-                            Post a Pro-Argument
-                        </a>
+                        Post a Pro-Argument</a>
                     % else:
-                        <a class="small" href="${h.url_for(controller='login', action='signin', id=None)}">
-                            Login
-                        </a>
-                        
-                        to post an Pro-Argument
+                        Login</a> to post an Pro-Argument
                     % endif
                 </p>
             </td>

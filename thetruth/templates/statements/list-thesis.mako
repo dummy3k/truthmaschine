@@ -2,7 +2,7 @@
 
 <%def name="content()">
     <div class="thesis">
-        <h1>Top Thesis: </h1>
+        <h1>${_('Top Thesis: ')}</h1>
 
         % for it in c.thesis:
             ${self.argumentOutput(it)}
@@ -17,13 +17,13 @@
 </%def>
 
 <%def name="sidenav()">
-<h1>What is this all about?</h1>
+<h1>${_('What is this all about?')}</h1>
 
-<p>the truth (tm) is a collaborate web application for finding the truth. </p>
-<p>We do so, by <strong>collecting Pro and Contra Arguments, voting them, and digging deeper</strong>.</p> 
-<p>Every Argument can be viewed as a Thesis with it's own arguments. Try it!</p>
+<p>${_('the truth (tm) is a collaborate web application for finding the truth. ')}</p>
+<p>${_('We do so, by <strong>collecting Pro and Contra Arguments, voting them, and digging deeper</strong>.')}</p> 
+<p>${_('Every Argument can be viewed as a Thesis with its own arguments. Try it!')}</p>
 
-<h3>And remeber: Be nice! We are all in this together.</h3>
+<h3>${_('And remeber: Be nice! We are all in this together.')}</h3>
 
 <p>Contribute by creating <a href="${h.url_for(controller='statements', action='newThesis')}">your own Thesis</a>.</p>
 

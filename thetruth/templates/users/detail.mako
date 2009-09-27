@@ -13,7 +13,7 @@
                 <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.jpg" /></td>
             </tr>
             <tr>
-                <td>Name</td>
+                <td>${_('Name')}</td>
                 <td>${c.user.name}</td>
             </tr>
         </table>

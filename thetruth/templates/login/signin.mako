@@ -1,7 +1,7 @@
 <%inherit file="/layout-default.mako"/>\
 
 <%def name="content()">
-    <h1>Sign in with OpenID</h1>
+    <h1>${_('Sign in with OpenID')}</h1>
 
     <form id="signin-form" method="post" action="${h.url_for(controller='login', action='signin_POST')}">
         <table border="0">
@@ -18,7 +18,7 @@
     
     <br/><br/>
     <p>
-        Don't forget to enable OpenID support with your preferred provider first!
+        ${_('Dont forget to enable OpenID support with your preferred provider first!')}
     </p>
 
     <div class="openid-links">
@@ -38,25 +38,25 @@
     </div>
     
     <div id="openid-prompt">
-        <div id="openid-provider-prompt">Your Account:</div>
+        <div id="openid-provider-prompt">${_('Your Account:')}</div>
         <div id="openid-provider-username"><input id="openid-username" name="openid-username" value="" /></div>
         <div id="openid-provider-login"><input id="openid-login" type="submit" value="Login" /></div>
         <input type="hidden" id="openid-provider-url" value="" />
     </div>
 </%def>
 <%def name="sidenav()">
-<h1>What is OpenID?</h1>
+<h1>${_('What is OpenID?')}</h1>
 
-<p>It's a single username and password that allows you to log in to any OpenID-enabled site.</p>
+<p>${_('Its a single username and password that allows you to log in to any OpenID-enabled site.')}</p>
 
-<p>It works on thousands of websites.</p>
+<p>${_('It works on thousands of websites.')}</p>
 
-<p>It's an open standard.</p>
+<p>${_('Its an open standard.')}</p>
 
-<p>And we are too lazy to implement our own login process. Which is good, because this way we can't mess it up.</p>
+<p>${_('And we are too lazy to implement our own login process. Which is good, because this way we cant mess it up.')}</p>
 
 <ul>
-    <li><a href="http://openid.net/what/">learn more</a></li>
-    <li><a href="http://openid.net/get/">get one</a></li>
+    <li><a href="http://openid.net/what/">${_('learn more')}</a></li>
+    <li><a href="http://openid.net/get/">${_('get one')}</a></li>
 </ul>
 </%def>

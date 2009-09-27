@@ -18,18 +18,19 @@
                 <td>${c.user.id}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>${_('Name')}</th>
                 <td><input type='text' name='name' value='${c.user.name}' /></td>
             </tr>
             <tr>
-                <th>eMail</th>
+                <th>${_('eMail')}</th>
                 <td><input type='text' name='email' value='${c.user.email}' /></td>
             </tr>
             <tr>
-                <th>OpenId</th>
+                <th>${_('OpenId')}</th>
                 <td>${c.user.openid}</td>
             </tr>
         </table>
+        
         <input type='hidden' name='id' value='${c.user.id}' />
         <input type='submit' value='Save' />
         </form>

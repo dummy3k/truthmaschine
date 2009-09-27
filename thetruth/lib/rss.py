@@ -16,9 +16,9 @@ def __get_rss__(query):
         myItems.append(newItem)
 
     rss = PyRSS2Gen.RSS2(
-        title = "the Truth: Latest Statements",
+        title = _("the Truth: Latest Statements"),
         link = config['base_url'],
-        description = "The latest statements from the Truth (tm)",
+        description = _("The latest statements from the Truth (tm)"),
         lastBuildDate = datetime.now(),
         items = myItems)
 

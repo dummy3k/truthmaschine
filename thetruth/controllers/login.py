@@ -13,7 +13,10 @@ from openid.consumer.consumer import Consumer, SUCCESS, FAILURE, DiscoveryFailur
 from openid.store.sqlstore import SQLiteStore 
 from openid import sreg
 from datetime import datetime
+from pylons.i18n import get_lang, set_lang
 from pylons.decorators import rest
+from thetruth.lib.base import *
+from gettext import gettext as _
 
 from webhelpers.pylonslib import Flash as _Flash
 flash = _Flash()
@@ -22,6 +25,9 @@ log = logging.getLogger(__name__)
 
 class LoginController(BaseController):
     def __before__(self):
+        if 'lang' in session:
+            set_lang(session['lang'])
+        
         self.openid_session = session.get("openid_session", {})
         log.debug("__before__.openid_session %s" % self.openid_session)
         
@@ -39,7 +45,9 @@ class LoginController(BaseController):
     def index(self):
         if not c.user:
             redirect_to(action='signin')
-        return render('login/account.index')
+            
+        h.flash("Already signed in.")
+        redirect_to(controller='statements', action="index")
 
 #    @validate(template='account.index', schema=schema.UpdateUser(), form='index',
 #              variable_decode=True)
@@ -107,7 +115,7 @@ class LoginController(BaseController):
     def verified(self):
         log.debug("enter verified()")
         log.debug("openid_session = %s" % self.openid_session)
-        problem_msg = 'A problem ocurred comunicating to your OpenID server. Please try again.'
+        problem_msg = _('A problem ocurred comunicating to your OpenID server. Please try again.')
         self.consumer = Consumer(self.openid_session, self.store)
         info = self.consumer.complete(request.params,
                                       (h.url_for(action='verified',
@@ -144,7 +152,7 @@ class LoginController(BaseController):
             #session.clear()
             session['openid'] = info.identity_url
             
-            h.flash("Signed in")
+            h.flash(_("Signed in"))
             
             session['user'] = user
             session.save()
@@ -156,7 +164,19 @@ class LoginController(BaseController):
 #                return redirect_to(url)
 
 #            log.debug('go to index')
-            return redirect_to(controller='pages', action='index')
+    
+            if 'returnTo' in session:
+                controller = session['returnTo'].get('controller', None)
+                action = session['returnTo'].get('action', None)
+                id = session['returnTo'].get('id', None)
+                istrue = istrue=session['returnTo'].get('istrue', None)
+    
+                del session['returnTo']
+                session.save()
+
+                return redirect_to(controller=controller, action=action, id=id, istrue=istrue)
+            else:
+                return redirect_to(controller='statements', action='index')
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)
@@ -166,20 +186,20 @@ class LoginController(BaseController):
 
     def signout(self):
         if not c.user:
-            h.flash("You are not signed in.")
+            h.flash(_("You are not signed in."))
             redirect_to(controller='statements', action='index')
             
         session.clear()
-        h.flash("You've been signed out.")
+        h.flash(_("You've been signed out."))
 
         redirect_to(controller='statements', action='index')
 
     def banned(self):
         if not c.user:
-            h.flash("You are not signed in.")
+            h.flash(_("You are not signed in."))
             return redirect_to(action='signin')
         if not c.user.banned:
-            h.flash("You are not banned.")
+            h.flash(_("You are not banned."))
             return redirect_to(controller='statements', action='index')
 
         return render('login/account-banned.mako')

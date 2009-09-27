@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='thetruth',
-    version='0.1',
+    version='0.2',
     description='',
     author='',
     author_email='',
@@ -21,12 +21,12 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     package_data={'thetruth': ['i18n/*/LC_MESSAGES/*.mo']},
-    #message_extractors={'thetruth': [
-    #        ('**.py', 'python', None),
-    #        ('templates/**.mako', 'mako', {'input_encoding': 'utf-8'}),
-    #        ('public/**', 'ignore', None)]},
+    message_extractors={'thetruth': [
+            ('**.py', 'python', None),
+            ('templates/**.mako', 'mako', {'input_encoding': 'utf-8'}),
+            ('public/**', 'ignore', None)]},
     zip_safe=False,
-    paster_plugins=['PasteScript', 'Pylons'],
+    paster_plugins=['PasteScript', 'Pylons', 'Babel'],
     entry_points="""
     [paste.app_factory]
     main = thetruth.config.middleware:make_app

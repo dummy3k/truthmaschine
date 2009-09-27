@@ -2,11 +2,14 @@ import logging
 
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
+from thetruth.lib.base import *
 
 from thetruth.lib.base import BaseController, render
 import thetruth.lib.helpers as h
 import thetruth.model as model
 from thetruth.model import meta
+from pylons.i18n import get_lang, set_lang
+from gettext import gettext as _
 
 from datetime import datetime
 from pylons import config
@@ -15,6 +18,9 @@ import PyRSS2Gen
 log = logging.getLogger(__name__)
     
 class UsersController(BaseController):
+    def __before__(self):
+        if 'lang' in session:
+            set_lang(session['lang'])
 
     def index(self):
         # Return a rendered template
@@ -61,7 +67,7 @@ class UsersController(BaseController):
         else:
             redirect_to(action='showPublicProfile', id=id)
                                 
-        return "That should not happen."
+        return _("That should not happen.")
 
     def saveProfile(self):
         if not c.user:
@@ -96,9 +102,9 @@ class UsersController(BaseController):
             myItems.append(newItem)
 
         rss = PyRSS2Gen.RSS2(
-            title = "the Truth: Latest Users",
+            title = _("the Truth: Latest Users"),
             link = config['base_url'],
-            description = "Latest users joining Truth (tm)",
+            description = _("Latest users joining Truth (tm)"),
             lastBuildDate = datetime.now(),
             items = myItems)
 

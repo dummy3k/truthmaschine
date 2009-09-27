@@ -12,6 +12,31 @@ body  {
 a {
 	outline: none;
 }
+
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 14px;	
+}
+
 #container { 
 	position: relative;
 	width: 980px;
@@ -145,6 +170,11 @@ a {
 	padding:10px;
 	background-color:#f0f0f0;
 }
+
+#mainContent div.title a {
+   font-size: 20px;
+}
+
 #mainContent div.pro {
 	margin: 0;
 	width: 460px;

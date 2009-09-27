@@ -39,18 +39,18 @@
       
       <div id="headmenu">
         <p align="right">
-            <a href="${h.url_for(controller='statements', action='index', id=None)}">All Thesis</a> | 
-            <a href="${h.url_for(controller='statements', action='newThesis', id=None)}">New Thesis</a> | 
-            <a href="${h.url_for(controller='pages', action='about', id=None)}">What's going on?</a> | 
+            <a href="${h.url_for(controller='statements', action='index', id=None)}">${_('All Thesis')}</a> | 
+            <a href="${h.url_for(controller='statements', action='newThesis', id=None)}">${_('New Thesis')}</a> | 
+            <a href="${h.url_for(controller='pages', action='about', id=None)}">${_('Whats going on?')}</a> | 
 
             % if c.user:
                 <a href="${h.url_for(controller='users', action='showProfile', id=c.user.id)}">
-                    Signed in as ${c.user.getDisplayName()}
+                    ${_('Signed in as')} ${c.user.getDisplayName()}
                 </a> |
                 
-                <a href="${h.url_for(controller='login', action='signout', id=None)}">Logout</a>
+                <a href="${h.url_for(controller='login', action='signout', id=None)}">${_('Logout')}</a>
             % else:
-                <a href="${h.url_for(controller='login', action='signin', id=None)}">Login</a>
+                <a href="${h.url_for(controller='login', action='signin', id=None)}">${_('Login')}</a>
             % endif
         </p>
     </div>

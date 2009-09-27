@@ -14,9 +14,9 @@
 
 <%def name="content()">
   % if c.istrue:
-    <h1>Create a new Pro Argument</h1>
+    <h1>${_('Create a new Pro Argument')}</h1>
   % else:
-    <h1>Create a new Contra Argument</h1>
+    <h1>${_('Create a new Contra Argument')}</h1>
   % endif
 
   % if c.previousMessage:  
@@ -27,11 +27,11 @@
 </%def>
 
 <%def name="sidenav()">
-    <h1>Read this</h1>
+    <h1>${_('Read this')}</h1>
     
     <ul>
         <li>You've got only ${config['statement_length']} characters</li>
-        <li>Please back up your Arguments with links</li>
-        <li>Be polite</li>
+        <li>${_('Please back up your Arguments with links')}</li>
+        <li>${_('Be polite')}</li>
     </ul>
 </%def>

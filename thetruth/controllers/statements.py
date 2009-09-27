@@ -7,6 +7,8 @@ from pylons.decorators.secure import authenticate_form
 
 from pylons import config
 from paste.deploy.converters import asbool
+from gettext import gettext as _
+
 
 from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
@@ -14,7 +16,9 @@ from thetruth.lib.markup import stripMarkup
 from thetruth.model import meta
 import thetruth.model as model
 import thetruth.lib.helpers as h
+from thetruth.lib.base import *
 
+from pylons.i18n import get_lang, set_lang
 from datetime import datetime
 
 log = logging.getLogger(__name__)
@@ -22,6 +26,10 @@ log = logging.getLogger(__name__)
 statement_length = config['statement_length']
 
 class StatementsController(BaseController):
+    def __before__(self):
+        if 'lang' in session:
+            set_lang(session['lang'])
+    
     def index(self):
         query = meta.Session.query(model.Statement)
         #rs = query.filter_by(parentid=None).select()
@@ -42,16 +50,18 @@ class StatementsController(BaseController):
     
     def newThesis(self):
         if not c.user:
-            c.returnTo = {'controller': 'statements', 'action': 'newThesis'}
-            redirect_to(controller='login', action='signin')
+            session['returnTo'] = {'controller': 'statements', 'action': 'newThesis'}
+            session.save()
+            redirect_to(controller='login', action='signin', id=None, istrue=None)
             
-        c.title = "New Thesis"
+        c.title = _("New Thesis")
         return render('/statements/new-thesis.mako')
 
     def newArgument(self, id, istrue):
         if not c.user:
-            c.returnTo = {'controller': 'statements', 'action': 'newArgument', 'id': id, 'istrue': istrue}
-            redirect_to(controller='login', action='signin')
+            session['returnTo'] = {'controller': 'statements', 'action': 'newArgument', 'id': id, 'istrue': istrue}
+            session.save()
+            redirect_to(controller='login', action='signin', id=None, istrue=None)
             
         query = meta.Session.query(model.Statement)
         c.thesis = query.filter_by(id=id).first()
@@ -76,7 +86,7 @@ class StatementsController(BaseController):
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
         c.title = c.thesis
 
-        c.feeds = [{'title':'Arguments for this thesis',
+        c.feeds = [{'title': 'Arguments for this thesis',
                     'link': config['base_url'] + h.url_for(controller='rss', action='showLastStatementsAsRssByStatement')}]
         
         if not c.thesis:
@@ -98,8 +108,7 @@ class StatementsController(BaseController):
     
     def createNew(self):
         if not c.user:
-            c.returnTo = {'controller': 'statements', 'action': 'createMew'}
-            redirect_to(controller='login', action='signin')
+            redirect_to(controller='login', action='signin', id=None, istrue=None)
                 
         message = request.params.get('msg', None)
         
@@ -110,7 +119,7 @@ class StatementsController(BaseController):
         isTrue = request.params.get('argistrue', None)
         
         if len(stripMarkup(message)) > statement_length:
-            h.flash("Error: Only " + statement_length + " characters are allowed!")
+            h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
 
             c.previousMessage = message
             
@@ -166,7 +175,8 @@ class StatementsController(BaseController):
     
     def edit_statement(self, id):
         if not c.user:
-            c.returnTo = {'controller': 'statements', 'action': 'edit_statement', 'id': id}
+            session['returnTo'] = {'controller': 'statements', 'action': 'edit_statement', 'id': id}
+            session.save()
             redirect_to(controller='login', action='signin')
         
         query = meta.Session.query(model.Statement)
@@ -194,7 +204,7 @@ class StatementsController(BaseController):
             
         newMsg = request.params.get('msg')
         if len(stripMarkup(newMsg)) > statement_length:
-            h.flash("Error: Only " + statement_length + " characters are allowed!")
+            h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
             c.previousMessage = newMsg
             return self.edit_statement(id)        
         

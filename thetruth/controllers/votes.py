@@ -4,9 +4,12 @@ from cgi import escape
 from pylons import request, response, session, tmpl_context as c
 from pylons.controllers.util import abort, redirect_to
 from pylons.decorators.secure import authenticate_form
+from thetruth.lib.base import *
 
 from pylons import config
 from paste.deploy.converters import asbool
+from pylons.i18n import get_lang, set_lang
+from gettext import gettext as _
 
 from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
@@ -22,6 +25,9 @@ log = logging.getLogger(__name__)
 
 
 class VotesController(BaseController):
+    def __before(self):
+        if 'lang' in session:
+            set_lang(session['lang'])
     
     def upvote(self, id):
         if not c.user:

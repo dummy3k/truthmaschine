@@ -18,35 +18,35 @@ msgstr ""
 "Generated-By: Babel 0.9.4\n"
 
 #: thetruth/controllers/login.py:118
-msgid "A problem ocurred comunicating to your OpenID server. Please try again."
+msgid "Ein Problem ist bei der Kommunikation mit dem OpenID server aufgetreten. Bitte versuchen Sie es erneut."
 msgstr ""
 
 #: thetruth/controllers/login.py:155
-msgid "Signed in"
+msgid "Angemeldet"
 msgstr ""
 
 #: thetruth/controllers/login.py:189 thetruth/controllers/login.py:199
-msgid "You are not signed in."
+msgid "Sie sind nicht angemeldet."
 msgstr ""
 
 #: thetruth/controllers/login.py:193
-msgid "You've been signed out."
+msgid "Sie wurden abgemeldet."
 msgstr ""
 
 #: thetruth/controllers/login.py:202
-msgid "You are not banned."
+msgid "Sie sind nicht gebannt."
 msgstr ""
 
 #: thetruth/controllers/pages.py:37
-msgid "What's going on?"
+msgid "Was ist das hier?"
 msgstr ""
 
 #: thetruth/controllers/pages.py:41
-msgid "Frequently Asked Questions"
+msgid "Häufige Fragen und Antworten"
 msgstr ""
 
 #: thetruth/controllers/statements.py:57 thetruth/templates/layout.mako:43
-msgid "New Thesis"
+msgid "Neue These"
 msgstr ""
 
 #: thetruth/controllers/statements.py:122
@@ -55,11 +55,11 @@ msgid "Error: Only  characters are allowed!"
 msgstr ""
 
 #: thetruth/controllers/users.py:70
-msgid "That should not happen."
+msgid "Das sollte nicht passieren."
 msgstr ""
 
 #: thetruth/controllers/users.py:105
-msgid "the Truth: Latest Users"
+msgid "Wahrheitsmaschine: Neuste Benutzer"
 msgstr ""
 
 #: thetruth/controllers/users.py:107
@@ -67,15 +67,15 @@ msgid "Latest users joining Truth (tm)"
 msgstr ""
 
 #: thetruth/lib/rss.py:19
-msgid "the Truth: Latest Statements"
+msgid "Wahrheitsmaschine: Neuste Argumente"
 msgstr ""
 
 #: thetruth/lib/rss.py:21
-msgid "The latest statements from the Truth (tm)"
+msgid "Neuste Argumente von der Wahrheitsmaschine"
 msgstr ""
 
 #: thetruth/templates/layout.mako:42
-msgid "All Thesis"
+msgid "Alle Thesen"
 msgstr ""
 
 #: thetruth/templates/layout.mako:44

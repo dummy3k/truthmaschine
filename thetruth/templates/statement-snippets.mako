@@ -32,7 +32,7 @@
     <br/><br/>
     
     <p>
-        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google].
+        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> your text using the following syntax: [http://www.google.de|Google].
     </p>
     <p>
         Links do not count into your ${config['statement_length']} character limit.
@@ -63,7 +63,7 @@
     <br/><br/>
     
     <p>
-        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google].
+        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> your text using the following syntax: [http://www.google.de|Google].
     </p>
     <p>
         Links do not count into your ${config['statement_length']} character limit.
@@ -90,7 +90,7 @@
     <br/>
 
     <p class="hint">
-        <strong>Hint:</strong> You can link stuff with: [http://www.google.de|Google]. <br/>
+        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> stuff with: [http://www.google.de|Google]. <br/>
     </p>
     <p>
         Links do not count into your ${config['statement_length']} character limit.

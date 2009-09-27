@@ -60,9 +60,9 @@ p {
 }
 #headmenu {
 	position: absolute;
-	left: 434px;
+	right: 0px;
 	top: 10px;
-	width: 548px;
+	width: 600px;
 	height:40px;
 }
 #headmenu p {
@@ -82,7 +82,7 @@ p {
 }
 #search {
 	position: absolute;
-	left: 757px;
+	right: 3px;
 	top: 45px;
 	width:225px;
 	height:29px;

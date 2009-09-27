@@ -5,7 +5,9 @@
   		var len = $("#new-argument").val().replace(markupRegex, '$2').length;
   		$("#characters-left").html("(" + (statement_length - len) + " characters left)");
   		
-  		$("#preview p").html($("#new-argument").val().replace(markupRegex, '<a href="$1">$2</a>'))
+  		var escapedHTML=$("#new-argument").val().replace(markupRegex, '<a href="$1">$2</a>').split("&").join("&amp;").split( "<").join("&lt;").split(">").join("&gt;")
+  		
+  		$("#preview p").html(escapedHTML)
   		
   	});  	
 

@@ -32,8 +32,15 @@ class LanguageController(BaseController):
     def index(self):
         return redirect_to(controller='statements', action='index')
 
-    def set(self):
-        session['lang'] = request.params.get('language') 
+    def set(self, id):
+        if id == 'de':
+            session['lang'] = id
+        elif id == 'en':
+            del session['lang']
+        else:
+            h.flash("Unknown language '" + id + "'")
+            return redirect_to(controller='statements', action='index')
+        
         session.save()
         self.index()
         

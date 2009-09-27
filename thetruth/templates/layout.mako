@@ -39,6 +39,22 @@
       
       <div id="headmenu">
         <p align="right">
+            <a href="${h.url_for(controller='language', action='set', id='de')}">
+                % if 'lang' in session:
+                    <img src="/img/de.png" />
+                % else:
+                    <img src="/img/de-inactive.png" />
+                % endif
+            </a>
+            
+            <a href="${h.url_for(controller='language', action='set', id='en')}">
+                % if 'lang' in session:
+                    <img src="/img/gb-inactive.png" />
+                % else:
+                    <img src="/img/gb.png" />
+                % endif
+            </a> |
+        
             <a href="${h.url_for(controller='statements', action='index', id=None)}">${_('All Thesis')}</a> | 
             <a href="${h.url_for(controller='statements', action='newThesis', id=None)}">${_('New Thesis')}</a> | 
             <a href="${h.url_for(controller='pages', action='about', id=None)}">${_('Whats going on?')}</a> | 

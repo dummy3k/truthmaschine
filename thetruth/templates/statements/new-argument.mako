@@ -20,9 +20,17 @@
   % endif
 
   % if c.previousMessage:  
-    ${self.argumentInput(c.thesisid, c.istrue, previousMessage)}
+    % if c.istrue:
+        ${self.argumentInput(c.thesisid, c.istrue, previousMessage, False)}
+    %else:
+        ${self.argumentInput(c.thesisid, c.istrue, previousMessage, True)}
+    %endif
   % else:
-    ${self.argumentInput(c.thesisid, c.istrue, '')}
+    % if c.istrue:
+        ${self.argumentInput(c.thesisid, c.istrue, '', False)}
+    %else:
+        ${self.argumentInput(c.thesisid, c.istrue, '', True)}
+    %endif
   % endif
 </%def>
 

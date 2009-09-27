@@ -7,9 +7,9 @@
   <h1>${_('Create a new Thesis to discuss')}</h1>
 
   % if c.previousMessage:
-    ${self.argumentInput(None, None, c.previousMessage)}
+    ${self.topicInput(None, None, c.previousMessage)}
   % else:
-    ${self.argumentInput(None, None, '')}
+    ${self.topicInput(None, None, '')}
   % endif
 </%def>
 <%def name="sidenav()">

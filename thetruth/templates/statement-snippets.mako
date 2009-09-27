@@ -4,7 +4,7 @@
     from pylons import config
 %>
 <%inherit file="/layout.mako"/>\
-<%def name="argumentInput(parentid, istrue, defaultText)">
+<%def name="argumentInput(parentid, istrue, defaultText, contra)">
 <form method="post" action="${h.url_for(controller='statements', action='createNew', istrue=None, id=None)}">
     <input type="hidden" name="argistrue" value="${istrue}" />
     % if parentid:
@@ -13,18 +13,49 @@
 
     <table border="0">
         <tr>
-            <td>
-                <textarea name="msg" id="new-argument">${defaultText}</textarea>
-            </td>
-            <td valign="bottom">
-                <input type="submit" value="Submit" />
-            </td>
+            % if contra:
+                <td colspan="2"><textarea name="msg" id="new-argument" class="postContra">${defaultText}</textarea></td>
+            % else:
+                <td colspan="2"><textarea name="msg" id="new-argument" class="postPro">${defaultText}</textarea></td>
+            %endif
         </tr>
         <tr>
-            <td colspan="2">
-                <span id="characters-left">
-                    (${int(config['statement_length'])-len(defaultText)} characters left)
-                </span>
+            <td>
+                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+            </td>
+            <td align="right">
+                <input type="submit" value="Submit" class="submit" />
+            </td>
+        </tr>
+    </table>
+    
+    <br/><br/>
+    
+    <p>
+        <strong>Hint:</strong> You can link your text using the following syntax: [http://www.google.de|Google].
+    </p>
+    <p>
+        Links do not count into your ${config['statement_length']} character limit.
+    </p>
+</form>
+</%def>
+<%def name="topicInput(parentid, istrue, defaultText)">
+<form method="post" action="${h.url_for(controller='statements', action='createNew', istrue=None, id=None)}">
+    <input type="hidden" name="argistrue" value="${istrue}" />
+    % if parentid:
+        <input type="hidden" name="parentid" value="${parentid}" />
+    % endif
+
+    <table border="0">
+        <tr>
+            <td colspan="2"><textarea name="msg" id="new-argument">${defaultText}</textarea></td>
+        </tr>
+        <tr>
+            <td>
+                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+            </td>
+            <td align="right">
+                <input type="submit" value="Submit" class="submit" />
             </td>
         </tr>
     </table>
@@ -42,21 +73,16 @@
 <%def name="argumentEdit(argumentId, defaultText)">
 <form method="post" action="${h.url_for(action='post_edit_statement', id=argumentId)}">
     <input type="hidden" name="id" value="${argumentId}" />
-       
-    <table border="0">
+           <table border="0">
         <tr>
-            <td>
-                <textarea name="msg" id="new-argument">${defaultText}</textarea>
-            </td>
-            <td valign="bottom">
-                <input type="submit" value="Submit" />
-            </td>
+            <td colspan="2"><textarea name="msg" id="new-argument">${defaultText}</textarea></td>
         </tr>
         <tr>
-            <td colspan="2">
-                <span id="characters-left">
-                    (${int(config['statement_length'])-len(defaultText)} characters left)
-                </span>
+            <td>
+                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+            </td>
+            <td align="right">
+                <input type="submit" value="Submit" class="submit" />
             </td>
         </tr>
     </table>
@@ -95,7 +121,7 @@
                 ${convertToHumanReadable(argument.created)}
             </td>
             <td width="150" align="right" valign="bottom">
-                <a href="${h.url_for(action='show', id=argument.id)}">
+                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
                     ${argument.true_count} pro / ${argument.false_count} contra
                 </a>
             </td>
@@ -186,7 +212,7 @@
 
                 % if c.user and c.user.allow_edit(argument):
                 <p>
-                    <a href="${h.url_for(action='edit_statement', id=argument.id)}">
+                    <a href="${h.url_for(action='edit_statement', id=argument.id)}" class="edit">
                         edit
                     </a>
                 </p>
@@ -201,7 +227,7 @@
                         </td>
                         <td valign="top">
                             <strong>
-                                <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">
+                                <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}" class="normal">
                                     ${argument.user.getDisplayName()}
                                 </a>
                             </strong>

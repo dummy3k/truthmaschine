@@ -1,9 +1,12 @@
  $(document).ready(function(){
   	$('#new-argument').keyup(function(){
-  		var stripMarkupRegex = /\[(.*?)\|(.*?)\]/;
-  		
-  		var len = $("#new-argument").val().replace(stripMarkupRegex, '\\2').length;
+  		var markupRegex = /\[(.*?)\|(.*?)\]/g;
+
+  		var len = $("#new-argument").val().replace(markupRegex, '$2').length;
   		$("#characters-left").html("(" + (statement_length - len) + " characters left)");
+  		
+  		$("#preview p").html($("#new-argument").val().replace(markupRegex, '<a href="$1">$2</a>'))
+  		
   	});  	
 
 	 $('#openid-login').click(function(){

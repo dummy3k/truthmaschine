@@ -83,6 +83,9 @@ class StatementsController(BaseController):
     
     
     def show(self, id):
+        if id == '0':
+            return redirect_to(action='index', id=None)
+                
         query = meta.Session.query(model.Statement)
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
         c.title = c.thesis
@@ -119,7 +122,7 @@ class StatementsController(BaseController):
         parentId = request.params.get('parentid', None)
         isTrue = request.params.get('argistrue', None)
         
-        if len(stripMarkup(message)) > statement_length:
+        if len(stripMarkup(message)) > int(statement_length):
             h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
 
             c.previousMessage = message
@@ -204,7 +207,8 @@ class StatementsController(BaseController):
             raise Exception('no you dont')
             
         newMsg = request.params.get('msg')
-        if len(stripMarkup(newMsg)) > statement_length:
+        
+        if len(stripMarkup(newMsg)) > int(statement_length):
             h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
             c.previousMessage = newMsg
             return self.edit_statement(id)        

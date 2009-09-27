@@ -392,3 +392,8 @@ input.openid-login-button {
     float: left;
     margin: 20px 0px;
 }
+
+#preview {
+	padding-top: 30px;
+    clear: left;
+}

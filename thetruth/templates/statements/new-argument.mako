@@ -1,7 +1,8 @@
 <%!
     from pylons import config
+    import thetruth.model as model
+    from datetime import datetime
 %>
-
 <%inherit file="/layout-default.mako"/>
 
 
@@ -21,9 +22,9 @@
 
   % if c.previousMessage:  
     % if c.istrue:
-        ${self.argumentInput(c.thesisid, c.istrue, previousMessage, False)}
+        ${self.argumentInput(c.thesisid, c.istrue, c.previousMessage, False)}
     %else:
-        ${self.argumentInput(c.thesisid, c.istrue, previousMessage, True)}
+        ${self.argumentInput(c.thesisid, c.istrue, c.previousMessage, True)}
     %endif
   % else:
     % if c.istrue:
@@ -41,5 +42,23 @@
         <li>You've got only ${config['statement_length']} characters</li>
         <li>${_('Please back up your Arguments with links')}</li>
         <li>${_('Be polite')}</li>
-    </ul>
+    </ul>    
+    
+    <div id="preview">
+    <h3>${_('Preview: ')}</h1>
+    <% 
+        argument = model.Statement()
+        argument.id = 0
+        argument.istrue = c.istrue
+        argument.user = c.user
+        if c.previousMessage:
+            argument.message = c.previousMessage
+        else:
+            argument.message = ''
+        argument.created = datetime.now()
+        argument.true_count = 0
+        argument.false_count = 0
+    %>
+    ${self.argumentOutput(argument)}
+  </div>
 </%def>

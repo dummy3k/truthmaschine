@@ -1,4 +1,4 @@
-# German translations for thetruth.
+﻿# German translations for thetruth.
 # Copyright (C) 2009 ORGANIZATION
 # This file is distributed under the same license as the thetruth project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -42,7 +42,7 @@ msgid "Was ist das hier?"
 msgstr ""
 
 #: thetruth/controllers/pages.py:41
-msgid "H�ufige Fragen und Antworten"
+msgid "Häufige Fragen und Antworten"
 msgstr ""
 
 #: thetruth/controllers/statements.py:57 thetruth/templates/layout.mako:43

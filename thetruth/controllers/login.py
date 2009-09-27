@@ -27,6 +27,7 @@ class LoginController(BaseController):
     def __before__(self):
         if 'lang' in session:
             set_lang(session['lang'])
+        pass
         
         self.openid_session = session.get("openid_session", {})
         log.debug("__before__.openid_session %s" % self.openid_session)

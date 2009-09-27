@@ -29,6 +29,7 @@ class JsController(BaseController):
     def __before__(self):
         if 'lang' in session:
             set_lang(session['lang'])
+        pass
     
     def config(self):
         c.statement_length = config['statement_length']

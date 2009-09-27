@@ -27,11 +27,13 @@ class LanguageController(BaseController):
     def __before__(self):
         if 'lang' in session:
             set_lang(session['lang'])
+        pass
     
     def index(self):
-        redirect_to(action='showLastStatementsAsRss')
+        return redirect_to(controller='statements', action='index')
 
-    def set_lang(self, language):
-        session['lang'] = language
+    def set(self):
+        session['lang'] = request.params.get('language') 
         session.save()
+        self.index()
         

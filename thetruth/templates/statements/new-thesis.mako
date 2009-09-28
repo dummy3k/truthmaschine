@@ -20,7 +20,7 @@
     <h1>${_('Rules')}</h1>
     
     <ul>
-        <li>You've got only ${config['statement_length']} characters</li>
+        <li>${_('Youve got only %s characters') % config['statement_length']}</li>
         <li>${_('Try to back up your Arguments with links')}</li>
     </ul>  
     

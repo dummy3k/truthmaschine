@@ -86,21 +86,24 @@
         </table>
     </div>
 		
-% if flashes:
-    % for flash in flashes:
-        <div class="ui-state-highlight ui-corner-all">
-            <span class="ui-icon ui-icon-info">&nbsp;</span>
-            <span class="flash-text">${flash}</span>
-        </div>
-    % endfor
-% endif
+    % if flashes:
+        % for flash in flashes:
+            <div class="ui-state-highlight ui-corner-all">
+                <span class="ui-icon ui-icon-info">&nbsp;</span>
+                <span class="flash-text">${flash}</span>
+            </div>
+        % endfor
+    % endif
 
 
       <div id="mainContent" onclick="document.forms.search.input.value='Search...';">
         ${self.main()}
 
         <div id="footer">
-        <a href="${h.url_for(controller='statements', action='index', id=None)}">truthmachine</a>. user contributed content licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a> with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/">attribution required</a> like <a href="http://www.stackoverflow.com">stackoverflow</a>
+            <a href="${h.url_for(controller='statements', action='index', id=None)}">truthmachine</a>. 
+            user contributed content licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a> 
+            with attribution required
+            like <a href="http://www.stackoverflow.com">stackoverflow</a>
         </div>
       </div>
   </div>

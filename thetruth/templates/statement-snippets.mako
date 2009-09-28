@@ -21,10 +21,12 @@
         </tr>
         <tr>
             <td>
-                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+                <span id="characters-left">
+                    ${_('(%s) characters left') % (int(config['statement_length'])-len(defaultText)) | n }
+                </span>
             </td>
             <td align="right">
-                <input type="submit" value="Submit" class="submit" />
+                <input type="submit" value="${_('Submit')}" class="submit" />
             </td>
         </tr>
     </table>
@@ -32,10 +34,10 @@
     <br/><br/>
     
     <p>
-        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> your text using the following syntax: [http://www.google.de|Google].
+        ${_('<strong>Hint:</strong> You can %s link %s your text using the following syntax: [http://www.google.de|Google].') % ("<a href=\"javascript: link_marked_text()\">", "</a>") | n}
     </p>
     <p>
-        Links do not count into your ${config['statement_length']} character limit.
+        ${_('Links do not count into your %s character limit.') % config['statement_length'] }
     </p>
 </form>
 </%def>
@@ -52,10 +54,12 @@
         </tr>
         <tr>
             <td>
-                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+                <span id="characters-left">
+                    ${_('(%s) characters left') % (int(config['statement_length'])-len(defaultText)) | n }
+                </span>
             </td>
             <td align="right">
-                <input type="submit" value="Submit" class="submit" />
+                <input type="submit" value="${_('Submit')}" class="submit" />
             </td>
         </tr>
     </table>
@@ -63,10 +67,10 @@
     <br/><br/>
     
     <p>
-        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> your text using the following syntax: [http://www.google.de|Google].
+        ${_('<strong>Hint:</strong> You can %s link %s your text using the following syntax: [http://www.google.de|Google].') % ("<a href=\"javascript: link_marked_text()\">", "</a>") | n}
     </p>
     <p>
-        Links do not count into your ${config['statement_length']} character limit.
+        ${_('Links do not count into your %s character limit.') % config['statement_length'] }
     </p>
 </form>
 </%def>
@@ -79,21 +83,23 @@
         </tr>
         <tr>
             <td>
-                <span id="characters-left">(${int(config['statement_length'])-len(defaultText)} characters left)</span>
+                <span id="characters-left">
+                    ${_('(%s) characters left') % (int(config['statement_length'])-len(defaultText)) | n }
+                </span>
             </td>
             <td align="right">
-                <input type="submit" value="Submit" class="submit" />
+                <input type="submit" value="${_('Submit')}" class="submit" />
             </td>
         </tr>
     </table>
     
     <br/>
 
-    <p class="hint">
-        <strong>Hint:</strong> You can <a href="javascript: link_marked_text()">link</a> stuff with: [http://www.google.de|Google]. <br/>
+    <p>
+        ${_('<strong>Hint:</strong> You can %s link %s your text using the following syntax: [http://www.google.de|Google].') % ("<a href=\"javascript: link_marked_text()\">", "</a>") | n}
     </p>
     <p>
-        Links do not count into your ${config['statement_length']} character limit.
+        ${_('Links do not count into your %s character limit.') % config['statement_length'] }
     </p>
 </form>
 </%def>
@@ -118,7 +124,7 @@
 						% if argument.istrue == True:
 				            <td width="280" align="left" valign="bottom">
 				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-				                    ${argument.true_count} pro / ${argument.false_count} contra
+				                    ${_('%s pro / %s contra') % (argument.true_count, argument.false_count)}
 				                </a>
 				            </td>
 						% endif			        	
@@ -140,7 +146,7 @@
 						% if argument.istrue == False:
 				            <td width="150" align="right" valign="bottom">
 				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-				                    ${argument.true_count} pro / ${argument.false_count} contra
+                                    ${_('%s pro / %s contra') % (argument.true_count, argument.false_count)}
 				                </a>
 				            </td>
 						% endif			        	
@@ -178,7 +184,7 @@
     <tr>
         <td valign="top">
             <p class="small">
-                <strong>Parent Thesis:</strong>
+                <strong>${_('Parent Thesis:')}</strong>
             </p>
             <ul class="parent">
                 <li>
@@ -240,7 +246,7 @@
                 % if c.user and c.user.allow_edit(argument):
                 <p>
                     <a href="${h.url_for(action='edit_statement', id=argument.id)}" class="edit">
-                        edit
+                        ${_('edit')}
                     </a>
                 </p>
                 % endif      

@@ -13,14 +13,14 @@ ${self.thesisarea()}
             </td>
             <td>
                 <p>
-                    Contra Arguments (${len(c.falseArguments)})
+                    ${_('Contra Arguments')} (${len(c.falseArguments)})
                 </p>
                 <p class="login">
                     <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='contra')}">
                     % if c.user:
-                        Post a Contra-Argument</a>
+                        ${_('Post a Contra-Argument')}</a>
                     % else:
-                        Login</a> to post an Contra-Argument
+                        ${_('Login</a> to post an Contra-Argument')}
                     % endif
             	</p>
             </td>
@@ -35,14 +35,14 @@ ${self.thesisarea()}
             </td>
             <td>
                 <p>
-                    Pro Arguments (${len(c.trueArguments)})
+                    ${_('Pro Arguments')} (${len(c.trueArguments)})
                 </p>
                 <p class="login">
                     <a class="small" href="${h.url_for(controller='statements', action='newArgument', id=c.thesis.id, istrue='pro')}">
                     % if c.user:
-                        Post a Pro-Argument</a>
+                        ${_('Post a Pro-Argument')}</a>
                     % else:
-                        Login</a> to post an Pro-Argument
+                        ${_('Login</a> to post an Pro-Argument')}
                     % endif
                 </p>
             </td>

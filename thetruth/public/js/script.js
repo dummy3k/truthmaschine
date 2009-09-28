@@ -1,4 +1,8 @@
  $(document).ready(function(){
+	$('.contra,.pro').click(function(event) {
+		document.location = $(this).find('.procontra')[0].href;
+	});
+	
   	$('#new-argument').keyup(function(){
   		var markupRegex = /\[(.*?)\|(.*?)\]/g;
 

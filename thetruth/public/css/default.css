@@ -217,6 +217,7 @@ p {
 	font-size:14px;
 	margin-bottom: 10px;
 	padding-top: 3px;
+	cursor: pointer;
 }
 #mainContent div.contra {
 	margin: 0;
@@ -227,6 +228,7 @@ p {
 	font-size:14px;
 	margin-bottom: 10px;
 	padding-top: 3px;
+	cursor: pointer;
 }
 #mainContent div.right {
 	margin: 0;

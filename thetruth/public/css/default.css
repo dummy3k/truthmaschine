@@ -210,26 +210,36 @@ p {
 
 #mainContent div.pro {
 	margin: 0;
-	width: 460px;
-	padding:10px;
-	border-right: 5px solid #0a6005;
+	width: 475px;
 	background-color:#edf5ec;
 	font-size:14px;
 	margin-bottom: 10px;
-	padding-top: 3px;
 	cursor: pointer;
 }
+
 #mainContent div.contra {
 	margin: 0;
-	width: 460px;
-	padding:10px;
-	border-left: 5px solid #691110;
-	background-color:#f5ecec;
+	width: 475px;
 	font-size:14px;
+	background-color: #F5ECEC;
 	margin-bottom: 10px;
-	padding-top: 3px;
 	cursor: pointer;
 }
+#mainContent div.contra td.votes {
+	width: 30px;
+	background-color: #691110;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+#mainContent div.pro td.votes {
+	width: 30px;
+	background-color: #0a6005;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
 #mainContent div.right {
 	margin: 0;
 	float: right;

@@ -103,30 +103,57 @@
 % else:
     <div class="contra">
 % endif
-    <p>${argument.message | n,h,renderMarkup}</p>
-    <br />
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="avatar">
-        <tr>
-            <td width="40" valign="top">
-                <img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" />
-            </td>
-            <td valign="top">
-                <strong>
-                    <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">
-                        ${argument.user.getDisplayName()}
-                    </a>
-                </strong>
-                <br />
-                
-                ${convertToHumanReadable(argument.created)}
-            </td>
-            <td width="150" align="right" valign="bottom">
-                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-                    ${argument.true_count} pro / ${argument.false_count} contra
-                </a>
-            </td>
-        </tr>
-    </table>
+	<table border="0" width="100%">
+		<tr>
+			% if argument.istrue == False:
+				<td class="votes"> 
+					${argument.votes}
+				</td>
+			% endif
+			<td>
+			    <p>${argument.message | n,h,renderMarkup}</p>
+			    <br />
+			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="avatar">
+			        <tr>
+						% if argument.istrue == True:
+				            <td width="300" align="left" valign="bottom">
+				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+				                    ${argument.true_count} pro / ${argument.false_count} contra
+				                </a>
+				            </td>
+						% endif			        	
+			        
+			        
+			            <td width="40" valign="top">
+			                <img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" />
+			            </td>
+			            <td valign="top">
+			                <strong>
+			                    <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">
+			                        ${argument.user.getDisplayName()}
+			                    </a>
+			                </strong>
+			                <br />
+			                
+			                ${convertToHumanReadable(argument.created)}
+			            </td>
+						% if argument.istrue == False:
+				            <td width="150" align="right" valign="bottom">
+				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+				                    ${argument.true_count} pro / ${argument.false_count} contra
+				                </a>
+				            </td>
+						% endif			        	
+			        </tr>
+			    </table>
+			</td>
+			% if argument.istrue == True:
+				<td class="votes"> 
+					${argument.votes}
+				</td>
+			% endif
+		</tr>
+	</table>
 </div>
 </%def>
 

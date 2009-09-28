@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2009-09-27 10:16+0000\n"
+"POT-Creation-Date: 2009-09-28 23:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,51 +17,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:118
+#: thetruth/controllers/login.py:119
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 
-#: thetruth/controllers/login.py:155
+#: thetruth/controllers/login.py:158
 msgid "Signed in"
 msgstr ""
 
-#: thetruth/controllers/login.py:189 thetruth/controllers/login.py:199
+#: thetruth/controllers/login.py:192 thetruth/controllers/login.py:202
 msgid "You are not signed in."
 msgstr ""
 
-#: thetruth/controllers/login.py:193
+#: thetruth/controllers/login.py:196
 msgid "You've been signed out."
 msgstr ""
 
-#: thetruth/controllers/login.py:202
+#: thetruth/controllers/login.py:205
 msgid "You are not banned."
 msgstr ""
 
-#: thetruth/controllers/pages.py:37
+#: thetruth/controllers/pages.py:36
 msgid "What's going on?"
 msgstr ""
 
-#: thetruth/controllers/pages.py:41
+#: thetruth/controllers/pages.py:40
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: thetruth/controllers/statements.py:57 thetruth/templates/layout.mako:43
+#: thetruth/controllers/statements.py:56 thetruth/templates/layout.mako:59
 msgid "New Thesis"
 msgstr ""
 
-#: thetruth/controllers/statements.py:122 thetruth/controllers/statements.py:207
+#: thetruth/controllers/statements.py:124 thetruth/controllers/statements.py:210
 msgid "Error: Only  characters are allowed!"
 msgstr ""
 
-#: thetruth/controllers/users.py:70
+#: thetruth/controllers/users.py:71
 msgid "That should not happen."
 msgstr ""
 
-#: thetruth/controllers/users.py:105
+#: thetruth/controllers/users.py:106
 msgid "the Truth: Latest Users"
 msgstr ""
 
-#: thetruth/controllers/users.py:107
+#: thetruth/controllers/users.py:108
 msgid "Latest users joining Truth (tm)"
 msgstr ""
 
@@ -73,23 +73,23 @@ msgstr ""
 msgid "The latest statements from the Truth (tm)"
 msgstr ""
 
-#: thetruth/templates/layout.mako:42
+#: thetruth/templates/layout.mako:58
 msgid "All Thesis"
 msgstr ""
 
-#: thetruth/templates/layout.mako:44
+#: thetruth/templates/layout.mako:60
 msgid "Whats going on?"
 msgstr ""
 
-#: thetruth/templates/layout.mako:48
+#: thetruth/templates/layout.mako:64
 msgid "Signed in as"
 msgstr ""
 
-#: thetruth/templates/layout.mako:51
+#: thetruth/templates/layout.mako:67
 msgid "Logout"
 msgstr ""
 
-#: thetruth/templates/layout.mako:53
+#: thetruth/templates/layout.mako:69
 msgid "Login"
 msgstr ""
 
@@ -158,61 +158,84 @@ msgid ""
 "absolute."
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:5
-msgid "Top Thesis: "
+#: thetruth/templates/statements/edit_statement.mako:20
+#: thetruth/templates/statements/new-argument.mako:39
+msgid "Read this"
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:20
+#: thetruth/templates/statements/edit_statement.mako:23
+#, python-format
+msgid "Youve got only %s charactersstatement_length"
+msgstr ""
+
+#: thetruth/templates/statements/edit_statement.mako:24
+#: thetruth/templates/statements/new-argument.mako:43
+msgid "Please back up your Arguments with links"
+msgstr ""
+
+#: thetruth/templates/statements/edit_statement.mako:25
+#: thetruth/templates/statements/new-argument.mako:44
+msgid "Be polite"
+msgstr ""
+
+#: thetruth/templates/statements/edit_statement.mako:29
+#: thetruth/templates/statements/new-argument.mako:48
+#: thetruth/templates/statements/new-thesis.mako:28
+msgid "Preview: "
+msgstr ""
+
+#: thetruth/templates/statements/list-latest-thesis.mako:5
+msgid "Latest Thesis: "
+msgstr ""
+
+#: thetruth/templates/statements/list-latest-thesis.mako:27
+#: thetruth/templates/statements/list-thesis.mako:27
 msgid "What is this all about?"
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:22
+#: thetruth/templates/statements/list-latest-thesis.mako:29
+#: thetruth/templates/statements/list-thesis.mako:29
 msgid "the truth (tm) is a collaborate web application for finding the truth. "
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:23
+#: thetruth/templates/statements/list-latest-thesis.mako:30
+#: thetruth/templates/statements/list-thesis.mako:30
 msgid ""
 "We do so, by <strong>collecting Pro and Contra Arguments, voting them, and "
 "digging deeper</strong>."
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:24
+#: thetruth/templates/statements/list-latest-thesis.mako:31
+#: thetruth/templates/statements/list-thesis.mako:31
 msgid "Every Argument can be viewed as a Thesis with its own arguments. Try it!"
 msgstr ""
 
-#: thetruth/templates/statements/list-thesis.mako:26
+#: thetruth/templates/statements/list-latest-thesis.mako:33
+#: thetruth/templates/statements/list-thesis.mako:33
 msgid "And remeber: Be nice! We are all in this together."
 msgstr ""
 
-#: thetruth/templates/statements/new-argument.mako:17
+#: thetruth/templates/statements/list-thesis.mako:5
+msgid "Top Thesis: "
+msgstr ""
+
+#: thetruth/templates/statements/new-argument.mako:18
 msgid "Create a new Pro Argument"
 msgstr ""
 
-#: thetruth/templates/statements/new-argument.mako:19
+#: thetruth/templates/statements/new-argument.mako:20
 msgid "Create a new Contra Argument"
 msgstr ""
 
-#: thetruth/templates/statements/new-argument.mako:30
-msgid "Read this"
-msgstr ""
-
-#: thetruth/templates/statements/new-argument.mako:34
-msgid "Please back up your Arguments with links"
-msgstr ""
-
-#: thetruth/templates/statements/new-argument.mako:35
-msgid "Be polite"
-msgstr ""
-
-#: thetruth/templates/statements/new-thesis.mako:7
+#: thetruth/templates/statements/new-thesis.mako:9
 msgid "Create a new Thesis to discuss"
 msgstr ""
 
-#: thetruth/templates/statements/new-thesis.mako:16
+#: thetruth/templates/statements/new-thesis.mako:20
 msgid "Rules"
 msgstr ""
 
-#: thetruth/templates/statements/new-thesis.mako:20
+#: thetruth/templates/statements/new-thesis.mako:24
 msgid "Try to back up your Arguments with links"
 msgstr ""
 

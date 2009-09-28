@@ -63,8 +63,12 @@ thetruth/public/css/ui-lightness/images/ui-icons_ffd27a_256x240.png
 thetruth/public/css/ui-lightness/images/ui-icons_ffffff_256x240.png
 thetruth/public/ico/logo.ico
 thetruth/public/img/contra.jpg
+thetruth/public/img/de-inactive.png
+thetruth/public/img/de.png
 thetruth/public/img/down.jpg
 thetruth/public/img/down_o.jpg
+thetruth/public/img/gb-inactive.png
+thetruth/public/img/gb.png
 thetruth/public/img/logo.jpg
 thetruth/public/img/openid-large.png
 thetruth/public/img/pro.jpg
@@ -98,6 +102,7 @@ thetruth/templates/login/signin.mako
 thetruth/templates/pages/about.mako
 thetruth/templates/statements/edit_statement.mako
 thetruth/templates/statements/list-arguments.mako
+thetruth/templates/statements/list-latest-thesis.mako
 thetruth/templates/statements/list-thesis.mako
 thetruth/templates/statements/new-argument.mako
 thetruth/templates/statements/new-thesis.mako

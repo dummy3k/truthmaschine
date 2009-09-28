@@ -240,6 +240,13 @@ p {
 	text-align: center;
 }
 
+#mainContent div.pro td.content {
+	padding: 5px;	
+}
+#mainContent div.contra td.content {
+	padding: 5px;	
+}
+
 #mainContent div.right {
 	margin: 0;
 	float: right;

@@ -110,13 +110,13 @@
 					${argument.votes}
 				</td>
 			% endif
-			<td>
+			<td class="content">
 			    <p>${argument.message | n,h,renderMarkup}</p>
 			    <br />
 			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="avatar">
 			        <tr>
 						% if argument.istrue == True:
-				            <td width="300" align="left" valign="bottom">
+				            <td width="280" align="left" valign="bottom">
 				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
 				                    ${argument.true_count} pro / ${argument.false_count} contra
 				                </a>

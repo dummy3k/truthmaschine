@@ -26,8 +26,6 @@ log = logging.getLogger(__name__)
 
 class VotesController(BaseController):
     def __before(self):
-        if 'lang' in session:
-            set_lang(session['lang'])
         pass
     
     def upvote(self, id):

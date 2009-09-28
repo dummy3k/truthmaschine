@@ -1,5 +1,6 @@
 from sqlalchemy import *
 from migrate import *
+from pylons import config 
 
 meta = MetaData(migrate_engine)
 
@@ -13,7 +14,7 @@ users_table = Table('users', meta.metadata,
 	
 statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
-    Column('message', String(140)),
+    Column('message', String(int(config['statement_length']))),
     Column('userid', Integer, ForeignKey('users.id')),
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),

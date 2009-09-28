@@ -25,8 +25,6 @@ log = logging.getLogger(__name__)
 
 class LanguageController(BaseController):
     def __before__(self):
-        if 'lang' in session:
-            set_lang(session['lang'])
         pass
     
     def index(self):

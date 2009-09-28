@@ -2,6 +2,7 @@ from sqlalchemy import *
 from thetruth.model import meta
 from statement import Statement
 import hashlib
+from datetime import datetime
 
 users_table = Table('users', meta.metadata,
     Column('id', Integer, primary_key=True),
@@ -36,6 +37,7 @@ class User(object):
         return "<User('%s', '%s')>" % (self.name, self.openid)
 
     def updatelastlogin(self):
+        self.last_login = datetime.now()
         pass
     
     def allow_edit(self, some_thing):

@@ -17,6 +17,7 @@ from pylons.i18n import get_lang, set_lang
 from pylons.decorators import rest
 from thetruth.lib.base import *
 from gettext import gettext as _
+from datetime import datetime
 
 from webhelpers.pylonslib import Flash as _Flash
 flash = _Flash()
@@ -133,6 +134,8 @@ class LoginController(BaseController):
             if user is None:
                 user = model.User()
                 user.openid=info.identity_url
+                user.signup = datetime.now()
+                user.reputation = 0
                 #meta.Session.add(user)
                 #meta.Session.commit()
                 log.debug("first contact with user '%s'" % info.identity_url)

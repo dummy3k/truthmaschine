@@ -54,7 +54,7 @@ To create the initial Version Controlled Database which can be migrated use:
     
 To upgrade to the latest version use:
 
-    python dbmanage.py version_control
+    python dbmanage.py upgrade
     paster serve --reload development.ini
 	
 Packaging

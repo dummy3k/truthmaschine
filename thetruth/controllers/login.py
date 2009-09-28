@@ -10,7 +10,7 @@ import thetruth.model as model
 import thetruth.lib.helpers as h
 
 from openid.consumer.consumer import Consumer, SUCCESS, FAILURE, DiscoveryFailure
-from openid.store.sqlstore import SQLiteStore 
+from openid.store.sqlstore import SQLiteStore, MySQLStore 
 from openid import sreg
 from datetime import datetime
 from pylons.i18n import get_lang, set_lang
@@ -33,7 +33,10 @@ class LoginController(BaseController):
         log.debug("__before__.openid_session %s" % self.openid_session)
         
         con = meta.engine.raw_connection()
-        self.store = SQLiteStore(con);
+        if config['sqlalchemy.url'].find('mysql:') != -1:
+            self.store = MySQLStore(con);
+        else:
+            self.store = SQLiteStore(con);
         
         try:
             c.message = session['message']

@@ -32,6 +32,6 @@
 
 <h3>${_('And remeber: Be nice! We are all in this together.') | n}</h3>
 
-<p>${_('Contribute by creating %s your own Thesis%s.') % ["<a href=\"${h.url_for(controller='statements', action='newThesis')}\" class=\"big\">", "</a>"] | n}</p>
+<p>${_('Contribute by creating %s your own Thesis%s.') % ("<a href=\"" + h.url_for(controller='statements', action='newThesis') + "\" class=\"big\">", "</a>") | n}</p>
 
 </%def>

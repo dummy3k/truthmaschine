@@ -77,7 +77,7 @@ msgstr "Neuste Thesen und Argumente der Wahrheitsmaschine"
 
 #: thetruth/templates/layout-truefalse.mako:16
 msgid "Contra Arguments"
-msgstr ""
+msgstr "Kontra-Argumente"
 
 #: thetruth/templates/layout-truefalse.mako:21
 #, fuzzy
@@ -87,19 +87,19 @@ msgstr "Ein neues Kontar-Argument erstellen"
 
 #: thetruth/templates/layout-truefalse.mako:23
 msgid "Login</a> to post an Contra-Argument"
-msgstr ""
+msgstr "Anmelden</a> um ein Kontra-Argument zu schreiben"
 
 #: thetruth/templates/layout-truefalse.mako:38
 msgid "Pro Arguments"
-msgstr ""
+msgstr "Pro-Argumente"
 
 #: thetruth/templates/layout-truefalse.mako:43
 msgid "Post a Pro-Argument"
-msgstr ""
+msgstr "Pro-Argument schreiben"
 
 #: thetruth/templates/layout-truefalse.mako:45
 msgid "Login</a> to post an Pro-Argument"
-msgstr ""
+msgstr "Anmelden</a> um ein Pro-Argument zu schreiben"
 
 #: thetruth/templates/layout.mako:58
 msgid "All Thesis"
@@ -126,13 +126,13 @@ msgstr "Anmelden"
 #: thetruth/templates/statement-snippets.mako:87
 #, python-format
 msgid "(%s) characters left"
-msgstr ""
+msgstr "(%s) Zeichen übrig"
 
 #: thetruth/templates/statement-snippets.mako:29
 #: thetruth/templates/statement-snippets.mako:62
 #: thetruth/templates/statement-snippets.mako:91
 msgid "Submit"
-msgstr ""
+msgstr "Abschicken"
 
 #: thetruth/templates/statement-snippets.mako:37
 #: thetruth/templates/statement-snippets.mako:70
@@ -142,29 +142,29 @@ msgid ""
 "<strong>Hint:</strong> You can %s link %s your text using the following "
 "syntax: [http://www.google.de|Google]."
 msgstr ""
+"<strong>Hinweis:</strong> Du kannst in deinem Text einen %s Link %s wie folgt setzen:"
+"Syntax: [http://www.google.de|Google]."
 
 #: thetruth/templates/statement-snippets.mako:40
 #: thetruth/templates/statement-snippets.mako:73
 #: thetruth/templates/statement-snippets.mako:102
 #, python-format
 msgid "Links do not count into your %s character limit."
-msgstr ""
+msgstr "Links zählen nicht in dein %s Zeichen Limit."
 
 #: thetruth/templates/statement-snippets.mako:127
 #: thetruth/templates/statement-snippets.mako:149
 #, python-format
 msgid "%s pro / %s contra"
-msgstr ""
+msgstr "%s pro / %s kontra"
 
 #: thetruth/templates/statement-snippets.mako:187
-#, fuzzy
-#| msgid "Top Thesis: "
 msgid "Parent Thesis:"
-msgstr "Top Thesen: "
+msgstr "Eltern-These: "
 
 #: thetruth/templates/statement-snippets.mako:249
 msgid "edit"
-msgstr ""
+msgstr "bearbeiten"
 
 #: thetruth/templates/login/account-banned.mako:4
 msgid "You are banned"
@@ -248,7 +248,7 @@ msgstr "Bitte lesen"
 #: thetruth/templates/statements/new-thesis.mako:23
 #, python-format
 msgid "Youve got only %s characters"
-msgstr ""
+msgstr "Du hast nur %s Zeichen"
 
 #: thetruth/templates/statements/edit_statement.mako:24
 #: thetruth/templates/statements/new-argument.mako:43
@@ -264,17 +264,17 @@ msgstr "HÃ¶flich bleiben"
 #: thetruth/templates/statements/new-argument.mako:48
 #: thetruth/templates/statements/new-thesis.mako:28
 msgid "Preview: "
-msgstr ""
+msgstr "Vorschau: "
 
 #: thetruth/templates/statements/list-latest-thesis.mako:5
 msgid "Latest Thesis: "
-msgstr ""
+msgstr "Neuste Thesen: "
 
 #: thetruth/templates/statements/list-latest-thesis.mako:20
 #: thetruth/templates/statements/list-thesis.mako:20
 #, python-format
 msgid "Sorry, no thesis found. Please %s create one %s ."
-msgstr ""
+msgstr "Entschuldge, es wurden noch keine Thesen gefunden. Bitte %s erstelle eine These %s"
 
 #: thetruth/templates/statements/list-latest-thesis.mako:27
 #: thetruth/templates/statements/list-thesis.mako:27
@@ -313,7 +313,7 @@ msgstr "Und bitte: Seit nett zueinander! "
 #: thetruth/templates/statements/list-thesis.mako:35
 #, python-format
 msgid "Contribute by creating %s your own Thesis%s."
-msgstr ""
+msgstr "Bitte beteilige dich indem du %sdeine eigene These erstellst%s."
 
 #: thetruth/templates/statements/list-thesis.mako:5
 msgid "Top Thesis: "
@@ -342,7 +342,7 @@ msgstr "Bitte untermauert eure Argumente mit Links"
 #: thetruth/templates/users/detail.mako:8 thetruth/templates/users/edit.mako:8
 #, python-format
 msgid "User details for %s"
-msgstr ""
+msgstr "Benutzer Details für %s"
 
 #: thetruth/templates/users/detail.mako:16
 #: thetruth/templates/users/edit.mako:21 thetruth/templates/users/list.mako:11
@@ -359,7 +359,7 @@ msgstr "OpenID"
 
 #: thetruth/templates/users/edit.mako:35
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: thetruth/templates/users/list.mako:6
 msgid "User list"
@@ -376,7 +376,3 @@ msgstr "Anzeigen"
 #: thetruth/templates/users/list.mako:25
 msgid "Delete"
 msgstr "LÃ¶schen"
-
-#~ msgid "Youve got only %s charactersstatement_length"
-#~ msgstr ""
-

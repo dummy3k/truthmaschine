@@ -17,7 +17,7 @@
         
         % if len(c.thesis) == 0: 
         <p class="error">
-            ${_('Sorry, no thesis found. Please %s create one %s.') % [ "<a href=\"${h.url_for(controller='statements', action='newThesis')}\">", "</a>"] | n}
+            ${_('Sorry, no thesis found. Please %s create one %s .') % ( "<a href=\"" + h.url_for(controller='statements', action='newThesis') + "\">", "</a>") | n}
         </p>
         % endif
     </div>

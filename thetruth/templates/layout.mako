@@ -32,7 +32,7 @@
 
 <div id="container">
     <div id="logo">
-        <a href="${h.url_for(controller='statements', action='index')}">
+        <a href="${h.url_for(controller='statements', action='index', id=None, istrue=None)}">
             <img src="/img/logo.jpg" alt="truthmachine" />
         </a>
       </div>

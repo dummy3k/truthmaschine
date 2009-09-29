@@ -5,10 +5,11 @@ Provides the BaseController class for subclassing.
 from pylons.controllers.util import abort, redirect_to
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
-from pylons import session, tmpl_context as c
 
+from pylons import request, response, session, tmpl_context as c
 from thetruth.model import meta
 import thetruth.model as model
+from pylons.i18n import get_lang, set_lang
 
 import logging
 log = logging.getLogger(__name__)
@@ -23,6 +24,20 @@ class BaseController(WSGIController):
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
         
+
+        lang = request.params.get('language', None) 
+        if lang and lang == 'de':
+            session['lang'] = lang
+        elif lang and lang == 'en':
+            session['lang'] = lang
+             
+        if 'lang' in session: 
+            if session['lang'] == 'de':
+                set_lang(session['lang'])
+        else:
+            session['lang'] = 'de' 
+            set_lang(session['lang'])
+
         
         try:
             c.user = session['user']

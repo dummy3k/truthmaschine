@@ -39,19 +39,19 @@
       
       <div id="headmenu">
         <p align="right">
-            <a href="${h.url_for(controller='language', action='set', id='de')}">
-                % if 'lang' in session:
+            <a href="?language=de">
+                % if 'lang' in session and session['lang'] == 'de':
                     <img src="/img/de.png" />
                 % else:
                     <img src="/img/de-inactive.png" />
                 % endif
             </a>
             
-            <a href="${h.url_for(controller='language', action='set', id='en')}">
-                % if 'lang' in session:
-                    <img src="/img/gb-inactive.png" />
-                % else:
+            <a href="?language=en">
+                % if 'lang' in session and session['lang'] == 'en':
                     <img src="/img/gb.png" />
+                % else:
+                    <img src="/img/gb-inactive.png" />
                 % endif
             </a> |
         

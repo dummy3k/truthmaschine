@@ -20,7 +20,7 @@ ${self.thesisarea()}
                     % if c.user:
                         ${_('Post a Contra-Argument')}</a>
                     % else:
-                        ${_('Login</a> to post an Contra-Argument')}
+                        ${_('Login</a> to post an Contra-Argument') | n}
                     % endif
             	</p>
             </td>
@@ -42,7 +42,7 @@ ${self.thesisarea()}
                     % if c.user:
                         ${_('Post a Pro-Argument')}</a>
                     % else:
-                        ${_('Login</a> to post an Pro-Argument')}
+                        ${_('Login</a> to post an Pro-Argument') | n}
                     % endif
                 </p>
             </td>

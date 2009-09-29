@@ -9,9 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     %if c.title:
-        <title>${c.title | stripMarkup} - truthmachine</title>
+        <title>${c.title | stripMarkup} - ${_('truthmachine')}</title>
     %else:
-        <title>truthmachine</title>
+        <title>${_('truthmachine')}</title>
     %endif
 
 	${h.stylesheet_link('/css/default.css')}
@@ -22,7 +22,7 @@
     ${h.javascript_link( '/js/script.js')}
     
     <link rel="shortcut icon" href="/ico/logo.ico" type="image/x-icon">
-    <link rel="alternate" type="application/rss+xml" title="All latest Statements" href="${config['base_url']}/latest-rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="${_('All latest Statements')}" href="${config['base_url']}/latest-rss.xml" />
     
     % for x in c.feeds:
     <link rel="alternate" type="application/rss+xml" title="${x['title']}" href="${x['link']}" />
@@ -79,7 +79,7 @@
                 </td>
                 <td>
                 <form action="" method="get" name="search">
-                    <input name="input" type="text" value="Search..."  onfocus="document.forms.search.input.value='';" />
+                    <input name="input" type="text" value="${_('Search...')}"  onfocus="document.forms.search.input.value='';" />
                 </form>
                 </td>
             </tr>
@@ -100,10 +100,9 @@
         ${self.main()}
 
         <div id="footer">
-            <a href="${h.url_for(controller='statements', action='index', id=None)}">truthmachine</a>. 
-            user contributed content licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/">cc-wiki</a> 
-            with attribution required
-            like <a href="http://www.stackoverflow.com">stackoverflow</a>
+            <a href="${h.url_for(controller='statements', action='index', id=None)}">${_('truthmachine')}</a>. 
+            ${_('user contributed content licensed under %s cc-wiki %s with attribution required') % ("<a href=\"http://creativecommons.org/licenses/by-sa/2.5/\">", "</a>"}
+            ${_('like %s stackoverflow %s') % ("<a href=\"http://www.stackoverflow.com\">", "</a>")}
         </div>
       </div>
   </div>

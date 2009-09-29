@@ -25,7 +25,10 @@ flash = _Flash()
 log = logging.getLogger(__name__)
 
 class LoginController(BaseController):
-    def __before__(self):        
+    def __before__(self):    
+        if 'lang' in session:
+            set_lang(session['lang'])
+                
         self.openid_session = session.get("openid_session", {})
         log.debug("__before__.openid_session %s" % self.openid_session)
         

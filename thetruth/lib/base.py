@@ -16,11 +16,7 @@ log = logging.getLogger(__name__)
 from paste.deploy.converters import asbool
 from pylons import config
 
-class BaseController(WSGIController):
-    def __before__(self):
-        if 'lang' in session:
-            set_lang(session['lang'])
-            
+class BaseController(WSGIController):            
     def __call__(self, environ, start_response):
         """Invoke the Controller"""
         # WSGIController.__call__ dispatches to the Controller method

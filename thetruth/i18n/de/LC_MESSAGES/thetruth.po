@@ -1,4 +1,4 @@
-# Copyright (C) 2009 ORGANIZATION
+ï»¿# Copyright (C) 2009 ORGANIZATION
 # This file is distributed under the same license as the thetruth project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
 #
@@ -126,7 +126,7 @@ msgstr "Anmelden"
 #: thetruth/templates/statement-snippets.mako:87
 #, python-format
 msgid "(%s) characters left"
-msgstr "(%s) Zeichen übrig"
+msgstr "(%s) Zeichen Ã¼brig"
 
 #: thetruth/templates/statement-snippets.mako:29
 #: thetruth/templates/statement-snippets.mako:62
@@ -150,7 +150,7 @@ msgstr ""
 #: thetruth/templates/statement-snippets.mako:102
 #, python-format
 msgid "Links do not count into your %s character limit."
-msgstr "Links zählen nicht in dein %s Zeichen Limit."
+msgstr "Links zÃ¤hlen nicht in dein %s Zeichen Limit."
 
 #: thetruth/templates/statement-snippets.mako:127
 #: thetruth/templates/statement-snippets.mako:149
@@ -342,7 +342,7 @@ msgstr "Bitte untermauert eure Argumente mit Links"
 #: thetruth/templates/users/detail.mako:8 thetruth/templates/users/edit.mako:8
 #, python-format
 msgid "User details for %s"
-msgstr "Benutzer Details für %s"
+msgstr "Benutzer Details fÃ¼r %s"
 
 #: thetruth/templates/users/detail.mako:16
 #: thetruth/templates/users/edit.mako:21 thetruth/templates/users/list.mako:11

@@ -329,7 +329,10 @@ p {
 	font-size: 12px;
 }
 #footer {
-	margin-top: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	border-top: 1px solid #EDF5EC;
 	float: left;
 	width: 100%;
 	font-size:12px;	

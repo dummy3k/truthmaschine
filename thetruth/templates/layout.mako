@@ -101,8 +101,8 @@
 
         <div id="footer">
             <a href="${h.url_for(controller='statements', action='index', id=None)}">${_('truthmachine')}</a>. 
-            ${_('user contributed content licensed under %s cc-wiki %s with attribution required') % ("<a href=\"http://creativecommons.org/licenses/by-sa/2.5/\">", "</a>")}
-            ${_('like %s stackoverflow %s') % ("<a href=\"http://www.stackoverflow.com\">", "</a>")}
+            ${_('user contributed content licensed under %s cc-wiki %s with attribution required') % ("<a href=\"http://creativecommons.org/licenses/by-sa/2.5/\">", "</a>") | n}
+            ${_('like %s stackoverflow %s') % ("<a href=\"http://www.stackoverflow.com\">", "</a>") | n}
         </div>
       </div>
   </div>

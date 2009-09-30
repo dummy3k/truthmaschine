@@ -7,7 +7,7 @@
         <table border="0">
             <tr>
                 <td>
-                    <input type="text" size="20" name="openid" id="openid" class="openid-identifier" style="height: 28px" />
+                    <input type="text" name="openid" id="openid" class="openid-identifier" />
                 </td>
                 <td>
                     <input type="submit" value="Login" class="openid-login-button" />

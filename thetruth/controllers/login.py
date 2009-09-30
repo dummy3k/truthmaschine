@@ -91,6 +91,7 @@ class LoginController(BaseController):
             authrequest = self.consumer.begin(openid)
         except DiscoveryFailure, e:
             log.warn(e)
+            log.warn("OpenID URL: " + openid)
             h.flash(problem_msg)
             return redirect_to(action='signin')
         

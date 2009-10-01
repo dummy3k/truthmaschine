@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2009-09-27 10:16+0000\n"
-"PO-Revision-Date: 2009-09-29 11:19+0000\n"
+"PO-Revision-Date: 2009-10-01 00:02+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -102,13 +102,11 @@ msgstr "Anmelden</a> um ein Pro-Argument zu schreiben"
 #: thetruth/templates/layout.mako:12 thetruth/templates/layout.mako:14
 #: thetruth/templates/layout.mako:103
 #, fuzzy
-#| msgid "About the truthmachine"
 msgid "truthmachine"
 msgstr "Über die Wahrheitsmaschine"
 
 #: thetruth/templates/layout.mako:25
 #, fuzzy
-#| msgid "the Truth: Latest Statements"
 msgid "All latest Statements"
 msgstr "Wahrheitsmaschine: Neuste Thesen und Argumente"
 
@@ -141,7 +139,9 @@ msgstr "Suchen..."
 msgid ""
 "user contributed content licensed under %s cc-wiki %s with attribution "
 "required"
-msgstr "Von Benutzern eingestellte Inhalte stehen unter %s cc-wiki %s mit Author-Angabe"
+msgstr ""
+"Von Benutzern eingestellte Inhalte stehen unter %s cc-wiki %s mit Author-"
+"Angabe"
 
 #: thetruth/templates/layout.mako:105
 #, python-format
@@ -220,8 +220,8 @@ msgid ""
 "Its a single username and password that allows you to log in to any "
 "OpenID-enabled site."
 msgstr ""
-"Mit OpenID kann man sich mit nur einem Benutzernamen und Passwort "
-"an allen Webseiten anmelden die OpenID unterstützen"
+"Mit OpenID kann man sich mit nur einem Benutzernamen und Passwort an "
+"allen Webseiten anmelden die OpenID unterstützen"
 
 #: thetruth/templates/login/signin.mako:52
 msgid "It works on thousands of websites."
@@ -237,8 +237,7 @@ msgid ""
 "because this way we cant mess it up."
 msgstr ""
 "Und außerdem sind wir zu faul selbst einen Login Prozess zu entwickeln. "
-"\"\n"
-"\"Was gut für euch ist, denn so können wir daran nichts falsch machen."
+"Was gut für euch ist, denn so können wir daran nichts falsch machen."
 
 #: thetruth/templates/login/signin.mako:59
 msgid "learn more"

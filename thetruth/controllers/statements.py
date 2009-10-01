@@ -158,10 +158,14 @@ class StatementsController(BaseController):
         meta.Session.commit()
 
         if request.params.get('parentid', None):
+            h.flash(_('You have posted a new thesis. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
             redirect_to(action='show', id=rant.parentid)
         else:
+            if isTrue == 'True':
+                h.flash(_('You have posted a new pro argument. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
+            elif isTrue == 'False':
+                h.flash(_('You have posted a new contra argument. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
             redirect_to(action='show', id=rant.id)
-        
 
     def appendSubStatment(self, child, isContra):
     

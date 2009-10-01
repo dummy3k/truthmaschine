@@ -88,7 +88,7 @@ class StatementsController(BaseController):
         c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
         c.title = c.thesis
 
-        c.feeds = [{'title': 'Arguments for this thesis',
+        c.feeds = [{'title': _('Arguments for this thesis'),
                     'link': config['base_url'] + h.url_for(controller='rss', action='showLastStatementsAsRssByStatement')}]
         
         if not c.thesis:
@@ -121,7 +121,7 @@ class StatementsController(BaseController):
         isTrue = request.params.get('argistrue', None)
         
         if len(stripMarkup(message)) > int(statement_length):
-            h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
+            h.flash(_("Error: Only %s characters are allowed!") % statement_length)
 
             c.previousMessage = message
             
@@ -211,7 +211,7 @@ class StatementsController(BaseController):
         newMsg = request.params.get('msg')
         
         if len(stripMarkup(newMsg)) > int(statement_length):
-            h.flash(_("Error: Only " + statement_length + " characters are allowed!"))
+            h.flash(_("Error: Only %s characters are allowed!") % statement_length)
             c.previousMessage = newMsg
             return self.edit_statement(id)        
         

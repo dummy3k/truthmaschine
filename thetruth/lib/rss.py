@@ -23,4 +23,4 @@ def __get_rss__(query):
         lastBuildDate = datetime.now(),
         items = myItems)
 
-    return rss.to_xml()
+    return rss.to_xml("utf-8")

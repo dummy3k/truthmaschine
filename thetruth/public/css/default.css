@@ -218,6 +218,7 @@ p {
 }
 #mainContent div:hover.start {
 	background-color: #dddddd;
+	cursor: pointer;
 }
 
 #mainContent div.pro {
@@ -230,6 +231,7 @@ p {
 }
 #mainContent div:hover.pro {
 	background-color: #dbf3d8;
+    cursor: pointer;
 }
 
 #mainContent div.contra {
@@ -239,9 +241,11 @@ p {
 	background-color: #F5ECEC;
 	margin-bottom: 10px;
 	cursor: normal;
+	
 }
 #mainContent div:hover.contra {
-	background-color: #f3dede;
+	background-color: #f3dede;   
+	cursor: pointer;
 }
 #mainContent div.contra td.votes {
 	width: 30px;

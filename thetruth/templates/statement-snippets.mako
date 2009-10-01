@@ -188,11 +188,11 @@
 			                
 			                ${convertToHumanReadable(argument.created)}
 			            </td>	 
-				            <td width="150" align="right" valign="bottom">
-				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
-				                </a>
-				            </td>       	
+			            <td width="150" align="right" valign="bottom">
+			                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+			                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
+			                </a>
+			            </td>       	
 			        </tr>
 			    </table>
 			</td>

@@ -34,14 +34,7 @@ class LoginController(BaseController):
             self.store = MySQLStore(con);
         else:
             self.store = SQLiteStore(con);
-        
-        try:
-            c.message = session['message']
-        except:
-            c.message = ''
-            pass
-
-        
+                
     @rest.dispatch_on(POST="update_account")
     def index(self):
         if not c.user:

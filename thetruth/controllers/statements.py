@@ -45,6 +45,31 @@ class StatementsController(BaseController):
         statement.true_count = query.filter_by(parentid=statement.id,istrue=1).count()
         statement.false_count = query.filter_by(parentid=statement.id,istrue=0).count()
         
+        if(statement.true_count+statement.false_count) > 0:
+            proInPercent = float(statement.true_count)/float(statement.true_count+statement.false_count)*100
+        else:
+            proInPercent = 50
+        statement.proInPercent = proInPercent
+        
+        if proInPercent > 90:
+            statement.start_color = "0a6005"        
+        elif proInPercent > 80:
+            statement.start_color = "1a5516"  
+        elif proInPercent > 70:
+            statement.start_color = "234621"
+        elif proInPercent > 60:
+            statement.start_color = "303e2f"
+        elif proInPercent > 40:
+            statement.start_color = "2a2a2a"
+        elif proInPercent > 30:
+            statement.start_color = "544242"
+        elif proInPercent > 20:
+            statement.start_color = "563232"
+        elif proInPercent > 10:
+            statement.start_color = "632625"
+        else:
+            statement.start_color = "691110"
+            
         return statement
     
     def newThesis(self):

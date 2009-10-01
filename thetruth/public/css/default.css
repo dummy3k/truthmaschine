@@ -208,22 +208,40 @@ p {
    font-size: 20px;
 }
 
+#mainContent div.start {
+	margin: 0;
+	width: 485px;
+	font-size:14px;
+	background-color: #eeeeee;
+	margin-bottom: 10px;
+	cursor: normal;
+}
+#mainContent div:hover.start {
+	background-color: #dddddd;
+}
+
 #mainContent div.pro {
 	margin: 0;
-	width: 475px;
+	width: 485px;
 	background-color:#edf5ec;
 	font-size:14px;
 	margin-bottom: 10px;
-	cursor: pointer;
+	cursor: normal;
+}
+#mainContent div:hover.pro {
+	background-color: #dbf3d8;
 }
 
 #mainContent div.contra {
 	margin: 0;
-	width: 475px;
+	width: 485px;
 	font-size:14px;
 	background-color: #F5ECEC;
 	margin-bottom: 10px;
-	cursor: pointer;
+	cursor: normal;
+}
+#mainContent div:hover.contra {
+	background-color: #f3dede;
 }
 #mainContent div.contra td.votes {
 	width: 30px;
@@ -239,11 +257,21 @@ p {
 	font-size: 20px;
 	text-align: center;
 }
+#mainContent div.start td.votes {
+	width: 30px;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
 
 #mainContent div.pro td.content {
 	padding: 5px;	
 }
 #mainContent div.contra td.content {
+	padding: 5px;	
+}
+
+#mainContent div.start td.content {
 	padding: 5px;	
 }
 
@@ -317,12 +345,18 @@ p {
 #mainContent a:active.procontra
 {
 	padding: 1px;
+	display: block;
+	width:95px;
+	height: 16px;
+	background-image:url(../img/button.png);
+	color:#FFFFFF;
+	text-align:center;
+	font-weight:bold;
 }
 #mainContent a:hover.procontra
 {
 	text-decoration: none;
-	color:#FFFFFF;
-	background-color: #0000BB;
+	background-image:url(../img/button_o.png);
 }
 #mainContent p.small
 {

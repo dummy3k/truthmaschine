@@ -220,8 +220,8 @@ msgid ""
 "Its a single username and password that allows you to log in to any "
 "OpenID-enabled site."
 msgstr ""
-"Mit OpenID kann man sich mit nur einem Benutzernamen und Passwort \"\n"
-"\"an allen Webseiten anmelden die OpenID unterstützen"
+"Mit OpenID kann man sich mit nur einem Benutzernamen und Passwort "
+"an allen Webseiten anmelden die OpenID unterstützen"
 
 #: thetruth/templates/login/signin.mako:52
 msgid "It works on thousands of websites."

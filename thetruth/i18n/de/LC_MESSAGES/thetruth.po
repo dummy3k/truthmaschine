@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2009-09-27 10:16+0000\n"
-"PO-Revision-Date: 2009-10-01 01:29+0000\n"
+"PO-Revision-Date: 2009-10-01 01:48+0000\n"
 "Last-Translator: arturh <arturh@arturh.de>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -15,7 +15,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:120
+#: thetruth/controllers/login.py:50 thetruth/controllers/login.py:75
+#, fuzzy
+msgid "Already signed in."
+msgstr "Sie sind nicht angemeldet."
+
+#: thetruth/controllers/login.py:82 thetruth/controllers/login.py:120
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 "Ein Problem ist bei der Kommunikation zum OpenID Server aufgetreten. "
@@ -49,28 +54,39 @@ msgstr "Häufige Fragen und Antworten"
 msgid "New Thesis"
 msgstr "Neue These"
 
+#: thetruth/controllers/statements.py:91
+msgid "Arguments for this thesis"
+msgstr "Argumente für diese These"
+
 #: thetruth/controllers/statements.py:124
 #: thetruth/controllers/statements.py:214
-msgid "Error: Only  characters are allowed!"
-msgstr "Fehler: Nur  Zeichen sind erlaubt!"
+#, fuzzy, python-format
+msgid "Error: Only %s characters are allowed!"
+msgstr "Fehler: Nur %s Zeichen sind erlaubt!"
 
 #: thetruth/controllers/statements.py:161
 msgid ""
 "You have posted a new thesis. <strong>Please vote it</strong> up if you "
 "think it's true or down if you think its not."
-msgstr "Du hast eine neue These gepostet. <strong>Bitte vote deine These</strong> runter wenn du denkst sie ist wahr, sonst hoch"
+msgstr ""
+"Du hast eine neue These gepostet. <strong>Bitte vote deine These</strong>"
+" runter wenn du denkst sie ist wahr, sonst hoch"
 
 #: thetruth/controllers/statements.py:165
 msgid ""
 "You have posted a new pro argument. <strong>Please vote it</strong> up if"
 " you think it's true or down if you think its not."
-msgstr "Du hast ein neues Pro-Argument gepostet. <strong>Bitte vote dein Argument/strong> runter wenn du denkst es ist wahr, sonst hoch"
+msgstr ""
+"Du hast ein neues Pro-Argument gepostet. <strong>Bitte vote dein "
+"Argument/strong> runter wenn du denkst es ist wahr, sonst hoch"
 
 #: thetruth/controllers/statements.py:167
 msgid ""
 "You have posted a new contra argument. <strong>Please vote it</strong> up"
 " if you think it's true or down if you think its not."
-msgstr "Du hast ein neues Kontra-Argument gepostet. <strong>Bitte vote dein Argument</strong> runter wenn du denkst es ist wahr, sonst hoch"
+msgstr ""
+"Du hast ein neues Kontra-Argument gepostet. <strong>Bitte vote dein "
+"Argument</strong> runter wenn du denkst es ist wahr, sonst hoch"
 
 #: thetruth/controllers/users.py:69
 msgid "That should not happen."
@@ -97,9 +113,8 @@ msgid "Contra Arguments"
 msgstr "Kontra-Argumente"
 
 #: thetruth/templates/layout-truefalse.mako:21
-#, fuzzy
 msgid "Post a Contra-Argument"
-msgstr "Ein neues Kontar-Argument erstellen"
+msgstr "Ein neues Kontra-Argument erstellen"
 
 #: thetruth/templates/layout-truefalse.mako:23
 msgid "Login</a> to post an Contra-Argument"

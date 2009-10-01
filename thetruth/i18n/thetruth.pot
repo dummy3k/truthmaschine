@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2009-10-01 01:29+0000\n"
+"POT-Creation-Date: 2009-10-01 01:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:120
+#: thetruth/controllers/login.py:50 thetruth/controllers/login.py:75
+msgid "Already signed in."
+msgstr ""
+
+#: thetruth/controllers/login.py:82 thetruth/controllers/login.py:120
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 
@@ -49,8 +53,13 @@ msgstr ""
 msgid "New Thesis"
 msgstr ""
 
+#: thetruth/controllers/statements.py:91
+msgid "Arguments for this thesis"
+msgstr ""
+
 #: thetruth/controllers/statements.py:124 thetruth/controllers/statements.py:214
-msgid "Error: Only  characters are allowed!"
+#, python-format
+msgid "Error: Only %s characters are allowed!"
 msgstr ""
 
 #: thetruth/controllers/statements.py:161

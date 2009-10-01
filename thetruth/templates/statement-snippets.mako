@@ -124,7 +124,7 @@
 						% if argument.istrue == True:
 				            <td width="280" align="left" valign="bottom">
 				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-				                    ${_('%s pro / %s contra') % (argument.true_count, argument.false_count)}
+				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
 				                </a>
 				            </td>
 						% endif			        	
@@ -146,7 +146,7 @@
 						% if argument.istrue == False:
 				            <td width="150" align="right" valign="bottom">
 				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
-                                    ${_('%s pro / %s contra') % (argument.true_count, argument.false_count)}
+				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
 				                </a>
 				            </td>
 						% endif			        	
@@ -163,6 +163,43 @@
 </div>
 </%def>
 
+<%def name="startThesis(argument, color)">
+<div class="start">
+	<table border="0" width="100%">
+		<tr>
+            <td class="votes" style="background-color:#${argument.start_color}"> 
+                ${argument.votes}
+            </td>
+			<td class="content">
+			    <p>${argument.message | n,h,renderMarkup}</p>
+			    <br />
+			    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="avatar">
+			        <tr>
+			            <td width="40" valign="top">
+			                <img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" />
+			            </td>
+			            <td valign="top">
+			                <strong>
+			                    <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">
+			                        ${argument.user.getDisplayName()}
+			                    </a>
+			                </strong>
+			                <br />
+			                
+			                ${convertToHumanReadable(argument.created)}
+			            </td>	 
+				            <td width="150" align="right" valign="bottom">
+				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
+				                </a>
+				            </td>       	
+			        </tr>
+			    </table>
+			</td>
+		</tr>
+	</table>
+</div>
+</%def>
 <%def name="argumentmeta(user, argument = None)">
 <div class="argument-meta">
     <a href="${h.url_for(controller='users', action='showProfile', id=user.id)}" 

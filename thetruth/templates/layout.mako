@@ -33,7 +33,11 @@
 <div id="container">
     <div id="logo">
         <a href="${h.url_for(controller='statements', action='index', id=None, istrue=None)}">
-            <img src="/img/logo.jpg" alt="truthmachine" />
+        % if session['lang'] == 'de':
+            <img src="/img/logo_de.jpg" alt="truthmachine" />
+        % else:
+            <img src="/img/logo_en.jpg" alt="truthmachine" />
+        % endif 
         </a>
       </div>
       

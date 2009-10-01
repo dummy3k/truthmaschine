@@ -47,7 +47,7 @@ class LoginController(BaseController):
         if not c.user:
             redirect_to(action='signin')
             
-        h.flash("Already signed in.")
+        h.flash(_("Already signed in."))
         redirect_to(controller='statements', action="index")
 
 #    @validate(template='account.index', schema=schema.UpdateUser(), form='index',
@@ -72,14 +72,14 @@ class LoginController(BaseController):
     def signin(self):
         log.debug("enter signin()")
         if c.user:
-            h.flash("Already signed in.")
+            h.flash(_("Already signed in."))
             return redirect_to(controller='statements', action='index')
 
         return render('login/signin.mako')
 
     def signin_POST(self):
         log.debug("enter signin_POST()")
-        problem_msg = 'A problem ocurred comunicating to your OpenID server. Please try again.'
+        problem_msg = _('A problem ocurred comunicating to your OpenID server. Please try again.')
 
         self.consumer = Consumer(self.openid_session, self.store)
         openid = request.params.get('openid', None)

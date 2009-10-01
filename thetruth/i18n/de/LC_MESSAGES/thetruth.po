@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2009-09-27 10:16+0000\n"
-"PO-Revision-Date: 2009-10-01 00:02+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-10-01 01:29+0000\n"
+"Last-Translator: arturh <arturh@arturh.de>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -15,25 +15,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:119
+#: thetruth/controllers/login.py:120
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 "Ein Problem ist bei der Kommunikation zum OpenID Server aufgetreten. "
 "Bitte versuchen Sie es erneut."
 
-#: thetruth/controllers/login.py:158
+#: thetruth/controllers/login.py:159
 msgid "Signed in"
 msgstr "Angemeldet"
 
-#: thetruth/controllers/login.py:192 thetruth/controllers/login.py:202
+#: thetruth/controllers/login.py:193 thetruth/controllers/login.py:203
 msgid "You are not signed in."
 msgstr "Sie sind nicht angemeldet."
 
-#: thetruth/controllers/login.py:196
+#: thetruth/controllers/login.py:197
 msgid "You've been signed out."
 msgstr "Sie wurde abgemeldet."
 
-#: thetruth/controllers/login.py:205
+#: thetruth/controllers/login.py:206
 msgid "You are not banned."
 msgstr "Sie sind nicht gebannt."
 
@@ -50,9 +50,27 @@ msgid "New Thesis"
 msgstr "Neue These"
 
 #: thetruth/controllers/statements.py:124
-#: thetruth/controllers/statements.py:210
+#: thetruth/controllers/statements.py:214
 msgid "Error: Only  characters are allowed!"
 msgstr "Fehler: Nur  Zeichen sind erlaubt!"
+
+#: thetruth/controllers/statements.py:161
+msgid ""
+"You have posted a new thesis. <strong>Please vote it</strong> up if you "
+"think it's true or down if you think its not."
+msgstr "Du hast eine neue These gepostet. <strong>Bitte vote deine These</strong> runter wenn du denkst sie ist wahr, sonst hoch"
+
+#: thetruth/controllers/statements.py:165
+msgid ""
+"You have posted a new pro argument. <strong>Please vote it</strong> up if"
+" you think it's true or down if you think its not."
+msgstr "Du hast ein neues Pro-Argument gepostet. <strong>Bitte vote dein Argument/strong> runter wenn du denkst es ist wahr, sonst hoch"
+
+#: thetruth/controllers/statements.py:167
+msgid ""
+"You have posted a new contra argument. <strong>Please vote it</strong> up"
+" if you think it's true or down if you think its not."
+msgstr "Du hast ein neues Kontra-Argument gepostet. <strong>Bitte vote dein Argument</strong> runter wenn du denkst es ist wahr, sonst hoch"
 
 #: thetruth/controllers/users.py:69
 msgid "That should not happen."
@@ -322,8 +340,8 @@ msgid ""
 "We do so, by <strong>collecting Pro and Contra Arguments, voting them, "
 "and digging deeper</strong>."
 msgstr ""
-"Wir machen das indem wir gemeinschaftlich Pro- und Kontra-Argumente "
-"sammeln, diese Bewerten, und tiefer graben."
+"Wir machen das indem wir <strong>gemeinschaftlich Pro- und Kontra-"
+"Argumente sammeln, diese Bewerten, und tiefer graben.</strong>"
 
 #: thetruth/templates/statements/list-latest-thesis.mako:31
 #: thetruth/templates/statements/list-thesis.mako:31

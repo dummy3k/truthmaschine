@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2009-09-29 11:19+0000\n"
+"POT-Creation-Date: 2009-10-01 01:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:119
+#: thetruth/controllers/login.py:120
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 
-#: thetruth/controllers/login.py:158
+#: thetruth/controllers/login.py:159
 msgid "Signed in"
 msgstr ""
 
-#: thetruth/controllers/login.py:192 thetruth/controllers/login.py:202
+#: thetruth/controllers/login.py:193 thetruth/controllers/login.py:203
 msgid "You are not signed in."
 msgstr ""
 
-#: thetruth/controllers/login.py:196
+#: thetruth/controllers/login.py:197
 msgid "You've been signed out."
 msgstr ""
 
-#: thetruth/controllers/login.py:205
+#: thetruth/controllers/login.py:206
 msgid "You are not banned."
 msgstr ""
 
@@ -49,8 +49,26 @@ msgstr ""
 msgid "New Thesis"
 msgstr ""
 
-#: thetruth/controllers/statements.py:124 thetruth/controllers/statements.py:210
+#: thetruth/controllers/statements.py:124 thetruth/controllers/statements.py:214
 msgid "Error: Only  characters are allowed!"
+msgstr ""
+
+#: thetruth/controllers/statements.py:161
+msgid ""
+"You have posted a new thesis. <strong>Please vote it</strong> up if you think"
+" it's true or down if you think its not."
+msgstr ""
+
+#: thetruth/controllers/statements.py:165
+msgid ""
+"You have posted a new pro argument. <strong>Please vote it</strong> up if you"
+" think it's true or down if you think its not."
+msgstr ""
+
+#: thetruth/controllers/statements.py:167
+msgid ""
+"You have posted a new contra argument. <strong>Please vote it</strong> up if "
+"you think it's true or down if you think its not."
 msgstr ""
 
 #: thetruth/controllers/users.py:69

@@ -35,42 +35,10 @@ class StatementsController(BaseController):
         c.thesis = query.filter_by(parentid=None).order_by(model.Statement.votes.desc()).all()
         if c.thesis:
             for aThesis in c.thesis:
-                self.attachTrueFalseCount(aThesis)
+                aThesis.attachTrueFalseCount()
            
         return render('/statements/list-thesis.mako')
         
-
-    def attachTrueFalseCount(self, statement):
-        query = meta.Session.query(model.Statement)
-        statement.true_count = query.filter_by(parentid=statement.id,istrue=1).count()
-        statement.false_count = query.filter_by(parentid=statement.id,istrue=0).count()
-        
-        if(statement.true_count+statement.false_count) > 0:
-            proInPercent = float(statement.true_count)/float(statement.true_count+statement.false_count)*100
-        else:
-            proInPercent = 50
-        statement.proInPercent = proInPercent
-        
-        if proInPercent > 90:
-            statement.start_color = "0a6005"        
-        elif proInPercent > 80:
-            statement.start_color = "1a5516"  
-        elif proInPercent > 70:
-            statement.start_color = "234621"
-        elif proInPercent > 60:
-            statement.start_color = "303e2f"
-        elif proInPercent > 40:
-            statement.start_color = "2a2a2a"
-        elif proInPercent > 30:
-            statement.start_color = "544242"
-        elif proInPercent > 20:
-            statement.start_color = "563232"
-        elif proInPercent > 10:
-            statement.start_color = "632625"
-        else:
-            statement.start_color = "691110"
-            
-        return statement
     
     def newThesis(self):
         if not c.user:
@@ -110,7 +78,7 @@ class StatementsController(BaseController):
             return redirect_to(action='index', id=None)
                 
         query = meta.Session.query(model.Statement)
-        c.thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+        c.thesis = query.filter_by(id=id).first().attachTrueFalseCount()
         c.title = c.thesis
 
         c.feeds = [{'title': _('Arguments for this thesis'),
@@ -125,11 +93,11 @@ class StatementsController(BaseController):
         c.trueArguments = query.filter_by(parentid=id,istrue=1).order_by(model.Statement.votes.desc()).all()
         
         for trueArgument in c.trueArguments:
-            self.attachTrueFalseCount(trueArgument)
+            trueArgument.attachTrueFalseCount()
         
         c.falseArguments = query.filter_by(parentid=id,istrue=0).order_by(model.Statement.votes.desc()).all()
         for falseArgument in c.falseArguments:
-            self.attachTrueFalseCount(falseArgument)
+            falseArgument.attachTrueFalseCount()
 
         return render('/statements/list-arguments.mako')
     
@@ -228,7 +196,7 @@ class StatementsController(BaseController):
             redirect_to(controller='login', action='signin', id=id)
 
         query = meta.Session.query(model.Statement)
-        thesis = self.attachTrueFalseCount(query.filter_by(id=id).first())
+        thesis = query.filter_by(id=id).first().attachTrueFalseCount()
 
         if not c.user.allow_edit(thesis):
             raise Exception('no you dont')

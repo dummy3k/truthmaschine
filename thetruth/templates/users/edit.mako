@@ -1,4 +1,4 @@
-<%inherit file="/layout-default.mako"/>\
+<%inherit file="/users/user-snippets.mako"/>\
 
 <%def name="content()">
   <p>
@@ -7,8 +7,8 @@
 
 		<h1>${_('User details for %s') % c.user.name}</h1>
 
-        <form action='${h.url_for(action='saveProfile')}'>
-        <table border="0" cellpadding="4">
+        <form cellspacing="0" cellpadding="0" action="${h.url_for(action='saveProfile')}">
+        <table border="0" class="nicetable">
             <tr>
                 <th>Gravatar</th>
                 <td><a href="http://en.gravatar.com/emails"><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.png" width="80" height="80" /></a></td>
@@ -33,7 +33,10 @@
         
         <input type='hidden' name='id' value='${c.user.id}' />
         <input type='submit' value='${_('Save')}' />
-        </form>
+     </form>
+     
+    
+    ${self.showRecentStatements()}
 </%def>
 <%def name="sidenav()">
     

@@ -204,3 +204,48 @@ class LoginController(BaseController):
     def signedin(self):
         return session['signedin']
         
+    def offline_login(self):
+        identity_url = "http://www.example.com"
+        username = "offline"
+        
+        query = meta.Session.query(model.User)
+        user = query.filter_by(name=username).first()
+        
+        newUser = user is None
+        
+        if newUser:
+            user = model.User()
+            user.name=username
+            user.openid=identity_url
+            user.signup = datetime.now()
+            user.reputation = 0
+
+        user.updatelastlogin()
+        
+        if newUser:
+            meta.Session.add(user)
+        else:
+            meta.Session.update(user)
+            
+        meta.Session.commit()
+        #session.clear()
+        session['openid'] = identity_url
+        
+        h.flash(_("Signed in"))
+        
+        session['user'] = user
+        session.save()
+
+        if 'returnTo' in session:
+            controller = session['returnTo'].get('controller', None)
+            action = session['returnTo'].get('action', None)
+            id = session['returnTo'].get('id', None)
+            istrue = istrue=session['returnTo'].get('istrue', None)
+
+            del session['returnTo']
+            session.save()
+
+            return redirect_to(controller=controller, action=action, id=id, istrue=istrue)
+        else:
+            return redirect_to(controller='statements', action='index')
+

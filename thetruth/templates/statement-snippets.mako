@@ -104,11 +104,15 @@
 </form>
 </%def>
 <%def name="argumentOutput(argument)">
+<% argument.attachTrueFalseCount() %>
+
 % if argument.istrue:
     <div class="pro">
 % else:
     <div class="contra">
 % endif
+
+    istrue = ${(argument)}
 	<table border="0" width="100%">
 		<tr>
 			% if argument.istrue == False:
@@ -123,12 +127,11 @@
 			        <tr>
 						% if argument.istrue == True:
 				            <td width="280" align="left" valign="bottom">
-				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+				                <a href="${h.url_for(controller='statements', action='show', id=argument.id)}" class="procontra">
 				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
 				                </a>
 				            </td>
-						% endif			        	
-			        
+						% endif
 			        
 			            <td width="40" valign="top">
 			                <img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" />
@@ -145,7 +148,7 @@
 			            </td>
 						% if argument.istrue == False:
 				            <td width="150" align="right" valign="bottom">
-				                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+				                <a href="${h.url_for(controller='statements', action='show', id=argument.id)}" class="procontra">
 				                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
 				                </a>
 				            </td>
@@ -163,7 +166,9 @@
 </div>
 </%def>
 
-<%def name="startThesis(argument, color)">
+<%def name="thesisOutput(argument)">
+<% argument.attachTrueFalseCount() %>
+
 <div class="start">
 	<table border="0" width="100%">
 		<tr>
@@ -189,7 +194,7 @@
 			                ${convertToHumanReadable(argument.created)}
 			            </td>	 
 			            <td width="150" align="right" valign="bottom">
-			                <a href="${h.url_for(action='show', id=argument.id)}" class="procontra">
+			                <a href="${h.url_for(controller='statements', action='show', id=argument.id)}" class="procontra">
 			                    ${_('%s') % (argument.false_count)} &emsp; ${_('%s') % (argument.true_count)}
 			                </a>
 			            </td>       	
@@ -226,7 +231,7 @@
             <ul class="parent">
                 <li>
                     <img src="/img/thesis.jpg" alt="thesis" /> 
-                    <a href="${h.url_for(action='show', id=argument.id)}">
+                    <a href="${h.url_for(controller='statements', action='show', id=argument.id)}">
                         ${argument.message | stripMarkupAndTruncate}
                     </a>
                 </li>
@@ -282,7 +287,7 @@
 
                 % if c.user and c.user.allow_edit(argument):
                 <p>
-                    <a href="${h.url_for(action='edit_statement', id=argument.id)}" class="edit">
+                    <a href="${h.url_for(controller='statements', action='edit_statement', id=argument.id)}" class="edit">
                         ${_('edit')}
                     </a>
                 </p>

@@ -1,4 +1,4 @@
-<%inherit file="/layout-default.mako"/>\
+<%inherit file="/users/user-snippets.mako"/>\
 
 <%def name="content()">
   <p>
@@ -7,17 +7,18 @@
 
 		<h1>${_('User details for %s') % c.user.name}</h1>
 
-        <table border=1>
+        <table border="0" cellspacing="0" cellpadding="0" class="nicetable">
             <tr>
-                <td><a href="http://en.gravatar.com/emails">Gravatar</a></td>
+                <th><a href="http://en.gravatar.com/emails">Gravatar</a></th>
                 <td><img class="gravatar-big" src="http://www.gravatar.com/avatar/${c.user.getHashedEmailAddress()}.jpg" /></td>
             </tr>
             <tr>
-                <td>${_('Name')}</td>
+                <th>${_('Name')}</th>
                 <td>${c.user.name}</td>
             </tr>
         </table>
 
+    ${self.showRecentStatements()}
 </%def>
 <%def name="sidenav()">
     

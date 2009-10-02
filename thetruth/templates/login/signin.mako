@@ -43,6 +43,8 @@
         <div id="openid-provider-login"><input id="openid-login" type="submit" value="Login" /></div>
         <input type="hidden" id="openid-provider-url" value="" />
     </div>
+    
+    <a href="${h.url_for(controller='login', action='offline_login')}">[offline login]</a>
 </%def>
 <%def name="sidenav()">
 <h1>${_('What is OpenID?')}</h1>

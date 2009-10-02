@@ -36,12 +36,19 @@ class User(object):
     def __repr__(self):
         return "<User('%s', '%s')>" % (self.name, self.openid)
 
+    def get_latest_statements(self, count=10):
+        query = meta.Session.query(Statement)
+        statements = query.filter_by(userid=self.id) \
+            .order_by(Statement.created.desc())      \
+            .limit(count)
+            
+        return statements
+
     def updatelastlogin(self):
         self.last_login = datetime.now()
         pass
     
     def allow_edit(self, some_thing):
-    
         if not some_thing:
             raise Exception('something isnt anything')
             

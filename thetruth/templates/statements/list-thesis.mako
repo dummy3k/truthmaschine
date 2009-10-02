@@ -5,7 +5,7 @@
         <h1>${_('Top Thesis: ')}</h1>
 
         % for it in c.thesis:        
-            ${self.startThesis(it,color)}
+            ${self.thesisOutput(it)}
         % endfor
         
         % if len(c.thesis) == 0: 

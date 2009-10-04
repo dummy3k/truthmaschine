@@ -1,3 +1,6 @@
+<%!
+    from pylons import config
+%>
 <%inherit file="/layout-default.mako"/>\
 
 <%def name="content()">
@@ -43,8 +46,12 @@
         <div id="openid-provider-login"><input id="openid-login" type="submit" value="Login" /></div>
         <input type="hidden" id="openid-provider-url" value="" />
     </div>
-    
-    <a href="${h.url_for(controller='login', action='offline_login')}">[offline login]</a>
+  
+    % if 'offline_mode' in config:
+        <div style="clear: both; float: left">
+            <a href="${h.url_for(controller='login', action='offline_login')}">[offline login]</a>
+        </div>
+    % endif
 </%def>
 <%def name="sidenav()">
 <h1>${_('What is OpenID?')}</h1>

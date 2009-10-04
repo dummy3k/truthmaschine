@@ -9,6 +9,7 @@ from pylons import config
 from paste.deploy.converters import asbool
 from gettext import gettext as _
 
+from thetruth.lib.search import Search 
 
 from thetruth.lib.base import BaseController, render
 from thetruth.lib.helpers import flash
@@ -24,6 +25,8 @@ from datetime import datetime
 log = logging.getLogger(__name__)
 
 statement_length = config['statement_length']
+
+search = Search()
 
 class StatementsController(BaseController):
     def __before__(self):
@@ -149,6 +152,8 @@ class StatementsController(BaseController):
         
         meta.Session.add(rant)
         meta.Session.commit()
+        
+        search.add_to_index_and_commit(rant)
 
         if request.params.get('parentid', None):
             h.flash(_('You have posted a new thesis. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))

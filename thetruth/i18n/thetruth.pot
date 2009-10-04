@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thetruth 0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2009-10-01 01:48+0000\n"
+"POT-Creation-Date: 2009-10-04 22:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.4\n"
 
-#: thetruth/controllers/login.py:50 thetruth/controllers/login.py:75
+#: thetruth/controllers/login.py:43 thetruth/controllers/login.py:68
 msgid "Already signed in."
 msgstr ""
 
-#: thetruth/controllers/login.py:82 thetruth/controllers/login.py:120
+#: thetruth/controllers/login.py:75 thetruth/controllers/login.py:113
 msgid "A problem ocurred comunicating to your OpenID server. Please try again."
 msgstr ""
 
-#: thetruth/controllers/login.py:159
+#: thetruth/controllers/login.py:152 thetruth/controllers/login.py:237
 msgid "Signed in"
 msgstr ""
 
-#: thetruth/controllers/login.py:193 thetruth/controllers/login.py:203
+#: thetruth/controllers/login.py:186 thetruth/controllers/login.py:196
 msgid "You are not signed in."
 msgstr ""
 
-#: thetruth/controllers/login.py:197
+#: thetruth/controllers/login.py:190
 msgid "You've been signed out."
 msgstr ""
 
-#: thetruth/controllers/login.py:206
+#: thetruth/controllers/login.py:199
 msgid "You are not banned."
 msgstr ""
 
@@ -49,54 +49,63 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: thetruth/controllers/statements.py:56 thetruth/templates/layout.mako:59
+#: thetruth/controllers/statements.py:52 thetruth/lib/rss.py:12
+#: thetruth/templates/layout.mako:63
 msgid "New Thesis"
 msgstr ""
 
-#: thetruth/controllers/statements.py:91
+#: thetruth/controllers/statements.py:87
 msgid "Arguments for this thesis"
 msgstr ""
 
-#: thetruth/controllers/statements.py:124 thetruth/controllers/statements.py:214
+#: thetruth/controllers/statements.py:120 thetruth/controllers/statements.py:212
 #, python-format
 msgid "Error: Only %s characters are allowed!"
 msgstr ""
 
-#: thetruth/controllers/statements.py:161
+#: thetruth/controllers/statements.py:159
 msgid ""
 "You have posted a new thesis. <strong>Please vote it</strong> up if you think"
 " it's true or down if you think its not."
 msgstr ""
 
-#: thetruth/controllers/statements.py:165
+#: thetruth/controllers/statements.py:163
 msgid ""
 "You have posted a new pro argument. <strong>Please vote it</strong> up if you"
 " think it's true or down if you think its not."
 msgstr ""
 
-#: thetruth/controllers/statements.py:167
+#: thetruth/controllers/statements.py:165
 msgid ""
 "You have posted a new contra argument. <strong>Please vote it</strong> up if "
 "you think it's true or down if you think its not."
 msgstr ""
 
-#: thetruth/controllers/users.py:69
+#: thetruth/controllers/users.py:55
 msgid "That should not happen."
 msgstr ""
 
-#: thetruth/controllers/users.py:104
+#: thetruth/controllers/users.py:90
 msgid "the Truth: Latest Users"
 msgstr ""
 
-#: thetruth/controllers/users.py:106
+#: thetruth/controllers/users.py:92
 msgid "Latest users joining Truth (tm)"
 msgstr ""
 
-#: thetruth/lib/rss.py:20
+#: thetruth/lib/rss.py:14
+msgid "New Pro-Argument for: "
+msgstr ""
+
+#: thetruth/lib/rss.py:16
+msgid "New Contra-Argument for: "
+msgstr ""
+
+#: thetruth/lib/rss.py:28
 msgid "the Truth: Latest Statements"
 msgstr ""
 
-#: thetruth/lib/rss.py:22
+#: thetruth/lib/rss.py:30
 msgid "The latest statements from the Truth (tm)"
 msgstr ""
 
@@ -125,7 +134,7 @@ msgid "Login</a> to post an Pro-Argument"
 msgstr ""
 
 #: thetruth/templates/layout.mako:12 thetruth/templates/layout.mako:14
-#: thetruth/templates/layout.mako:103
+#: thetruth/templates/layout.mako:107
 msgid "truthmachine"
 msgstr ""
 
@@ -133,38 +142,38 @@ msgstr ""
 msgid "All latest Statements"
 msgstr ""
 
-#: thetruth/templates/layout.mako:58
+#: thetruth/templates/layout.mako:62
 msgid "All Thesis"
 msgstr ""
 
-#: thetruth/templates/layout.mako:60
+#: thetruth/templates/layout.mako:64
 msgid "Whats going on?"
 msgstr ""
 
-#: thetruth/templates/layout.mako:64
+#: thetruth/templates/layout.mako:68
 msgid "Signed in as"
 msgstr ""
 
-#: thetruth/templates/layout.mako:67
+#: thetruth/templates/layout.mako:71
 msgid "Logout"
 msgstr ""
 
-#: thetruth/templates/layout.mako:69
+#: thetruth/templates/layout.mako:73
 msgid "Login"
 msgstr ""
 
-#: thetruth/templates/layout.mako:82
+#: thetruth/templates/layout.mako:86
 msgid "Search..."
 msgstr ""
 
-#: thetruth/templates/layout.mako:104
+#: thetruth/templates/layout.mako:108
 #, python-format
 msgid ""
 "user contributed content licensed under %s cc-wiki %s with attribution "
 "required"
 msgstr ""
 
-#: thetruth/templates/layout.mako:105
+#: thetruth/templates/layout.mako:109
 #, python-format
 msgid "like %s stackoverflow %s"
 msgstr ""
@@ -198,17 +207,18 @@ msgstr ""
 msgid "Links do not count into your %s character limit."
 msgstr ""
 
-#: thetruth/templates/statement-snippets.mako:127
-#: thetruth/templates/statement-snippets.mako:149
+#: thetruth/templates/statement-snippets.mako:130
+#: thetruth/templates/statement-snippets.mako:151
+#: thetruth/templates/statement-snippets.mako:197
 #, python-format
-msgid "%s pro / %s contra"
+msgid "%s"
 msgstr ""
 
-#: thetruth/templates/statement-snippets.mako:187
+#: thetruth/templates/statement-snippets.mako:228
 msgid "Parent Thesis:"
 msgstr ""
 
-#: thetruth/templates/statement-snippets.mako:249
+#: thetruth/templates/statement-snippets.mako:290
 msgid "edit"
 msgstr ""
 
@@ -216,47 +226,47 @@ msgstr ""
 msgid "You are banned"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:4
+#: thetruth/templates/login/signin.mako:7
 msgid "Sign in with OpenID"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:21
+#: thetruth/templates/login/signin.mako:24
 msgid "Dont forget to enable OpenID support with your preferred provider first!"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:41
+#: thetruth/templates/login/signin.mako:44
 msgid "Your Account:"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:48
+#: thetruth/templates/login/signin.mako:57
 msgid "What is OpenID?"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:50
+#: thetruth/templates/login/signin.mako:59
 msgid ""
 "Its a single username and password that allows you to log in to any OpenID-"
 "enabled site."
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:52
+#: thetruth/templates/login/signin.mako:61
 msgid "It works on thousands of websites."
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:54
+#: thetruth/templates/login/signin.mako:63
 msgid "Its an open standard."
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:56
+#: thetruth/templates/login/signin.mako:65
 msgid ""
 "And we are too lazy to implement our own login process. Which is good, "
 "because this way we cant mess it up."
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:59
+#: thetruth/templates/login/signin.mako:68
 msgid "learn more"
 msgstr ""
 
-#: thetruth/templates/login/signin.mako:60
+#: thetruth/templates/login/signin.mako:69
 msgid "get one"
 msgstr ""
 
@@ -275,6 +285,11 @@ msgid ""
 "false; how to define and identify truth; the roles that revealed and acquired"
 " knowledge play; and whether truth is subjective, relative, objective, or "
 "absolute."
+msgstr ""
+
+#: thetruth/templates/search/search.mako:4
+#, python-format
+msgid "Search Results for \"%s\""
 msgstr ""
 
 #: thetruth/templates/statements/edit_statement.mako:20
@@ -310,40 +325,40 @@ msgid "Latest Thesis: "
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:20
-#: thetruth/templates/statements/list-thesis.mako:20
+#: thetruth/templates/statements/list-thesis.mako:13
 #, python-format
 msgid "Sorry, no thesis found. Please %s create one %s ."
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:27
-#: thetruth/templates/statements/list-thesis.mako:27
+#: thetruth/templates/statements/list-thesis.mako:20
 msgid "What is this all about?"
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:29
-#: thetruth/templates/statements/list-thesis.mako:29
+#: thetruth/templates/statements/list-thesis.mako:22
 msgid "the truth (tm) is a collaborate web application for finding the truth. "
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:30
-#: thetruth/templates/statements/list-thesis.mako:30
+#: thetruth/templates/statements/list-thesis.mako:23
 msgid ""
 "We do so, by <strong>collecting Pro and Contra Arguments, voting them, and "
 "digging deeper</strong>."
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:31
-#: thetruth/templates/statements/list-thesis.mako:31
+#: thetruth/templates/statements/list-thesis.mako:24
 msgid "Every Argument can be viewed as a Thesis with its own arguments. Try it!"
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:33
-#: thetruth/templates/statements/list-thesis.mako:33
+#: thetruth/templates/statements/list-thesis.mako:26
 msgid "And remeber: Be nice! We are all in this together."
 msgstr ""
 
 #: thetruth/templates/statements/list-latest-thesis.mako:35
-#: thetruth/templates/statements/list-thesis.mako:35
+#: thetruth/templates/statements/list-thesis.mako:28
 #, python-format
 msgid "Contribute by creating %s your own Thesis%s."
 msgstr ""
@@ -372,41 +387,57 @@ msgstr ""
 msgid "Try to back up your Arguments with links"
 msgstr ""
 
-#: thetruth/templates/users/detail.mako:8 thetruth/templates/users/edit.mako:8
+#: thetruth/templates/users/detail.mako:8 thetruth/templates/users/edit.mako:7
 #, python-format
 msgid "User details for %s"
 msgstr ""
 
-#: thetruth/templates/users/detail.mako:16 thetruth/templates/users/edit.mako:21
-#: thetruth/templates/users/list.mako:11
+#: thetruth/templates/users/detail.mako:16 thetruth/templates/users/edit.mako:20
+#: thetruth/templates/users/list.mako:9
 msgid "Name"
 msgstr ""
 
-#: thetruth/templates/users/edit.mako:25 thetruth/templates/users/list.mako:12
+#: thetruth/templates/users/edit.mako:24 thetruth/templates/users/list.mako:10
 msgid "eMail"
 msgstr ""
 
-#: thetruth/templates/users/edit.mako:29 thetruth/templates/users/list.mako:13
+#: thetruth/templates/users/edit.mako:28 thetruth/templates/users/list.mako:11
 msgid "OpenId"
 msgstr ""
 
-#: thetruth/templates/users/edit.mako:35
+#: thetruth/templates/users/edit.mako:34
 msgid "Save"
 msgstr ""
 
-#: thetruth/templates/users/list.mako:6
+#: thetruth/templates/users/list.mako:4
 msgid "User list"
 msgstr ""
 
-#: thetruth/templates/users/list.mako:14
+#: thetruth/templates/users/list.mako:12
 msgid "<i>Operations</i>"
 msgstr ""
 
-#: thetruth/templates/users/list.mako:24
+#: thetruth/templates/users/list.mako:22
 msgid "Show"
 msgstr ""
 
-#: thetruth/templates/users/list.mako:25
+#: thetruth/templates/users/list.mako:23
 msgid "Delete"
+msgstr ""
+
+#: thetruth/templates/users/user-snippets.mako:4
+msgid "Latest Statements"
+msgstr ""
+
+#: thetruth/templates/users/user-snippets.mako:14
+msgid "User Vote Count"
+msgstr ""
+
+#: thetruth/templates/users/user-snippets.mako:25
+msgid "Upvotes"
+msgstr ""
+
+#: thetruth/templates/users/user-snippets.mako:33
+msgid "Downvotes"
 msgstr ""
 

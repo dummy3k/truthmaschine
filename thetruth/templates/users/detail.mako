@@ -5,7 +5,7 @@
     ${c.message}
   </p>
 
-		<h1>${_('User details for %s') % c.user.name}</h1>
+		<h1>${_('User details for %s') % c.show_user.name}</h1>
 
         <table border="0" cellspacing="0" cellpadding="0" class="nicetable">
             <tr>

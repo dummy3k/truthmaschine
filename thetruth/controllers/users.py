@@ -40,19 +40,18 @@ class UsersController(BaseController):
         
     def showProfile(self, id):
         query = meta.Session.query(model.User)
-        c.show_user = query.filter(model.User.id == id).one()
+        c.show_user = query.filter(model.User.id == id).first()
 
-        if not c.user: 
+        if not c.show_user: 
             abort(404)
 
         c.title = c.show_user.name
 
-        if int(c.user.id) == int(id):
+        if c.user and int(c.user.id) == int(id):
             return render('/users/edit.mako')
         else:
             return render('/users/detail.mako')
             
-                                
         return _("That should not happen.")
 
     def saveProfile(self):

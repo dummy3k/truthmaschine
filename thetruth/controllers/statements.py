@@ -151,9 +151,9 @@ class StatementsController(BaseController):
                 abort(500)
         
         meta.Session.add(rant)
+        search.add_to_index_and_commit(rant)
         meta.Session.commit()
         
-        search.add_to_index_and_commit(rant)
 
         if request.params.get('parentid', None):
             h.flash(_('You have posted a new thesis. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
@@ -214,7 +214,11 @@ class StatementsController(BaseController):
             return self.edit_statement(id)        
         
         thesis.message = newMsg
+        
+        search.update_index(thesis)
         meta.Session.commit()
+        
+        
 
         redirect_to(action='show', id=id)
         

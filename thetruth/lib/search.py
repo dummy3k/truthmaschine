@@ -38,6 +38,10 @@ class Search():
         self._create_writer()
         self.writer.add_document(message=statement.message, \
                                  id=unicode(statement.id))
+    def update_index(self, statement):
+        self._create_writer()
+        self.writer.update_document(message=statement.message, \
+                                 id=unicode(statement.id))
     
     def add_to_index_and_commit(self, statement):
         self.add_to_index(statement)

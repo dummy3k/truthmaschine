@@ -82,8 +82,8 @@
                     <img src="/img/search.jpg" alt="search" width="20" height="20" />
                 </td>
                 <td>
-                <form action="" method="get" name="search">
-                    <input name="input" type="text" value="${_('Search...')}"  onfocus="document.forms.search.input.value='';" />
+                <form action="/search/search" method="get" name="search">
+                    <input name="query" type="text" value="${_('Search...')}"  onfocus="document.forms.search.query.value='';" />
                 </form>
                 </td>
             </tr>

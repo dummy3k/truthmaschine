@@ -205,7 +205,7 @@ class LoginController(BaseController):
         return session['signedin']
         
     def offline_login(self):
-        if not 'offline_mode' in config:
+        if not 'offline_mode' in config and config['debug']:
             abort(500)
         
         identity_url = "http://www.example.com"

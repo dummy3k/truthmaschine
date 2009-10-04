@@ -47,7 +47,7 @@
         <input type="hidden" id="openid-provider-url" value="" />
     </div>
   
-    % if 'offline_mode' in config:
+    % if 'offline_mode' in config and config['debug']:
         <div style="clear: both; float: left">
             <a href="${h.url_for(controller='login', action='offline_login')}">[offline login]</a>
         </div>

@@ -7,7 +7,7 @@ log = logging.getLogger(__name__)
 
 statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
-    Column('message', String(140)),
+    Column('message', String(300)),
     Column('userid', Integer, ForeignKey('users.id')),
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
@@ -27,6 +27,13 @@ class Statement(object):
 
     def renderMessage(self):
         return renderMarkup(self.message)
+
+    def get_parent_thesis(self):
+        if self.parentid == 0:
+            return None
+        
+        query = meta.Session.query(Statement)
+        return query.filter_by(id=self.parentid).first()
 
     def is_voted_by_user(self, userid):
         query = meta.Session.query(Vote)

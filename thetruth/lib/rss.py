@@ -3,14 +3,22 @@ from pylons import config
 import thetruth.lib.helpers as h
 from datetime import datetime
 from gettext import gettext as _
+import markup  
 
 def __get_rss__(query):
     myItems = []
     for theArgument in query[:11]:
+        if not theArgument.parentid:
+            argument_title = _("New Thesis")
+        elif theArgument.istrue == 1:
+            argument_title = _("New Pro-Argument for: ") + markup.stripMarkup(theArgument.get_parent_thesis().message)[:50]
+        else: 
+            argument_title = _("New Contra-Argument for: ") + markup.stripMarkup(theArgument.get_parent_thesis().message)[:50]
+            
         newItem = PyRSS2Gen.RSSItem(
-            title = theArgument.message,
+            title = argument_title,
             link = config['base_url'] + h.url_for(controller='statements', action='show', id=str(theArgument.id)),
-            description = theArgument.message,
+            description = markup.renderMarkup(theArgument.message),
             guid = PyRSS2Gen.Guid(str(theArgument.id), False), #entry['guidislink']
             pubDate = theArgument.created)
         

@@ -27,45 +27,21 @@ log = logging.getLogger(__name__)
 class VotesController(BaseController):
     def __before(self):
         pass
-    
+
     def upvote(self, id):
-        if not c.user:
-            c.returnTo = {'controller': 'votes', 'action': 'upvote', 'id': id}
-            return redirect_to(controller='login', action='signin', id=None)
-
-        query = meta.Session.query(model.Statement)
-        thesis = query.filter_by(id=id).first()
-
-        # reset vote if already voted 
-        if thesis.is_voted_by_user(c.user.id):
-            query = meta.Session.query(model.Vote)
-            vote = query.filter_by(userid=c.user.id, statementid=id).first()
-            if vote.isupvote:
-                thesis.votes -= 1
-            else:
-                thesis.votes += 1
-            meta.Session.delete(vote)
-            meta.Session.update(thesis)
-            meta.Session.commit()
-            
-            return redirect_to(controller='statements', action='show', id=id)
-
-        vote = model.Vote()
-        vote.isupvote = True
-        vote.userid = c.user.id
-        vote.statementid = id
-        vote.created = datetime.now()
-        meta.Session.add(vote)
-        
-        thesis.votes += 1
-        meta.Session.update(thesis)
-        meta.Session.commit()
-
-        return redirect_to(controller='statements', action='show', id=id)
-        
+        self._vote(id, True)
+    
     def downvote(self, id):
+        self._vote(id, False)
+    
+    def _vote(self, id, isupvote):
         if not c.user:
-            c.returnTo = {'controller': 'votes', 'action': 'downvote', 'id': id}
+            if isupvote == True:
+                action = 'upvote'
+            else: 
+                action = 'downvote'
+            session['returnTo'] = {'controller': 'votes', 'action': action, 'id': id}
+            session.save()
             return redirect_to(controller='login', action='signin', id=None)
 
         query = meta.Session.query(model.Statement)
@@ -75,27 +51,30 @@ class VotesController(BaseController):
         if thesis.is_voted_by_user(c.user.id):
             query = meta.Session.query(model.Vote)
             vote = query.filter_by(userid=c.user.id, statementid=id).first()
-            
             if vote.isupvote:
                 thesis.votes -= 1
             else:
                 thesis.votes += 1
-                
-            meta.Session.update(thesis)
             meta.Session.delete(vote)
+            meta.Session.update(thesis)
             meta.Session.commit()
             
             return redirect_to(controller='statements', action='show', id=id)
 
         vote = model.Vote()
-        vote.isupvote = False
+        vote.isupvote = isupvote
         vote.userid = c.user.id
         vote.statementid = id
         vote.created = datetime.now()
         meta.Session.add(vote)
+        
+        if isupvote:
+            thesis.votes += 1
+        else:
+            thesis.votes -= 1
 
-        thesis.votes -= 1
         meta.Session.update(thesis)
         meta.Session.commit()
 
         return redirect_to(controller='statements', action='show', id=id)
+    

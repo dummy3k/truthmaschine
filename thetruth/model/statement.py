@@ -53,7 +53,8 @@ class Statement(object):
         self.false_count = query.filter_by(parentid=self.id,istrue=0).count()
         
         if(self.true_count + self.false_count) > 0:
-            self.proInPercent = float(self.true_count)/float(self.true_count+self.false_count)*100
+            self.proInPercent = float(self.true_count)/float( \
+                                self.true_count+self.false_count)*100
         else:
             self.proInPercent = 50
         

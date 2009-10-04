@@ -18,6 +18,7 @@
             </tr>
         </table>
 
+    ${self.showUserVotes(c.show_user)}
     ${self.showRecentStatements(c.show_user)}
 </%def>
 <%def name="sidenav()">

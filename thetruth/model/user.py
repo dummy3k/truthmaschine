@@ -1,6 +1,7 @@
 from sqlalchemy import *
 from thetruth.model import meta
 from statement import Statement
+from vote import Vote
 import hashlib
 from datetime import datetime
 
@@ -43,6 +44,11 @@ class User(object):
             .limit(count)
             
         return statements
+    
+    def attach_vote_count(self):
+        query = meta.Session.query(Vote)
+        self.upvote_count = query.filter_by(userid=self.id, isupvote=1).count()
+        self.downvote_count = query.filter_by(userid=self.id, isupvote=0).count()
 
     def updatelastlogin(self):
         self.last_login = datetime.now()

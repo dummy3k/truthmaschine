@@ -157,6 +157,7 @@ p {
 }
 #mainContent div.vote {
 	float:left;
+	clear: both;
 	width: 50px;
 	margin-top: 15px;
 	font-size: 16px;
@@ -174,6 +175,7 @@ p {
 #mainContent a:hover.voteUp {
 	background-image:url(../img/up_o.jpg);
 }
+#mainContent span.voteUpDone,
 #mainContent a.voteUpDone {
 	display:block;
 	width: 30px;
@@ -188,6 +190,7 @@ p {
 	height: 20px;
 	background-image:url(../img/down.jpg);
 }
+#mainContent span.voteDownDone,
 #mainContent a.voteDownDone {
 	display:block;
 	width: 30px;

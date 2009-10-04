@@ -54,6 +54,7 @@ class VotesController(BaseController):
         vote.isupvote = True
         vote.userid = c.user.id
         vote.statementid = id
+        vote.created = datetime.now()
         meta.Session.add(vote)
         
         thesis.votes += 1
@@ -90,6 +91,7 @@ class VotesController(BaseController):
         vote.isupvote = False
         vote.userid = c.user.id
         vote.statementid = id
+        vote.created = datetime.now()
         meta.Session.add(vote)
 
         thesis.votes -= 1

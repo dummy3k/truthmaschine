@@ -112,7 +112,6 @@
     <div class="contra">
 % endif
 
-    istrue = ${(argument)}
 	<table border="0" width="100%">
 		<tr>
 			% if argument.istrue == False:

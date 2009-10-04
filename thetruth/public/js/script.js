@@ -4,14 +4,15 @@
 	});
 	
   	$('#new-argument').keyup(function(){
-  		var markupRegex = /\[(.*?)\|(.*?)\]/g;
+  	    var markupRegex = /\[(.+?)\|(.+?)\]/g;
+  	    var linkRegex = /(^|\s)(http:\/\/[^\s "<>]+)($|\s)/g;
 
   		var len = $("#new-argument").val().replace(markupRegex, '$2').length;
   		$("#characters-left").html("(" + (statement_length - len) + " characters left)");
   		
   		var escapedHTML=$("#new-argument").val().split("&").join("&amp;").split( "<").join("&lt;").split(">").join("&gt;")
   		
-  		$("#preview p").html(escapedHTML.replace(markupRegex, '<a href="$1">$2</a>'))
+  		$("#preview p").html(escapedHTML.replace(markupRegex, '<a href="$1">$2</a>').replace(linkRegex, '$1<a href="$2">$2</a>$3'))
   		
   	});  	
 

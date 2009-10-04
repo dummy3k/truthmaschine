@@ -84,7 +84,8 @@
 		 showLoginPrompt(provider, 'AOL', 'http://openid.aol.com/%USER%');
 	 }
 	 else if(provider == 'myopenid') {
-		 showLoginPrompt(provider, 'MyOpenID', 'http://%USER%.myopenid.com/');
+			$('#openid').val('http://myopenid.com/');
+			$('#signin-form').submit();
 	 }
 	 else if(provider == 'livejournal') {
 		 showLoginPrompt(provider, 'Livejournal', 'http://%USER%.livejournal.com/');

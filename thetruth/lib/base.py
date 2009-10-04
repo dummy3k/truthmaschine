@@ -30,15 +30,25 @@ class BaseController(WSGIController):
             session['lang'] = lang
         elif lang and lang == 'en':
             session['lang'] = lang
-             
+
         if 'lang' in session: 
             if session['lang'] == 'de':
                 set_lang(session['lang'])
         else:
-            session['lang'] = 'de' 
-            set_lang(session['lang'])
-
-        
+            for ua_lang in request.languages:
+                if ua_lang[0:2] == 'de':
+                    session['lang'] = 'de'
+                    break
+                
+                if ua_lang[0:2] == 'en':
+                    session['lang'] = 'en'
+                    
+            if not 'lang' in session:
+                session['lang'] = 'en'
+                
+            if session['lang'] == 'de':
+                set_lang(session['lang'])
+            
         try:
             c.user = session['user']
         except:

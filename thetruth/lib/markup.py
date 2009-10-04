@@ -17,8 +17,9 @@ def stripMarkup(s):
     
 def stripMarkupAndTruncate(s):
     s = re.sub('\[(.+?)\|(.+?)\]', '\\2', s)
-    return s[:100]
     
-if __name__ == '__main__':
-    unittest.main()
+    if len(s) > 100:
+        return s[:100] + "..."
+    else:
+        return s[:100]
     

@@ -11,9 +11,9 @@ def __get_rss__(query):
         if not theArgument.parentid:
             argument_title = _("New Thesis")
         elif theArgument.istrue == 1:
-            argument_title = _("New Pro-Argument for: ") + markup.stripMarkup(theArgument.get_parent_thesis().message)[:50]
+            argument_title = _("New Pro-Argument for: ") + markup.stripMarkupAndTruncate(theArgument.get_parent_thesis().message)[:50]
         else: 
-            argument_title = _("New Contra-Argument for: ") + markup.stripMarkup(theArgument.get_parent_thesis().message)[:50]
+            argument_title = _("New Contra-Argument for: ") + markup.stripMarkupAndTruncate(theArgument.get_parent_thesis().message)[:50]
             
         newItem = PyRSS2Gen.RSSItem(
             title = argument_title,

@@ -68,6 +68,7 @@ class UsersController(BaseController):
         users_q = meta.Session.query(model.User)
         aUser = users_q.filter(model.User.id==userId).one()
         aUser.name = request.params.get('name', None)
+        aUser.email = request.params.get('email', None)
         meta.Session.update(aUser)
         meta.Session.commit()
         redirect_to(action='showProfile', id=userId)

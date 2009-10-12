@@ -38,6 +38,7 @@
         <a class="openid_small_btn" style="background: rgb(255, 255, 255) url(../img/openid/verisign.png) no-repeat center center;" href="javascript: signin('verisign');" title="Verisign"></a>
         <a class="openid_small_btn" style="background: rgb(255, 255, 255) url(../img/openid/vidoop.png) no-repeat center center;" href="javascript: signin('vidoop');" title="Vidoop"></a>
         <a class="openid_small_btn" style="background: rgb(255, 255, 255) url(../img/openid/claimid.png) no-repeat center center;" href="javascript: signin('claimid');" title="ClaimID"></a>
+        <a class="openid_small_btn" style="background: rgb(255, 255, 255) url(../img/openid/myspace.jpg) no-repeat center center;" href="javascript: signin('MySpace');" title="MySpace"></a>
     </div>
     
     <div id="openid-prompt">

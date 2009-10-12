@@ -70,22 +70,23 @@
 	 if(provider == 'openid') {
 		$('#openid').val('');
 	 }
-	 
 	 else if(provider == 'google') {
 			$('#openid').val('https://www.google.com/accounts/o8/id');
 			$('#signin-form').submit();
 	 }
-
 	 else if(provider == 'yahoo') {
 			$('#openid').val('http://yahoo.com/');
 			$('#signin-form').submit();
 	 }
-	 
 	 else if(provider == 'aol') {
 		 showLoginPrompt(provider, 'AOL', 'http://openid.aol.com/%USER%');
 	 }
 	 else if(provider == 'myopenid') {
 			$('#openid').val('http://myopenid.com/');
+			$('#signin-form').submit();
+	 }
+	 else if(provider == 'myspace') {
+			$('#openid').val('http://myspace.com/');
 			$('#signin-form').submit();
 	 }
 	 else if(provider == 'livejournal') {

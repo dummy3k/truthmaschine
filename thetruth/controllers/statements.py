@@ -215,8 +215,8 @@ class StatementsController(BaseController):
         
         thesis.message = newMsg
         
-        search.update_index(thesis)
         meta.Session.commit()
+        search.update_index(thesis)
         
         
 

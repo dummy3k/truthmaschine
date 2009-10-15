@@ -9,7 +9,7 @@ from whoosh.qparser import QueryParser
 
 class Search():
     def __init__(self):
-        self.schema = Schema(message=TEXT(stored=False), id=ID(stored=True))
+        self.schema = Schema(message=TEXT(stored=False), id=ID(stored=True, unique=True))
 
         index_path = "data/index"
         self.new_index = False

@@ -7,6 +7,10 @@ from whoosh.filedb.filestore import FileStorage
 
 from whoosh.qparser import QueryParser
 
+import logging
+
+log = logging.getLogger(__name__)
+
 class Search():
     def __init__(self):
         self.schema = Schema(message=TEXT(stored=False), id=ID(stored=True, unique=True))
@@ -27,28 +31,31 @@ class Search():
         
     def _create_writer(self): 
         if not hasattr(self, 'writer'):
-            while True:
-                try:
-                    self.writer = self.index.writer()
-                    break
-                except:
-                    time.sleep(10)
+            try:
+                self.writer = self.index.writer()
+                break
+            except Exception as e:
+                log.warn("error opening indexing writer: %s" % e)
+                
         
     def add_to_index(self, statement):
         self._create_writer()
-        self.writer.add_document(message=statement.message, \
-                                 id=unicode(statement.id))
+        if self.writer:
+            self.writer.add_document(message=statement.message, \
+                                     id=unicode(statement.id))
     def update_index(self, statement):
         self._create_writer()
-        self.writer.update_document(message=statement.message, \
-                                 id=unicode(statement.id))
+        if self.writer:
+            self.writer.update_document(message=statement.message, \
+                                     id=unicode(statement.id))
     
     def add_to_index_and_commit(self, statement):
         self.add_to_index(statement)
         self.commit_index()
     
     def commit_index(self):
-        self.writer.commit()
+        if self.writer:
+            self.writer.commit()
 
     def search(self, query):
         if not hasattr(self, 'parser'):

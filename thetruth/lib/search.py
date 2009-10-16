@@ -33,19 +33,18 @@ class Search():
         if not hasattr(self, 'writer'):
             try:
                 self.writer = self.index.writer()
-                break
             except Exception as e:
                 log.warn("error opening indexing writer: %s" % e)
                 
         
     def add_to_index(self, statement):
         self._create_writer()
-        if self.writer:
+        if hasattr(self, 'writer'):
             self.writer.add_document(message=statement.message, \
                                      id=unicode(statement.id))
     def update_index(self, statement):
         self._create_writer()
-        if self.writer:
+        if hasattr(self, 'writer'):
             self.writer.update_document(message=statement.message, \
                                      id=unicode(statement.id))
     
@@ -54,7 +53,7 @@ class Search():
         self.commit_index()
     
     def commit_index(self):
-        if self.writer:
+        if hasattr(self, 'writer'):
             self.writer.commit()
 
     def search(self, query):

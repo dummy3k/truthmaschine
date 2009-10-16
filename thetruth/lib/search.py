@@ -33,7 +33,7 @@ class Search():
         if not hasattr(self, 'writer'):
             try:
                 self.writer = self.index.writer()
-            except Exception as e:
+            except Exception, e:
                 log.warn("error opening indexing writer: %s" % e)
                 
         

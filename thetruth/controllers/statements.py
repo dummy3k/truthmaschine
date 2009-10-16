@@ -151,8 +151,9 @@ class StatementsController(BaseController):
                 abort(500)
         
         meta.Session.add(rant)
-        search.add_to_index_and_commit(rant)
         meta.Session.commit()
+        
+        search.add_to_index_and_commit(rant)
         
 
         if request.params.get('parentid', None):

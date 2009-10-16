@@ -31,7 +31,7 @@ class Search():
                 try:
                     self.writer = self.index.writer()
                     break
-                except e:
+                except:
                     time.sleep(10)
         
     def add_to_index(self, statement):

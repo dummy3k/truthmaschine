@@ -41,7 +41,7 @@ Installing Dependencies
         
 The following dependencies need to be installed
 
-    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate PyRSS2Gen
+    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate PyRSS2Gen http://dl.getdropbox.com/u/530973/Babel-1.0dev_r0-py2.6.egg
     
 Migrating the Database
 ======================

@@ -1,4 +1,5 @@
 MANIFEST.in
+README.txt
 setup.cfg
 setup.py
 db_repo/__init__.py
@@ -88,6 +89,7 @@ thetruth/public/img/openid/flickr.png
 thetruth/public/img/openid/google.png
 thetruth/public/img/openid/livejournal.png
 thetruth/public/img/openid/myopenid.png
+thetruth/public/img/openid/myspace.jpg
 thetruth/public/img/openid/openid.png
 thetruth/public/img/openid/technorati.png
 thetruth/public/img/openid/verisign.png

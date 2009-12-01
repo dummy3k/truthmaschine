@@ -11,6 +11,7 @@ IF NOT EXIST "%PASTER_EXE%" (
 )
 
 
+
 IF EXIST "%DATABASE_FILE%" (
     ECHO ============================================
     ECHO Deleting old Database "%DATABASE_FILE%"
@@ -21,6 +22,10 @@ IF EXIST "%DATA_FOLDER%" (
     ECHO ============================================
     ECHO Deleting old Data folder "%DATA_FOLDER%"
     DEL /S /Q %DATA_FOLDER%
+)
+
+IF NOT EXIST "%DATA_FOLDER%" (
+    mkdir %DATA_FOLDER%
 )
 
 ECHO ============================================

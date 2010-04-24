@@ -18,6 +18,7 @@
     ${h.stylesheet_link('/css/ui-lightness/jquery-ui-1.7.2.custom.css')}
     ${h.javascript_link( '/js/jquery-1.3.2.min.js')}
     ${h.javascript_link( '/js/jquery-ui-1.7.2.custom.min.js')}
+    ${h.javascript_link( '/js/urlEncode.js')}
     ${h.javascript_link( '/config.js')}
     ${h.javascript_link( '/js/script.js')}
     

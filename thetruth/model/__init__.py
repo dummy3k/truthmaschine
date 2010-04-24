@@ -8,6 +8,7 @@ from thetruth.model import meta
 from user import User, users_table
 from statement import Statement, statements_table
 from vote import Vote, votes_table
+from comment import Comment, comments_table
 
 def init_model(engine):
     """Call me before using any of the tables or classes in the model"""
@@ -29,5 +30,11 @@ orm.mapper(Vote, votes_table, properties = {
 
 orm.mapper(Statement, statements_table, properties = {
     'user' : orm.relation(User),
+    'comments' : orm.relation(Comment),
     })
 orm.mapper(Statement, users_table, non_primary=True)
+
+orm.mapper(Comment, comments_table, properties = {
+    'user' : orm.relation(User),
+    'statement' : orm.relation(Statement),
+    })

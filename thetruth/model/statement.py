@@ -28,6 +28,10 @@ class Statement(object):
     def renderMessage(self):
         return renderMarkup(self.message)
 
+    def get_comments(self):
+        query = meta.Session.query(Comment)
+        return query.filter_by(statementid=self.id).list()
+
     def get_parent_thesis(self):
         if self.parentid == 0:
             return None

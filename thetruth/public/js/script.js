@@ -1,8 +1,49 @@
  $(document).ready(function(){
 	$('.contra,.pro,.start').click(function(event) {
-		document.location = $(this).find('.procontra')[0].href;
+             var link = $(this).find('.procontra')[0].href;
+             ///console.log(link);
+//		document.location =
 	});
-	
+
+        $('.comments-area').hide();
+
+        $('.open_comments_link').click(function() {
+           var commentsArea = $(this).parent().parent().parent().find('.comments-area');
+           commentsArea.toggle();
+           console.log(commentsArea);
+           return false;
+        });
+
+  	$('.comments-input').keyup(function(){
+            var len = $(this)[0].value.length;
+            var container = $(this).parent().parent().parent().parent();
+            var charsLeft = container.find('.comments-characters-left');
+            charsLeft.html("(" + (comment_length - len) + " characters left)");
+  	});
+
+        $('.comments-post').click(function() {
+            var container = $(this).parent().parent().parent().parent().parent();
+            var statementid = container.find(".statementid")[0].value;
+            var message = container.find(".comments-input")[0].value;
+
+            var results = container.find('.comment-post-results')[0];
+
+            $.ajax({
+                url: 'http://localhost:5000/post-comment&message='
+                        + $.URLEncode(message)
+                        + '&statement='
+                        + $.URLEncode(statementid),
+                cache: false,
+                success: function(html){
+                    results.innerHTML = html;
+                },
+                error: function(httpRequest, textStatus, errorThrown) {
+                    results.innerHTML = textStatus;
+                }
+            });
+
+        });
+
   	$('#new-argument').keyup(function(){
   	    var markupRegex = /\[(.+?)\|(.+?)\]/g;
   	    var linkRegex = /(^|\s)(http:\/\/[^\s "<>]+)($|\s)/g;

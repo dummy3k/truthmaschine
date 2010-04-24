@@ -74,6 +74,7 @@
     </p>
 </form>
 </%def>
+
 <%def name="argumentEdit(argumentId, defaultText)">
 <form method="post" action="${h.url_for(action='post_edit_statement', id=argumentId)}">
     <input type="hidden" name="id" value="${argumentId}" />
@@ -136,6 +137,9 @@
 			                <img src="http://www.gravatar.com/avatar/${argument.user.getHashedEmailAddress()}.jpg" width="30" height="30" />
 			            </td>
 			            <td valign="top">
+                                        
+
+
 			                <strong>
 			                    <a href="${h.url_for(controller='users', action='showProfile', id=argument.user.id)}">
 			                        ${argument.user.getDisplayName()}
@@ -144,6 +148,9 @@
 			                <br />
 			                
 			                ${convertToHumanReadable(argument.created)}
+                                        <br />
+
+                                        <a href="#" class="open_comments_link">${len(argument.comments)} Comments</a>
 			            </td>
 						% if argument.istrue == False:
 				            <td width="150" align="right" valign="bottom">
@@ -153,6 +160,23 @@
 				            </td>
 						% endif			        	
 			        </tr>
+                                <tr class="comments-area">
+                                     <td colspan="3">
+                                            <ul class="comments-for-${argument.id}">
+                                           % for comment in argument.comments:
+                                                <li class="comment">${comment}</li>
+                                           % endfor
+                                           </ul>
+                                         <br />
+                                         <input type="hidden" class="statementid" name="statementid" value="${argument.id}" />
+                                         <table border="0" cellspacing="0" cellpadding="0"><tr><td>
+                                            <textarea name="message" class="comments-input"></textarea></td><td valign="bottom">
+                                            <button class="comments-post">Post Comment</button>&nbsp;<span class="comment-post-results">&nbsp;</span>
+                                         </td</tr><tr><td>
+                                            <span class="comments-characters-left">(600 characters left)</span>
+                                         </td></tr></table>
+                                     </td>
+                                </tr>
 			    </table>
 			</td>
 			% if argument.istrue == True:
@@ -290,7 +314,7 @@
                         ${_('edit')}
                     </a>
                 </p>
-                % endif      
+                % endif
             </td>
             <td width="200" valign="bottom">
                 <table width="200" border="0" cellspacing="0" cellpadding="0" class="avatar">

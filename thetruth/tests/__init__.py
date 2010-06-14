@@ -32,7 +32,8 @@ class TestController(TestCase):
         #~ else:
             #~ wsgiapp = loadapp('config:%s' % config['__file__'])
         wsgiapp = pylons.test.pylonsapp
-        config = wsgiapp.config
+        self.config = wsgiapp.config
         self.app = TestApp(wsgiapp)
-        url._push_object(URLGenerator(config['routes.map'], environ))
+        url._push_object(URLGenerator(self.config['routes.map'], environ))
         TestCase.__init__(self, *args, **kwargs)
+

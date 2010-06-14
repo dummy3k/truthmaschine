@@ -18,3 +18,6 @@
 *.db
 /.pmd
 /.settings/org.eclipse.ltk.core.refactoring.prefs
+*.egg
+*.env
+*.gz

@@ -6,21 +6,21 @@ from pylons import config
 
 def upgrade():
     con = migrate_engine.raw_connection()
-    
-    if config['sqlalchemy.url'].find('mysql:') != -1:
-        store = MySQLStore(con);
-    else:
+
+    if migrate_engine.name == 'sqlite':
         store = SQLiteStore(con);
+    else:
+        store = MySQLStore(con);
     
     store.createTables()
 
 def downgrade():
     con = migrate_engine.raw_connection()
     
-    if config['sqlalchemy.url'].find('mysql:') != -1:
-        store = MySQLStore(con);
-    else:
+    if migrate_engine.name == 'sqlite':
         store = SQLiteStore(con);
+    else:
+        store = MySQLStore(con);
 
     store.dropTables()
 

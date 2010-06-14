@@ -2,9 +2,10 @@
 
 Provides the BaseController class for subclassing.
 """
-from pylons.controllers.util import abort, redirect_to
+from pylons.controllers.util import abort, redirect
 from pylons.controllers import WSGIController
 from pylons.templating import render_mako as render
+from pylons import url
 
 from pylons import request, response, session, tmpl_context as c
 from thetruth.model import meta
@@ -55,14 +56,14 @@ class BaseController(WSGIController):
             pass
 
 
-        if asbool(config['debug']) and c.user:
-            query = meta.Session.query(model.User)
-            tmp = query.filter_by(id=c.user.id).first()
-            if not tmp:
-                log.debug('FOOOOOOO')
-                c.user = None
-                session['user'] = None
-                #redirect_to(controller='login', action='signout')
+        #~ if asbool(config['debug']) and c.user:
+            #~ query = meta.Session.query(model.User)
+            #~ tmp = query.filter_by(id=c.user.id).first()
+            #~ if not tmp:
+                #~ log.debug('FOOOOOOO')
+                #~ c.user = None
+                #~ session['user'] = None
+                #~ #redirect_to(controller='login', action='signout')
             
         try:
             return WSGIController.__call__(self, environ, start_response)

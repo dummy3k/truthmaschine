@@ -18,7 +18,8 @@ Step 3: To activate the Virtual Environment run:
 
 Step 4 Windows: Run script-1-install-project-dependencies.cmd
 Step 4 Linux: 
-    sudo easy_install sqlalchemy python-openid sqlalchemy-migrate PyRSS2Gen http://dl.getdropbox.com/u/530973/Babel-1.0dev_r0-py2.6.egg
+    easy_install -f http://dl.dropbox.com/u/530973/py/index.html babel
+    easy_install sqlalchemy python-openid sqlalchemy-migrate PyRSS2Gen http://dl.getdropbox.com/u/530973/Babel-1.0dev_r0-py2.6.egg
 	
 Step 5 Windows: Run script-2-delete-and-initialize-sqlite-db.cmd
 Step 5 Linux: Run

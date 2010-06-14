@@ -14,12 +14,12 @@ users_table = Table('users', meta.metadata,
 	
 statements_table = Table('statements', meta.metadata,
     Column('id', Integer, primary_key=True),
-    Column('message', String(int(config['statement_length']))),
+    #~ Column('message', String(int(config['statement_length']))),
+    Column('message', String(300)),
     Column('userid', Integer, ForeignKey('users.id')),
     Column('parentid', Integer, ForeignKey('statements.id')),
     Column('votes', Integer),
     Column('istrue', Boolean)
-
 )
 
 def upgrade():

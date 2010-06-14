@@ -1,7 +1,8 @@
 import logging
 
 from pylons import request, response, session, tmpl_context as c
-from pylons.controllers.util import abort, redirect_to
+from pylons.controllers.util import abort, redirect
+from pylons import url
 
 from thetruth.lib.base import BaseController, render
 from thetruth.model import meta
@@ -38,10 +39,10 @@ class LoginController(BaseController):
     @rest.dispatch_on(POST="update_account")
     def index(self):
         if not c.user:
-            redirect_to(action='signin')
+            redirect(url(controller="login", action='signin'))
             
         h.flash(_("Already signed in."))
-        redirect_to(controller='statements', action="index")
+        redirect(url(controller='statements', action="index"))
 
 #    @validate(template='account.index', schema=schema.UpdateUser(), form='index',
 #              variable_decode=True)
@@ -49,7 +50,7 @@ class LoginController(BaseController):
         log.debug('update_account()')
         
         if 'language' in request.POST:
-            redirect_to(action='index', id=None)
+            redirect(url(controller="login", action='index', id=None))
         print request.POST
         query = meta.Session.query(model.User)
         user = query.filter_by(openid=request.POST['openid']).first()
@@ -59,14 +60,14 @@ class LoginController(BaseController):
         user.tzinfo = request.POST['tzinfo']
         #user.language = request.POST['language']
         meta.Session.commit()
-        redirect_to(action='index')
+        redirect(url(controller="login", action='index'))
 
     @rest.dispatch_on(POST="signin_POST")
     def signin(self):
         log.debug("enter signin()")
         if c.user:
             h.flash(_("Already signed in."))
-            return redirect_to(controller='statements', action='index')
+            return redirect(url(controller='statements', action='index'))
 
         return render('login/signin.mako')
 
@@ -86,7 +87,7 @@ class LoginController(BaseController):
             log.warn(e)
             log.warn("OpenID URL: " + openid)
             h.flash(problem_msg)
-            return redirect_to(action='signin')
+            return redirect(url(controller="login", action='signin'))
         
         sreg_request = sreg.SRegRequest(
             #required=['email'],
@@ -102,10 +103,10 @@ class LoginController(BaseController):
         log.debug("redirecturl: %s" % redirecturl)
         session['openid_session'] = self.openid_session
         session.save()
-        return redirect_to(redirecturl)
+        return redirect(redirecturl)
     
     def success(self):
-        return redirect_to(controller='statements', action="index")
+        return redirect(url(controller='statements', action="index"))
 
     def verified(self):
         log.debug("enter verified()")
@@ -131,7 +132,7 @@ class LoginController(BaseController):
                 log.debug("first contact with user '%s'" % info.identity_url)
                 
             if user.banned:
-                redirect_to(action='banned')
+                redirect(url(controller="login", action='banned'))
                 
             user.updatelastlogin()
             if newUser:
@@ -171,33 +172,33 @@ class LoginController(BaseController):
                 del session['returnTo']
                 session.save()
 
-                return redirect_to(controller=controller, action=action, id=id, istrue=istrue)
+                return redirect(url(controller=controller, action=action, id=id, istrue=istrue))
             else:
-                return redirect_to(controller='statements', action='index')
+                return redirect(url(controller='statements', action='index'))
         else:
             log.warn("verified, but no success")
             log.debug("info: %s" % info)
             
             h.flash(problem_msg)
-            return redirect_to(action='signin')
+            return redirect(url(controller="login", action='signin'))
 
     def signout(self):
         if not c.user:
             h.flash(_("You are not signed in."))
-            redirect_to(controller='statements', action='index')
+            redirect(url(controller='statements', action='index'))
             
         session.clear()
         h.flash(_("You've been signed out."))
 
-        redirect_to(controller='statements', action='index')
+        redirect(url(controller='statements', action='index'))
 
     def banned(self):
         if not c.user:
             h.flash(_("You are not signed in."))
-            return redirect_to(action='signin')
+            return redirect(url(controller="login", action='signin'))
         if not c.user.banned:
             h.flash(_("You are not banned."))
-            return redirect_to(controller='statements', action='index')
+            return redirect(url(controller='statements', action='index'))
 
         return render('login/account-banned.mako')
 
@@ -248,7 +249,7 @@ class LoginController(BaseController):
             del session['returnTo']
             session.save()
 
-            return redirect_to(controller=controller, action=action, id=id, istrue=istrue)
+            return redirect(url(controller=controller, action=action, id=id, istrue=istrue))
         else:
-            return redirect_to(controller='statements', action='index')
+            return redirect(url(controller='statements', action='index'))
 

@@ -37,15 +37,13 @@ def setup_app(command, conf, vars):
 
 
     # setup db with sqlalchemy migrate
-    dbUrl = config['sqlalchemy.url']
-    log.debug('dbUrl: %s' % dbUrl)
+    #~ dbUrl = config['sqlalchemy.url']
+    #~ log.debug('dbUrl: %s' % dbUrl)
     
-    try:
-        migrate.versioning.api.version_control(url=dbUrl,repository='db_repo')
-    except DatabaseAlreadyControlledError:
-        pass
+    #~ try:
+        #~ migrate.versioning.api.version_control(url=dbUrl,repository='db_repo')
+    #~ except DatabaseAlreadyControlledError:
+        #~ pass
         
-    migrate.versioning.api.upgrade(url=dbUrl,repository='db_repo')
-
-
+    #~ migrate.versioning.api.upgrade(url=dbUrl,repository='db_repo')
     log.info("Successfully set up.")

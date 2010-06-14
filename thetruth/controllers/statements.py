@@ -2,7 +2,8 @@ import logging
 from cgi import escape
 
 from pylons import request, response, session, tmpl_context as c
-from pylons.controllers.util import abort, redirect_to
+from pylons import url
+from pylons.controllers.util import abort, redirect
 from pylons.decorators.secure import authenticate_form
 
 from pylons import config
@@ -47,7 +48,7 @@ class StatementsController(BaseController):
         if not c.user:
             session['returnTo'] = {'controller': 'statements', 'action': 'newThesis'}
             session.save()
-            redirect_to(controller='login', action='signin', id=None, istrue=None)
+            redirect(url(controller='login', action='signin'))
             
         c.title = _("New Thesis")
         return render('/statements/new-thesis.mako')
@@ -56,7 +57,7 @@ class StatementsController(BaseController):
         if not c.user:
             session['returnTo'] = {'controller': 'statements', 'action': 'newArgument', 'id': id, 'istrue': istrue}
             session.save()
-            redirect_to(controller='login', action='signin', id=None, istrue=None)
+            redirect(url(controller='login', action='signin'))
             
         query = meta.Session.query(model.Statement)
         c.thesis = query.filter_by(id=id).first()
@@ -78,7 +79,7 @@ class StatementsController(BaseController):
     
     def show(self, id):
         if id == '0':
-            return redirect_to(action='index', id=None)
+            return redirect(url(controller='statements', action='index'))
                 
         query = meta.Session.query(model.Statement)
         c.thesis = query.filter_by(id=id).first().attachTrueFalseCount()
@@ -106,7 +107,7 @@ class StatementsController(BaseController):
     
     def createNew(self):
         if not c.user:
-            redirect_to(controller='login', action='signin', id=None, istrue=None)
+            redirect(url(controller='login', action='signin'))
                 
         message = request.params.get('msg', None)
         
@@ -158,13 +159,13 @@ class StatementsController(BaseController):
 
         if request.params.get('parentid', None):
             h.flash(_('You have posted a new thesis. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
-            redirect_to(action='show', id=rant.parentid)
+            redirect(url(controller='statements', action='show', id=rant.parentid))
         else:
             if isTrue == 'True':
                 h.flash(_('You have posted a new pro argument. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
             elif isTrue == 'False':
                 h.flash(_('You have posted a new contra argument. <strong>Please vote it</strong> up if you think it\'s true or down if you think its not.'))
-            redirect_to(action='show', id=rant.id)
+            redirect(url(controller='statements', action='show', id=rant.id))
 
     def appendSubStatment(self, child, isContra):
     
@@ -182,7 +183,7 @@ class StatementsController(BaseController):
         if not c.user:
             session['returnTo'] = {'controller': 'statements', 'action': 'edit_statement', 'id': id}
             session.save()
-            redirect_to(controller='login', action='signin')
+            redirect(url(controller='login', action='signin'))
         
         query = meta.Session.query(model.Statement)
         c.statement = query.filter_by(id=id).first()
@@ -199,7 +200,7 @@ class StatementsController(BaseController):
     def post_edit_statement(self, id):
         if not c.user:
             # should not happen therefore no c.returnTo
-            redirect_to(controller='login', action='signin', id=id)
+            redirect(url(controller='login', action='signin', id=id))
 
         query = meta.Session.query(model.Statement)
         thesis = query.filter_by(id=id).first().attachTrueFalseCount()
@@ -221,5 +222,5 @@ class StatementsController(BaseController):
         
         
 
-        redirect_to(action='show', id=id)
+        redirect(url(controller, 'statements', action='show', id=id))
         

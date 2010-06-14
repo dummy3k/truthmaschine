@@ -1,8 +1,9 @@
 import logging
 
 from pylons import request, response, session, tmpl_context as c
-from pylons.controllers.util import abort, redirect_to
+from pylons.controllers.util import abort, redirect
 from thetruth.lib.base import *
+from pylons import url
 
 from thetruth.lib.base import BaseController, render
 import thetruth.lib.helpers as h
@@ -25,7 +26,7 @@ class UsersController(BaseController):
         # Return a rendered template
         #return render('/users.mako')
         # or, return a response
-        return redirect_to(controller='users', action="showUsersList")
+        return redirect(url(controller='users', action="showUsersList"))
 
     def showUsersList(self):
         users_q = meta.Session.query(model.User)
@@ -57,13 +58,13 @@ class UsersController(BaseController):
     def saveProfile(self):
         if not c.user:
             log.debug('redirecting to signin, because user is not logged in')
-            redirect_to(controller='login', action='signin')
+            redirect(url(controller='login', action='signin'))
 
         userId = request.params.get('id', None)
         userId = int(userId)            
         if int(c.user.id) != userId:
             log.debug('redirecting to signin, becuase user wants to change other users data')
-            redirect_to(controller='login', action='signin')
+            redirect(url(controller='login', action='signin'))
 
         users_q = meta.Session.query(model.User)
         aUser = users_q.filter(model.User.id==userId).one()
@@ -71,7 +72,7 @@ class UsersController(BaseController):
         aUser.email = request.params.get('email', None)
         meta.Session.update(aUser)
         meta.Session.commit()
-        redirect_to(action='showProfile', id=userId)
+        redirect(url(controller='users', action='showProfile', id=userId))
         
         
     def newUsersRss(self):
